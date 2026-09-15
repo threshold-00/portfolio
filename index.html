@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rowena Baulch</title>
+  <meta name="description" content="Rowena Baulch, a Melbourne designer working across product, research and brand.">
+  <meta property="og:title" content="Rowena Baulch">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rowenabaulch.com.au/">
+  <script>
+    // Apply the saved or system theme before first paint, so there is no flash.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=50">
+</head>
+<body>
+  <header class="nav">
+    <a class="nav__logo" href="/" aria-label="Rowena Baulch, home"><img src="assets/icons/ro-wordmark.svg" alt=""></a>
+    <div class="nav__end">
+      <nav aria-label="Main">
+        <ul class="nav__links">
+          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Work with me</button></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 1.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"/></svg>
+        <span class="theme-toggle__label" aria-hidden="true">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Business solutions at the intersection of people, tech &amp; creativity.</h1>
+    </section>
+
+    <section class="hero hero--statement" aria-label="How I help">
+      <p class="hero__line">I help businesses find what their customers really need, then design, test and ship it, with AI speeding up every step.</p>
+    </section>
+
+    <section class="compvis" aria-labelledby="compvis-heading">
+      <div class="compvis__head">
+        <h2 id="compvis-heading" class="compvis__title">Case study by competency</h2>
+        <p class="compvis__intro">Work that shows each of these pillars the clearest</p>
+      </div>
+      <div class="compvis__body">
+        <div class="compvis__diagram">
+          <ol class="compvis__stages">
+          <li class="compvis__stage compvis__stage--discovery">
+            <button class="compvis__trigger" type="button" data-stage="discovery" aria-controls="card-discovery">Discovery</button>
+          </li>
+          <li class="compvis__stage compvis__stage--research is-active">
+            <button class="compvis__trigger" type="button" data-stage="research" aria-controls="card-research" aria-current="true">Research</button>
+          </li>
+          <li class="compvis__stage compvis__stage--execution">
+            <button class="compvis__trigger" type="button" data-stage="execution" aria-controls="card-execution">Execution</button>
+          </li>
+          </ol>
+        </div>
+        <div class="compvis__viewport" tabindex="0" aria-label="Case studies, scrollable">
+          <ul class="compvis__cards">
+          <li class="compvis__card" id="card-discovery" data-stage="discovery">
+            <span class="compvis__img compvis__img--icon" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M480-121.77q-120.77-36.54-200.38-147.88Q200-381 200-519.15v-213.39l280-104.61 280 104.61v213.39q0 138.15-79.62 249.5Q600.77-158.31 480-121.77Zm0-32.77q108.85-34.92 179.04-136.96t70.19-227.65v-192.16L480-804.69l-249.23 93.38v192.16q0 125.61 70.19 227.65T480-154.54Zm0-324.69Zm-83.08 145.38h166.16q12.04 0 19.86-7.82 7.83-7.83 7.83-19.87v-126.15q0-12.04-7.83-19.87-7.82-7.82-19.86-7.82h-11.54v-40q0-29.93-20.42-50.35-20.43-20.42-50.35-20.42t-50.35 20.42Q410-585.31 410-555.38v40h-13.08q-12.04 0-19.86 7.82-7.83 7.83-7.83 19.87v126.15q0 12.04 7.83 19.87 7.82 7.82 19.86 7.82Zm39.23-181.53v-40q0-18.47 13.08-30.81 13.08-12.35 31.54-12.35t31.54 12.35q13.07 12.34 13.07 30.81v40h-89.23Z"/></svg></span>
+            <div class="compvis__info">
+              <div class="compvis__text">
+                <p class="compvis__pillar">Discovery</p>
+                <h3 class="compvis__name">SAF3, a secure crypto custodian</h3>
+                <p>Large institutional and ultra high-net-worth investors needed a secure, regulated way to store and manage digital assets.</p>
+                <ul class="tags compvis__skills" aria-label="Skills"><li>Product design (end-to-end)</li><li>MVP creation</li><li>Workshop facilitation</li><li>Research via self-recruitment</li></ul>
+              </div>
+              <button class="compvis__more" type="button" data-stage="discovery" aria-controls="study-discovery">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button>
+            </div>
+          </li>
+          <li class="compvis__card" id="card-research" data-stage="research">
+            <span class="compvis__img compvis__img--icon" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M200-275.38v-370.93q0-70.77 67.42-92.46 67.43-21.69 195.43-22.92l30.46-62.93H283.08v-30.77h393.84v30.77H527.15l-30 62.93q116 1.23 189.43 23.19Q760-716.54 760-646.31v370.93q0 48.23-33.58 81.8Q692.85-160 644.62-160l60 60v20h-29.24l-80-80H364.62l-80 80h-29.24v-20l60-60q-48.23 0-81.8-33.58Q200-227.15 200-275.38Zm447.31-130.93H230.77 729h-81.69ZM511.23-269.62q12.15-12.53 12.15-30.15 0-17.61-12.15-29.77-12.15-12.15-29.77-12.15-17.61 0-30.15 12.15-12.54 12.16-12.54 29.77 0 17.62 12.54 30.15 12.54 12.54 30.15 12.54 17.62 0 29.77-12.54ZM481-662.85H728.92 228.38 481ZM230.77-437.08H729v-195H230.77v195Zm81.69 244.62h334.85q34.31 0 58-24.31Q729-241.08 729-275.38v-130.93H230.77v130.93q0 34.3 23.81 58.61 23.8 24.31 57.88 24.31ZM481-730.92q-118.38 0-181.27 16.04-62.88 16.03-71.35 52.03h500.54q-9.23-32.3-70.11-50.19-60.89-17.88-177.81-17.88Z"/></svg></span>
+            <div class="compvis__info">
+              <div class="compvis__text">
+                <p class="compvis__pillar">Research</p>
+                <h3 class="compvis__name">Victorian Public Transport, Contactless Ticketing Pilot</h3>
+                <p>The Department of Transport needed the new contactless ticket readers to be intuitive and accessible, without slowing the gates.</p>
+                <ul class="tags compvis__skills" aria-label="Skills"><li>Strategic design</li><li>Research ops</li><li>Ethnographic studies</li><li>Report writing</li></ul>
+              </div>
+              <button class="compvis__more" type="button" data-stage="research" aria-controls="study-research">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button>
+            </div>
+          </li>
+          <li class="compvis__card" id="card-execution" data-stage="execution">
+            <span class="compvis__img compvis__img--icon" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M762.92-140q-37.15 0-64.57-23.35-27.43-23.34-31.58-58.34H441.46q-58.31 0-97.58-39.27-39.26-39.27-39.26-97.58 0-58.31 39.26-97.58 39.27-39.26 97.58-39.26H520q44.85 0 75.46-30.62 30.62-30.62 30.62-75.46 0-44.85-30.62-75.46-30.61-30.62-75.46-30.62H293.23q-4.38 35-32.08 58.35-27.69 23.34-64.07 23.34-40.31 0-68.7-28-28.38-28-28.38-68.69t28.38-69.08Q156.77-820 197.08-820q36.38 0 64.07 23.35 27.7 23.34 32.08 58.34H520q58.31 0 97.58 39.27 39.27 39.27 39.27 97.58 0 58.31-39.27 97.58-39.27 39.26-97.58 39.26h-78.54q-44.84 0-75.46 30.62-30.62 30.62-30.62 75.46 0 44.85 30.62 75.46 30.62 30.62 75.46 30.62h225.31q5.15-35 32.08-58.35 26.92-23.34 64.07-23.34 40.31 0 68.7 28 28.38 28 28.38 68.69t-28.38 69.08Q803.23-140 762.92-140ZM244.04-675.96q19.34-19.35 19.34-46.96 0-27.62-19.34-46.96-19.35-19.35-46.96-19.35-27.62 0-46.96 19.35-19.35 19.34-19.35 46.96 0 27.61 19.35 46.96 19.34 19.34 46.96 19.34 27.61 0 46.96-19.34Z"/></svg></span>
+            <div class="compvis__info">
+              <div class="compvis__text">
+                <p class="compvis__pillar">Execution</p>
+                <h3 class="compvis__name">Afterpay B2B design and testing</h3>
+                <p>Afterpay’s global team needed a program to continuously test and improve their B2B site, centred on the form businesses use to apply.</p>
+                <ul class="tags compvis__skills" aria-label="Skills"><li>CRO</li><li>UX audit</li><li>Wireframes</li><li>A/B testing</li></ul>
+              </div>
+              <button class="compvis__more" type="button" data-stage="execution" aria-controls="study-execution">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button>
+            </div>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="drawer" hidden>
+      <div class="drawer__backdrop" data-drawer-close></div>
+        <article class="study" role="dialog" aria-modal="true" id="study-discovery" data-stage="discovery" aria-labelledby="study-discovery-title" tabindex="-1" hidden>
+          <button class="study__close" type="button" aria-label="Close case study">×</button>
+          <div class="study__head">
+            <p class="study__eyebrow">Discovery · Case study</p>
+            <h3 id="study-discovery-title">SAF3 - A secure crypto custodian</h3>
+            <p class="study__client">NAB x Zodia Custody</p>
+          </div>
+          <img class="study__hero" src="assets/img/home/saf3-2.webp" alt="SAF3 logo on a laptop screen" loading="lazy" decoding="async">
+          <div class="study__grid">
+            <dl class="study__facts">
+              <dt>The customer</dt><dd>Crypto native fund managers, ultra high-net-worth individuals</dd>
+              <dt>Project team</dt><dd>Laura Dineen (Product Manager), Adrian Ciaschetti (Crypto SME), Danielle Khalil (Risk/Business analyst), Kate Cooper (Executive), myself, engineering team.</dd>
+              <dt>Skills</dt><dd><ul class="tags"><li>Product design (end-to-end)</li><li>Crypto</li><li>MVP creation</li><li>Workshop facilitation</li><li>Mentoring non-designers/directors</li><li>Research via self-recruitment</li><li>Developer handover</li></ul></dd>
+            </dl>
+            <div><div class="study__section"><h4>Problem</h4><p>Large institutional and ultra high-net-worth investors needed a secure and regulated way to store and manage digital assets. Existing custody solutions lacked the controls and trust required by this segment.</p></div><div class="study__section"><h4>My scope</h4><p>Defined first pass of MVP, refining features and design through research. Developed framework for our target customers. Designed entire platform, alongside assisting development efforts/QA. Assisted business development conversations.</p></div><div class="study__section"><h4>Approach</h4><ul><li>Conducted and managed 10 interviews with customers who have an interest in crypto</li><li>Aligned with engineers on build possibilities and designed first pass at platform</li><li>Conducted another 10 customer interviews a mix of institutions (eg. JB Were) and crypto-native fund managers through targeted guerrilla recruitment.</li><li>Enabled the broader team to continue discreet customer research during business development engagements through hypothesis setting</li><li>Synthesised insights into product requirements and decision frameworks.</li></ul></div><div class="study__section"><h4>Outcome</h4><p>Delivered an MVP aligned to customer needs, including a risk management feature and custody.</p><p>Overall findings included:</p><ul><li>Leading with a, “custody” focus for comms was beneficial for our target customer (asset fund managers)</li><li>Risk management was a key feature to be implemented</li><li>Customer preferred broader coin range than just the main (BTC/ETH)</li></ul></div><div class="study__section"><h4>Reflection</h4><p>On a personal note, I enjoyed the face-paced and at times, challenging nature of this work. It was rewarding to have such a large impact on this venture.</p></div></div>
+          </div>
+          <ul class="study__gallery"><li class=""><figure><img src="assets/img/studies/saf3-console.webp" alt="SAF3 Risk Console showing failed compliance checks and a transaction table" loading="lazy" decoding="async"></figure></li><li class=""><figure><img src="assets/img/studies/saf3-modal.webp" alt="SAF3 transaction detail showing a failed whitelist check" loading="lazy" decoding="async"></figure></li><li class="is-wide"><figure><img src="assets/img/studies/saf3-console-detail.webp" alt="SAF3 Risk Console with expanded transaction rows" loading="lazy" decoding="async"></figure></li><li class="is-wide"><figure><img src="assets/img/studies/saf3-photos.webp" alt="Business development events and the team at work" loading="lazy" decoding="async"><figcaption>Pictured: Business development conversations and getting our hands dirty for our startup, SAF3.</figcaption></figure></li><li class="is-wide"><figure><img src="assets/img/studies/saf3-research.webp" alt="Sticky notes of customer research questions beside a requirements table" loading="lazy" decoding="async"><figcaption>Pictured: Snippet of customer research questions and a first pass at a requirements</figcaption></figure></li><li class="is-wide"><figure><img src="assets/img/studies/saf3-journey.webp" alt="Example journey flow: from a client asking about a transfer to the fund manager reporting compliance checks" loading="lazy" decoding="async"></figure></li></ul>
+        </article>
+        <article class="study" role="dialog" aria-modal="true" id="study-research" data-stage="research" aria-labelledby="study-research-title" tabindex="-1" hidden>
+          <button class="study__close" type="button" aria-label="Close case study">×</button>
+          <div class="study__head">
+            <p class="study__eyebrow">Research · Case study</p>
+            <h3 id="study-research-title">Victorian Public Transport, Contactless Ticketing Pilot</h3>
+            <p class="study__client">Department of Transport</p>
+          </div>
+          <img class="study__hero" src="assets/img/studies/myki-readers.webp" alt="Old myki reader beside the new yellow reader" loading="lazy" decoding="async">
+          <div class="study__grid">
+            <dl class="study__facts">
+              <dt>The customer</dt><dd>Victorian public transport commuters and station staff (gate attendants, station masters).</dd>
+              <dt>Project team</dt><dd>Adelaide Wood (Researcher), Mel Turkovic (Delivery Lead), Myself (Researcher)</dd>
+              <dt>Skills</dt><dd><ul class="tags"><li>Strategic design</li><li>Research ops</li><li>Ethnographic studies</li><li>Report writing</li><li>Working with Government</li></ul></dd>
+            </dl>
+            <div><div class="study__section"><h4>Problem</h4><p>With contactless payment being introduced, the Department needed to ensure the new ticket reader system was intuitive, accessible, and acceptable to the public, and and that it would not create friction at gates or worsen station congestion.</p></div><div class="study__section"><h4>My scope</h4><p>Led research direction and synthesis. Worked with Department of Transport product and second user researcher to setup, conduct and develop research into an official report.</p></div><div class="study__section"><h4>Approach</h4><p>Triangulated three research methods to understand customer-machine interaction in a real-world setting:</p><ul><li>Longitudinal Diary Study: 296 submissions over 8 weeks (2 pre-installation, 6 post-installation).</li><li>Ethnographic Observation: 42 hours of on-site observation, &gt;6,700 individual tap-on/off interactions recorded.</li><li>Intercept Interviews: 112 customer and staff interviews at stations.</li></ul><p>Insights focused on HMI (Human machine interface), audio, and the physical reader, alongside learnability and environmental factors (noise, crowding, positioning). We prioritised gathering data from those with accessibility needs.</p></div><div class="study__section"><h4>Outcome</h4><p>On average, customers rated tapping 20% easier after new readers were installed.</p><p>Designed recommendations to improve usability without slowing gate throughput, including:</p><ul><li>Increasing visibility of secondary (balance) text without compromising privacy</li><li>Raising awareness of the “hold to extend display time” feature</li><li>Adjusting beep volume to (at the minimum) match station ambient noise levels (not exceeding +10db)</li></ul><p>These findings directly informed final specification adjustments ahead of statewide rollout.</p></div><div class="study__section"><h4>Reflection</h4><p>We reached point of saturation with customer results around week 2 of ethnographic research, if I were to do this again, I would not advocate for more than 3-4 weeks of research.</p></div></div>
+          </div>
+          <ul class="study__gallery"><li class=""><figure><img src="assets/img/studies/myki-station.webp" alt="Ticket gates at Glenroy station during observational research" loading="lazy" decoding="async"><figcaption>Pictured: Old and new platform validators, myself - conducting observational research at Glenroy station</figcaption></figure></li><li class=""><figure><img src="assets/img/studies/myki-diary.webp" alt="A participant diary study entry in Dovetail" loading="lazy" decoding="async"><figcaption>Pictured: Diary study entry from a participant in Dovetail, we synthesised 8 weeks of data from 37 participants (296 results!)</figcaption></figure></li></ul>
+        </article>
+        <article class="study" role="dialog" aria-modal="true" id="study-execution" data-stage="execution" aria-labelledby="study-execution-title" tabindex="-1" hidden>
+          <button class="study__close" type="button" aria-label="Close case study">×</button>
+          <div class="study__head">
+            <p class="study__eyebrow">Execution · Case study</p>
+            <h3 id="study-execution-title">Afterpay B2B design and testing</h3>
+            <p class="study__client">Dijitally x Afterpay US, UK (Clearpay), AU</p>
+          </div>
+          <img class="study__hero" src="assets/img/studies/afterpay-clearpay.webp" alt="Clearpay landing page hero: Accelerate your business growth with Clearpay" loading="lazy" decoding="async">
+          <div class="study__grid">
+            <dl class="study__facts">
+              <dt>The customer</dt><dd>Afterpay’s prospective business’</dd>
+              <dt>Project team</dt><dd>Optimisation Lead/UX (Myself), Growth Marketing Manager (Nick Petrillo), UI Designer (Dominque Vella)</dd>
+              <dt>Skills</dt><dd><ul class="tags"><li>Increase frequency</li></ul></dd>
+            </dl>
+            <div><div class="study__section"><h4>Problem and scope</h4><p>Afterpay’s global team needed a program which allowed for continuous testing and improvements to their B2B facing site. The key part of this site being a form which business’ would fill out to start their application process with Afterpay.</p></div><div class="study__section"><h4>Approach</h4><ul><li>Setup CRO playbook, working with client to define responsibilities and scope of design and testing</li><li>Created master tracker to manage testing and incorporate UX audit findings - received some push-back, but assured team that this program is about learnings and being open-minded.</li><li>Metrics were supplied by data scientists from Afterpay’s side and implemented into my recommendations</li><li>Designed wireframes, brief and dev notes for UI designer to finalise</li><li>Worked with delivery lead to manage testing timelines and client expectations</li></ul></div><div class="study__section"><h4>Outcome</h4><p>Launched phase 1 of testing which included over 10 tests, a combination of new designs with multivariate tests.</p></div><div class="study__section"><h4>Reflection</h4><p>Whilst we were not able to conduct usability testing for this first round, I’ve been advocating for this - some of the metrics the client wanted to test (eg. scroll depth) are too subjective to test in A/B. I’m looking to incorporate this into the second phase of testing.</p></div></div>
+          </div>
+          <ul class="study__gallery"><li class=""><figure><img src="assets/img/studies/afterpay-mobile.webp" alt="Mobile wireframe beside the final Afterpay mobile sign-up design" loading="lazy" decoding="async"><figcaption>Mobile wireframes → designs. I designed the initial wireframes and then worked with UI/Brand designer for final delivery. I was responsible for content and hierarchy, they were responsible for brand application across different regions (US, UK, AU)</figcaption></figure></li><li><figure><img src="assets/img/home/afterpay-2.webp" alt="Stat card: Afterpay users spend 159% more on non-essential purchases" loading="lazy" decoding="async"></figure></li><li class="is-wide"><figure><img src="assets/img/home/afterpay-3.webp" alt="Afterpay banner: Ready to grow your business? Get started today" loading="lazy" decoding="async"></figure></li></ul>
+        </article>
+    </div>
+
+    <section class="ai" aria-labelledby="ai-heading">
+      <div class="ai__header">
+        <h2 class="ai__title" id="ai-heading">
+          <button class="ai__toggle" type="button" aria-expanded="true" aria-controls="ai-panel">
+            <span>How I use AI in my practice</span>
+            <span class="ai__sign" aria-hidden="true"><svg class="icon icon--add" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg><svg class="icon icon--remove" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M200-440v-80h560v80H200Z"/></svg></span>
+          </button>
+        </h2>
+        <p class="ai__intro">AI gets me from a messy problem to something real, faster. I use it to widen research, speed up design and ship working products, and I decide where a person needs to stay in charge.</p>
+      </div>
+
+      <div class="ai__panel" id="ai-panel">
+        <div class="ai__panel-inner">
+          <div class="ai__toolkit">
+            <h3 class="ai__subtitle">AI workflows I’ve built</h3>
+            <ul class="ai__tools">
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg></span>
+              <h4>Wireframe builder</h4>
+              <p>Figma and Claude turn strategy, personas and approved modules into wireframe pages.</p>
+              <span class="ai__tool-src">Afterpay</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M500-520h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80Zm-80 160h240v-80H420v80ZM320-200q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200H320Zm0-80h440v-360L560-840H320v560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-240v-560 560Z"/></svg></span>
+              <h4>Learn from my edits</h4>
+              <p>Compares my reworked wireframe with the AI draft and updates the workflow so the correction sticks.</p>
+              <span class="ai__tool-src">Afterpay</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></span>
+              <h4>UX to UI</h4>
+              <p>Builds high-fidelity pages and locale variants from real design system components.</p>
+              <span class="ai__tool-src">Afterpay</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M400-40v-80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h200v-80h80v880h-80ZM200-240h200v-240L200-240Zm360 120v-360l200 240v-520H560v-80h200q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H560Z"/></svg></span>
+              <h4>Competitive usability evaluation</h4>
+              <p>Plans, runs and reports competitor reviews using the Nielsen Norman Group method.</p>
+              <span class="ai__tool-src">Discovery</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M600-120v-120H440v-400h-80v120H80v-320h280v120h240v-120h280v320H600v-120h-80v320h80v-120h280v320H600ZM160-760v160-160Zm520 400v160-160Zm0-400v160-160Zm0 160h120v-160H680v160Zm0 400h120v-160H680v160ZM160-600h120v-160H160v160Z"/></svg></span>
+              <h4>Audits, user flows and sitemaps</h4>
+              <p>A documented AI process for competitor audits, user flow and sitemap generation.</p>
+              <span class="ai__tool-src">Discovery</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
+              <h4>Deep research</h4>
+              <p>Gemini Deep Research and research workflows in Claude to widen discovery before decisions are made.</p>
+              <span class="ai__tool-src">Research</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-40-343 237-137-237-137-237 137 237 137ZM160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11L160-252Zm320-228Z"/></svg></span>
+              <h4>Design to shipped product</h4>
+              <p>A trilingual booking engine designed, coded, tested and deployed with Claude Code.</p>
+              <span class="ai__tool-src">Salty Cowboy, Threshold</span>
+            </li>
+            <li>
+              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg></span>
+              <h4>This portfolio</h4>
+              <p>Moved out of Figma into code I edit by prompting, so changes and new work go live in minutes.</p>
+              <span class="ai__tool-src">rowenabaulch.com.au</span>
+            </li>
+            </ul>
+          </div>
+
+          <div class="ai__examples">
+            <h3 class="ai__subtitle">See it in practice</h3>
+            <ul class="ai__links">
+              <li><a class="link" href="/projectthreshold">Salty Cowboy, now Threshold <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>Designed, built and shipped with AI</span></li>
+              <li><a class="link" href="/projectafterpaywebsite">Afterpay global B2B website <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>AI wireframe, review and UX to UI workflows</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-heading">
+      <div class="work__head">
+        <h2 id="work-heading" class="work__title">All work</h2>
+        <p class="work__intro">Product, research and brand projects.</p>
+      </div>
+      <ul class="filters" aria-label="Filter projects by tag" hidden>
+        <li><button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">14</span></button></li>
+        <li><button class="filter" type="button" data-filter="product-design" aria-pressed="false">Product design <span class="filter__count">8</span></button></li>
+        <li><button class="filter" type="button" data-filter="research" aria-pressed="false">Research <span class="filter__count">7</span></button></li>
+        <li><button class="filter" type="button" data-filter="ai" aria-pressed="false">AI <span class="filter__count">3</span></button></li>
+        <li><button class="filter" type="button" data-filter="fintech" aria-pressed="false">Fintech <span class="filter__count">3</span></button></li>
+        <li><button class="filter" type="button" data-filter="brand" aria-pressed="false">Brand <span class="filter__count">4</span></button></li>
+      </ul>
+      <p class="visually-hidden" aria-live="polite" id="filter-status"></p>
+      <ul class="grid">
+      <li class="card" data-filters="product-design ai">
+        <img class="card__img" src="assets/img/home/threshold-1.webp" alt="Riders watching horses graze at the Salty Cowboy sanctuary" loading="lazy" decoding="async">
+        <h3 class="card__title">Threshold</h3>
+        <p class="card__client">Salty Cowboy booking engine</p>
+        <ul class="tags"><li>Product design</li><li>AI</li></ul>
+        <p class="card__summary">A booking engine for a horse rescue in Bali that only offers riders the rides that fit them. Designed, built and shipped with AI.</p>
+          <a class="card__link" href="/projectthreshold">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design research fintech">
+        <img class="card__img" src="assets/img/home/afterpay-1.webp" alt="Afterpay logo on a browser window" loading="lazy" decoding="async">
+        <h3 class="card__title">Afterpay</h3>
+        <p class="card__client">Afterpay B2B design and testing</p>
+        <ul class="tags"><li>Conversion rate optimisation</li><li>UX</li></ul>
+        <p class="card__summary">Setting up Afterpay’s Global CRO (Conversion Rate Optimisation) program, with a UX lens.</p>
+          <a class="card__link" href="/projectafterpayb2b">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design ai">
+        <img class="card__img" src="assets/img/home/afterpay-3.webp" alt="Afterpay B2B banner: Ready to grow your business?" loading="lazy" decoding="async">
+        <h3 class="card__title">Afterpay</h3>
+        <p class="card__client">Global B2B website</p>
+        <ul class="tags"><li>UX</li><li>UI</li><li>AI</li></ul>
+        <p class="card__summary">Designing Afterpay’s new B2B website for every international market, with AI workflows that go from strategy to wireframes to UI.</p>
+          <a class="card__link" href="/projectafterpaywebsite">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design ai">
+        <img class="card__img" src="assets/img/home/legaldoc-3.webp" alt="Legal Document Review Tool dashboard listing trust deeds" loading="lazy" decoding="async">
+        <h3 class="card__title">Legal Document Review Tool</h3>
+        <p class="card__client">NAB’s Innovation Team</p>
+        <ul class="tags"><li>Product Design</li><li>GenAI</li></ul>
+        <p class="card__summary">Designing an AI-powered tool (MVP) that streamlines NAB paralegals’ trust deed reviews - cutting average review time from forty five minutes to five.</p>
+          <a class="card__link" href="/projectlegaldoc">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design research fintech">
+        <img class="card__img" src="assets/img/home/saf3-2.webp" alt="SAF3 logo on a laptop screen" loading="lazy" decoding="async">
+        <h3 class="card__title">SAF3 MVP</h3>
+        <p class="card__client">NAB’s Innovation Team x Zodia Custody</p>
+        <ul class="tags"><li>Product Design</li><li>Crypto</li></ul>
+        <p class="card__summary">Defined the design and research direction for SAF3, an institutional crypto custody solution from NAB and Zodia Custody’s partnership to bridge traditional finance and crypto.</p>
+          <a class="card__link" href="/projectsaf3">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design research">
+        <img class="card__img" src="assets/img/home/climate-1.webp" alt="Climate risk app on a phone held in a home" loading="lazy" decoding="async">
+        <h3 class="card__title">Climate Risk Dashboard</h3>
+        <p class="card__client">NAB’s Innovation Team</p>
+        <ul class="tags"><li>Product Design</li><li>Climate</li></ul>
+        <p class="card__summary">Designing for the future of the Australian property market with NAB’s Innovation and Strategy teams.</p>
+          <a class="card__link" href="/projectclimate">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="research">
+        <img class="card__img" src="assets/img/home/myki-2.webp" alt="Ticket gates at a Victorian train station" loading="lazy" decoding="async">
+        <h3 class="card__title">Victoria’s new myki system</h3>
+        <p class="card__client">Department of Transport and Planning</p>
+        <ul class="tags"><li>Strategic research</li><li>Transportation</li></ul>
+        <p class="card__summary">Working with the Department of Transport and Planning to ensure new myki system meets the needs of Victoria’s general public.</p>
+          <a class="card__link" href="/projectmyki">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="research fintech">
+        <img class="card__img" src="assets/img/home/stablecoin-1.webp" alt="Service blueprint for the stablecoin on-ramp" loading="lazy" decoding="async">
+        <h3 class="card__title">Blueprint for NAB’s Stablecoin (AUDN)</h3>
+        <p class="card__client">NAB</p>
+        <ul class="tags"><li>Blueprint mapping</li><li>Finance</li></ul>
+        <p class="card__summary">Mapping NAB’s first-ever stablecoin (AUDN) to assist with gap identification and compliance mapping.</p>
+          <a class="card__link" href="/projectstablecoin">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design research">
+        <img class="card__img" src="assets/img/home/nod-2.webp" alt="Nod app: a simple exchange of kindness" loading="lazy" decoding="async">
+        <h3 class="card__title">Nod</h3>
+        <p class="card__client">ED.</p>
+        <ul class="tags"><li>UX/UI</li><li>MVP Creation</li></ul>
+        <p class="card__summary">Having fun with research and concept creation whilst designing to make an impact for service workers.</p>
+          <a class="card__link" href="/projectnod">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="product-design research">
+        <img class="card__img" src="assets/img/home/localhost.webp" alt="Local Host produce overview dashboard for farmers" loading="lazy" decoding="async">
+        <h3 class="card__title">Local Host</h3>
+        <p class="card__client">Direct-from-farm produce platform</p>
+        <ul class="tags"><li>Product Design</li><li>MVP Creation</li></ul>
+        <p class="card__summary">Concept, enabling farmers to manage and sell produce directly to customers.</p>
+          <a class="card__link" href="/projectlocalhost">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
+      <li class="card" data-filters="brand">
+        <img class="card__img" src="assets/img/home/deliveroo.webp" alt="Deliveroo UAE social ads on a grid of phones" loading="lazy" decoding="async">
+        <h3 class="card__title">Deliveroo Social Media ads</h3>
+        <p class="card__client">Deliveroo (UAE)</p>
+        <ul class="tags"><li>Brand</li><li>Digital ads</li><li>Social media</li></ul>
+        <p class="card__summary">Social media ads created for Deliveroo’s UAE market, where I was responsible for art-working photography and typesetting.</p>
+      </li>
+      <li class="card" data-filters="brand">
+        <img class="card__img" src="assets/img/home/axismeats.webp" alt="Axis Meats logo over cured meats" loading="lazy" decoding="async">
+        <h3 class="card__title">Axis Meats, Identity</h3>
+        <p class="card__client">Axis Meats, Townsville</p>
+        <ul class="tags"><li>Brand</li><li>Freelance</li></ul>
+        <p class="card__summary">Axis Meats is a boutique butcher based in Townsville, specialising in cured meats and authentic biltong made from dried venison. The brand pays homage to a family tradition of biltong curing passed down through generations.</p>
+      </li>
+      <li class="card" data-filters="brand">
+        <img class="card__img" src="assets/img/home/nguyendang.webp" alt="Nguyen Dang Photography monogram on fish and ice" loading="lazy" decoding="async">
+        <h3 class="card__title">Nguyen Dang Photography, Identity</h3>
+        <p class="card__client">Nguyen Dang Photography</p>
+        <ul class="tags"><li>Brand</li><li>Freelance</li></ul>
+        <p class="card__summary">Brand identity made to represent Nguyen Dang’s cutting-edge style of photography.</p>
+      </li>
+      <li class="card" data-filters="brand">
+        <img class="card__img" src="assets/img/home/emmaberton.webp" alt="Emma Berton business cards on concrete" loading="lazy" decoding="async">
+        <h3 class="card__title">Emma Berton</h3>
+        <p class="card__client">Custom furniture designer</p>
+        <ul class="tags"><li>Brand</li><li>Freelance</li></ul>
+        <p class="card__summary">Melbourne furniture designer Emma Berton’s work embodies Bauhaus-inspired simplicity, practicality, and intentional form. Her brand identity includes a custom word-mark with gentle curves and precise cuts that mirror her design approach.</p>
+      </li>
+      </ul>
+    </section>
+
+    <section class="companies" aria-labelledby="companies-heading">
+      <div class="companies__head" data-reveal>
+        <h2 id="companies-heading" class="section-title">Companies</h2>
+        <p class="section-intro">Nine years across fintech, government, social innovation and global consumer brands.</p>
+      </div>
+      <ol class="companies__list">
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2025 – 2026</p>
+            <h3 class="companies__name">Dijitally (Freelance)<span>UX Lead</span></h3>
+            <p class="companies__desc">Dijitally builds and scales digital products for businesses such as Afterpay. I led strategy and design for Afterpay’s new global B2B website and owned its CRO (conversion rate optimisation) strategy. I also worked directly with the founder to design and implement new features in the booking engine, Roomstay.</p>
+          </li>
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2025</p>
+            <h3 class="companies__name">Today (Freelance)<span>Strategic Designer</span></h3>
+            <p class="companies__desc">Today is a design and technology agency for social innovation, contracted by the Department of Transport and Planning to research Victoria’s new myki readers. I ran longitudinal and ethnographic studies to uncover customer trends and accessibility needs, led research operations and delivered the final report to the department.</p>
+          </li>
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2022 – 2025</p>
+            <h3 class="companies__name">NAB Innovation Team<span>Product Designer</span></h3>
+            <p class="companies__desc">NAB’s innovation team works apart from the wider bank to move and test quickly. I used design to identify the biggest disruptive threats and opportunities for the bank across climate, payments, AI and crypto, designed and delivered NAB’s first crypto-based MVP for institutional customers, and built an AI tool for paralegals that cut trust-deed review from 45 minutes to 5.</p>
+          </li>
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2021 – 2022</p>
+            <h3 class="companies__name">ED.<span>UX/UI Designer</span></h3>
+            <p class="companies__desc">ED. is a digital agency crafting original ideas and web applications for clients from universities to NGOs. I led evaluative customer research for Athena Home Loans and designed The Sydney Dialogues website.</p>
+          </li>
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2019 – 2021</p>
+            <h3 class="companies__name">Deliveroo<span>APAC Designer</span></h3>
+            <p class="companies__desc">A global food delivery company founded in the UK, where I worked primarily with the UK and global teams. I designed multilingual digital campaigns, including Arabic and Cantonese, and optimised content with global marketing to lift click-through rates.</p>
+          </li>
+          <li class="companies__row" data-reveal>
+            <p class="companies__years">2017 – 2018</p>
+            <h3 class="companies__name">HM.<span>Designer</span></h3>
+            <p class="companies__desc">HM is a strategic brand and communication agency serving clients from government to aged care. I designed wayfinding for Metro and PTV.</p>
+          </li>
+      </ol>
+    </section>
+
+    <section class="beyond" aria-labelledby="beyond-heading">
+      <div class="beyond__text">
+        <h2 id="beyond-heading" class="section-title">Beyond work</h2>
+        <p class="beyond__copy">Outside of work, I’m an avid explorer drawn to adventures. Pictured here is a moment from my stay in Mongolia with a family of eagle hunters (sadly not pictured). Back home, I spend my time climbing, life drawing, hiking, and experimenting with photography.</p>
+      </div>
+      <img class="beyond__img" src="assets/img/about/mongolia.webp" alt="Ro sitting on a grassy Mongolian hillside with three dogs under a blue sky" width="1280" height="1600" loading="lazy" decoding="async">
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('.filters');
+      var buttons = bar.querySelectorAll('.filter');
+      var cards = document.querySelectorAll('.card');
+      var status = document.getElementById('filter-status');
+      bar.hidden = false;
+
+      function apply(tag) {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = tag === 'all' || card.dataset.filters.split(' ').indexOf(tag) !== -1;
+          card.hidden = !match;
+          if (match) shown++;
+        });
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.filter === tag); });
+        status.textContent = shown + (shown === 1 ? ' project' : ' projects') + ' shown';
+      }
+
+      bar.addEventListener('click', function (ev) {
+        var b = ev.target.closest('.filter');
+        if (!b) return;
+        apply(b.dataset.filter);
+        history.replaceState(null, '', b.dataset.filter === 'all' ? location.pathname : '#' + b.dataset.filter);
+      });
+
+      var start = location.hash.slice(1);
+      if (start && bar.querySelector('[data-filter="' + start + '"]')) apply(start);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var section = document.querySelector('.ai');
+      if (!section) return;
+      var btn = section.querySelector('.ai__toggle');
+      var panel = section.querySelector('.ai__panel');
+      section.classList.add('is-enhanced');
+      function set(open) {
+        btn.setAttribute('aria-expanded', open);
+        section.classList.toggle('is-open', open);
+        panel.inert = !open;
+      }
+      set(false);
+      btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var root = document.querySelector('.compvis');
+      var drawer = document.querySelector('.drawer');
+      if (!root || !drawer) return;
+      root.classList.add('is-enhanced');
+      var stages = root.querySelectorAll('.compvis__stage');
+      var triggers = root.querySelectorAll('.compvis__trigger');
+      var viewport = root.querySelector('.compvis__viewport');
+      var cards = root.querySelectorAll('.compvis__card');
+      var studies = drawer.querySelectorAll('.study');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var selected = 'research', current = null, opener = null, closeTimer = null, keyboard = false;
+
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Tab' || ev.key === 'Enter' || ev.key === ' ') { keyboard = true; document.documentElement.classList.add('using-keyboard'); }
+      }, true);
+      document.addEventListener('pointerdown', function () { keyboard = false; document.documentElement.classList.remove('using-keyboard'); }, true);
+      document.addEventListener('pointermove', function () { if (keyboard) { keyboard = false; document.documentElement.classList.remove('using-keyboard'); } }, true);
+
+      // The case study column scrolls. Whichever study sits in the middle is the
+      // active one, and the cycle follows it. Choosing a competency scrolls to its study.
+      function mark(stage) {
+        if (stage === selected && root.querySelector('.compvis__card.is-active')) return;
+        selected = stage;
+        stages.forEach(function (li) { li.classList.toggle('is-active', li.classList.contains('compvis__stage--' + stage)); });
+        triggers.forEach(function (t) {
+          if (t.dataset.stage === stage) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
+        });
+        cards.forEach(function (c) { c.classList.toggle('is-active', c.dataset.stage === stage); });
+      }
+
+      // Desktop scrolls up and down; phones and small tablets scroll sideways.
+      var list = root.querySelector('.compvis__cards');
+      function sideways() { return getComputedStyle(list).flexDirection === 'row'; }
+      function mid(el) { return sideways() ? el.offsetLeft + el.offsetWidth / 2 : el.offsetTop + el.offsetHeight / 2; }
+      function centreOf(card) {
+        return mid(card) - (sideways() ? viewport.clientWidth : viewport.clientHeight) / 2;
+      }
+
+      function select(stage, instant) {
+        var card = root.querySelector('#card-' + stage);
+        mark(stage);
+        target = stage;
+        var opts = { behavior: instant || reduce ? 'auto' : 'smooth' };
+        opts[sideways() ? 'left' : 'top'] = centreOf(card);
+        viewport.scrollTo(opts);
+      }
+
+      var target = null, ticking = false, settleTimer = null;
+      viewport.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          var across = sideways();
+          var centre = across ? viewport.scrollLeft + viewport.clientWidth / 2 : viewport.scrollTop + viewport.clientHeight / 2;
+          var best = null, bestDist = Infinity;
+          cards.forEach(function (c) {
+            var d = Math.abs(mid(c) - centre);
+            if (d < bestDist) { bestDist = d; best = c; }
+          });
+          // While a hover-triggered scroll is travelling, keep the chosen stage lit.
+          if (!target) mark(best.dataset.stage);
+        });
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(function () { target = null; }, 120);
+      }, { passive: true });
+      // Any direct scrolling by the visitor hands control back to the scroll position.
+      ['wheel', 'touchstart'].forEach(function (type) {
+        viewport.addEventListener(type, function () { target = null; }, { passive: true });
+      });
+      // Once the first or last study is reached, the same wheel or trackpad gesture
+      // carries on scrolling the page, instead of stalling inside the column.
+      viewport.addEventListener('wheel', function (ev) {
+        if (sideways() || ev.ctrlKey || Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) return;
+        var dy = ev.deltaY * (ev.deltaMode === 1 ? 16 : ev.deltaMode === 2 ? window.innerHeight : 1);
+        var atTop = viewport.scrollTop <= 2;
+        var atEnd = viewport.scrollTop >= viewport.scrollHeight - viewport.clientHeight - 2;
+        if ((dy > 0 && atEnd) || (dy < 0 && atTop)) {
+          ev.preventDefault();
+          window.scrollBy(0, dy);
+        }
+      }, { passive: false });
+
+      triggers.forEach(function (t) {
+        t.addEventListener('mouseenter', function () { select(t.dataset.stage); });
+        t.addEventListener('focus', function () { select(t.dataset.stage); });
+        t.addEventListener('click', function () { select(t.dataset.stage); });
+      });
+      cards.forEach(function (c) {
+        c.addEventListener('click', function (ev) {
+          if (ev.target.closest('.compvis__more')) return;
+          select(c.dataset.stage);
+        });
+      });
+      function settle() { select(selected, true); target = null; }
+      settle();
+      window.addEventListener('load', settle);
+      window.addEventListener('resize', function () { select(selected, true); });
+
+      function open(stage, fromButton) {
+        clearTimeout(closeTimer);
+        current = stage;
+        opener = fromButton;
+        drawer.hidden = false;
+        drawer.classList.remove('is-closing');
+        studies.forEach(function (s) { s.hidden = s.dataset.stage !== stage; if (!s.hidden) s.scrollTop = 0; });
+        document.documentElement.classList.add('has-drawer');
+        void drawer.offsetWidth;
+        drawer.classList.add('is-open');
+        var panel = drawer.querySelector('#study-' + stage);
+        (keyboard ? panel.querySelector('.study__close') : panel).focus({ preventScroll: true });
+      }
+
+      function close() {
+        if (!current) return;
+        current = null;
+        drawer.classList.remove('is-open');
+        drawer.classList.add('is-closing');
+        document.documentElement.classList.remove('has-drawer');
+        closeTimer = setTimeout(function () {
+          drawer.hidden = true;
+          drawer.classList.remove('is-closing');
+          studies.forEach(function (s) { s.hidden = true; });
+        }, reduce ? 0 : 480);
+        if (opener && keyboard) opener.focus({ preventScroll: true });
+        else if (document.activeElement && drawer.contains(document.activeElement)) document.activeElement.blur();
+      }
+
+      root.querySelectorAll('.compvis__more').forEach(function (b) {
+        b.addEventListener('click', function () { open(b.dataset.stage, b); });
+      });
+
+      drawer.addEventListener('click', function (ev) {
+        if (ev.target.closest('[data-drawer-close]') || ev.target.closest('.study__close')) close();
+      });
+
+      document.addEventListener('keydown', function (ev) {
+        if (!current) return;
+        if (ev.key === 'Escape') { close(); return; }
+        if (ev.key === 'Tab') {
+          // Keep keyboard focus inside the open panel.
+          var panel = drawer.querySelector('#study-' + current);
+          var items = panel.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+          if (!items.length) return;
+          var first = items[0], last = items[items.length - 1];
+          if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+          else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+        }
+      });
+    })();
+  </script>
+
+  <dialog class="intake" id="intake" aria-labelledby="intake-title">
+    <div class="intake__inner">
+      <button class="intake__close" type="button" aria-label="Close">×</button>
+      <div class="intake__form-wrap">
+        <p class="intake__eyebrow">Work with me</p>
+        <h2 class="intake__title" id="intake-title">Tell me about your project</h2>
+        <p class="intake__lede">A few details and I’ll get back to you, usually within a day. Your message opens ready to send in WhatsApp or email.</p>
+
+        <form class="intake__form" novalidate>
+          <div class="intake__row">
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span class="field__label">Company <span class="field__opt">(optional)</span></span>
+              <input name="company" type="text" autocomplete="organization">
+            </label>
+          </div>
+          <label class="field">
+            <span class="field__label">Email <span class="field__opt">(optional)</span></span>
+            <input name="email" type="email" autocomplete="email">
+          </label>
+
+          <fieldset class="field">
+            <legend class="field__label">What can I help with?</legend>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="help" value="Product design"><span>Product design</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="UX research"><span>UX research</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="AI workflows"><span>AI workflows</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Conversion and testing"><span>Conversion and testing</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Full-time role"><span>Full-time role</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Something else"><span>Something else</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span class="field__label">Timeline</span>
+            <select name="timeline">
+              <option value="">Choose one</option>
+              <option>As soon as possible</option>
+              <option>In the next month</option>
+              <option>In 1 to 3 months</option>
+              <option>Just exploring</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">About the project</span>
+            <textarea name="details" rows="5" required placeholder="What’s the problem, and what would a great outcome look like?"></textarea>
+          </label>
+
+          <p class="intake__error" role="alert" hidden>Please add your name and a little about the project.</p>
+
+          <div class="intake__actions">
+            <button class="intake__send" type="submit" value="whatsapp">Send on WhatsApp</button>
+            <button class="intake__send intake__send--alt" type="submit" value="email">Send by email</button>
+          </div>
+          <p class="intake__note">Nothing is stored on this site. Your message goes straight from your WhatsApp or email.</p>
+        </form>
+      </div>
+
+      <div class="intake__done" hidden tabindex="-1">
+        <p class="intake__eyebrow">Almost there</p>
+        <h2 class="intake__title">Your message is ready</h2>
+        <p class="intake__lede">Press send in <span data-channel>WhatsApp</span> and it comes straight to me. Thanks for reaching out.</p>
+        <button class="intake__send intake__send--alt" type="button" data-intake-reset>Back to the form</button>
+      </div>
+    </div>
+  </dialog>
+
+
+  <footer class="footer">
+    <div class="footer__marks"><img src="assets/icons/footer-marks.svg" alt=""></div>
+    <div>
+      <section aria-label="Location">
+        <p class="footer__coords">37.8136° S, 144.9631° E</p>
+        <p class="footer__note"><span>Remote first.</span> Residing in APAC timezone, but time is just a number.</p>
+      </section>
+      <section aria-label="Contact">
+        <p><a href="tel:+61466567953">+61 46 6567 953</a></p>
+        <p><a href="mailto:rowenabaulch@outlook.com">rowenabaulch@outlook.com</a></p>
+      </section>
+    </div>
+    <div class="footer__col--right">
+      <section aria-label="Social">
+        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-controls="intake">Work with me <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
+        <p><a class="link" href="https://www.linkedin.com/in/rowena-baulch-08396ab8/">LinkedIn <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a></p>
+      </section>
+    </div>
+  </footer>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

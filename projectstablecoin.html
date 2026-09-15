@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NAB Stablecoin Service Blueprint · Rowena Baulch</title>
+  <meta name="description" content="A service blueprint showing exactly how NAB would issue and safekeep a stablecoin, and where the gaps were.">
+  <meta property="og:title" content="Rowena Baulch">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rowenabaulch.com.au/">
+  <script>
+    // Apply the saved or system theme before first paint, so there is no flash.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=50">
+</head>
+<body>
+  <header class="nav">
+    <a class="nav__logo" href="/" aria-label="Rowena Baulch, home"><img src="assets/icons/ro-wordmark.svg" alt=""></a>
+    <div class="nav__end">
+      <nav aria-label="Main">
+        <ul class="nav__links">
+          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Work with me</button></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 1.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"/></svg>
+        <span class="theme-toggle__label" aria-hidden="true">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="case">
+    <header class="case__head">
+      <p class="case__eyebrow">Case study · NAB</p>
+      <h1 class="case__title">NAB Stablecoin Service Blueprint</h1>
+      <p class="case__summary">A service blueprint showing exactly how NAB would issue and safekeep a stablecoin, and where the gaps were.</p>
+      <dl class="case__facts">
+        <div><dt>The customer</dt><dd>Institutional and corporate customers already in crypto, who need a trusted local-currency stablecoin and secure custody</dd></div>
+        <div><dt>Team</dt><dd>Risk and business analyst, executive and me</dd></div>
+        <div><dt>Skills</dt><dd><ul class="tags"><li>Mapping</li><li>Stakeholder management</li><li>Workshop facilitation</li></ul></dd></div>
+      </dl>
+    </header>
+
+    <img class="case__hero" src="assets/img/cases/stablecoin-1.webp" alt="Stablecoin service blueprint" decoding="async">
+
+    <section class="case__row" aria-labelledby="problem">
+      <h2 class="section-title" id="problem" data-reveal>The problem</h2>
+      <p class="case__lead" data-reveal>NAB had no shared view of how issuing and safekeeping a stablecoin would work end to end, or of the people and systems needed to support it. That made stakeholder conversations hard.</p>
+    </section>
+
+    <section class="case__row" aria-labelledby="solution">
+      <h2 class="section-title" id="solution" data-reveal>How I solved it</h2>
+      <ol class="case__steps" data-reveal>
+            <li><span class="case__num">01</span><span>Ran ongoing process-mapping workshops with the product managers overseeing the build, across Wealth, Risk and Business Strategy.</span></li>
+            <li><span class="case__num">02</span><span>Mapped start-to-end flows for creating, destroying and receiving stablecoin.</span></li>
+            <li><span class="case__num">03</span><span>Marked risks, ownership, customer touchpoints and system dependencies.</span></li>
+            <li><span class="case__num">04</span><span>Worked through our executive to find out who held the most knowledge.</span></li>
+      </ol>
+    </section>
+
+    <section class="case__row" aria-labelledby="outcome">
+      <h2 class="section-title" id="outcome" data-reveal>Outcome</h2>
+      <p class="case__lead case__lead--ink" data-reveal>The blueprint aligned teams on confirmed steps and gaps, gave executives and partners a clear story, and showed where more risk controls were needed. The program was piloted, then not scaled after the business reprioritised.</p>
+    </section>
+
+      <section class="case__row case__row--gallery" aria-label="More from this project">
+        <h2 class="section-title" data-reveal>Inside the work</h2>
+        <figure class="case__flow" data-reveal>
+          <ol class="flow" aria-label="Journey flow: NAB receiving an international stablecoin transfer">
+            <li class="flow__step">
+              <div class="flow__box"><div class="flow__text">Payer has been onboarded to the stablecoin desk through ECDD (enhanced customer due diligence)</div></div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__box"><svg class="icon flow__arrow" viewBox="0 -960 960 960" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg><div class="flow__text">Payer places a remittance instruction, which is received and confirmed by the NAB stablecoin desk</div></div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__box"><svg class="icon flow__arrow" viewBox="0 -960 960 960" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg><div class="flow__text">Multi-signature approval process, settled through Fireblocks (an external platform that maintains compliance)</div></div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__box"><svg class="icon flow__arrow" viewBox="0 -960 960 960" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg><div class="flow__text">Payer currency is converted to local currency (AUDN)</div></div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__box"><svg class="icon flow__arrow" viewBox="0 -960 960 960" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg><div class="flow__text">Payer currency is burnt and AUDN has settled</div></div>
+            </li>
+          </ol>
+          <figcaption>Example journey: NAB receiving an international stablecoin transfer.</figcaption>
+        </figure>
+      </section>
+
+    <section class="case__row" aria-labelledby="learned">
+      <h2 class="section-title" id="learned" data-reveal>What I learned</h2>
+      <p class="case__body" data-reveal>Finding who had the best knowledge was the hardest part. Going straight to our executive, who knew who knew what, saved weeks.</p>
+    </section>
+
+    <nav class="case__next" aria-label="Next case study">
+      <p class="case__eyebrow">Next case study</p>
+      <a class="link case__next-link" href="/projectnod">Nod (MVP) <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      <a class="link case__all" href="/#work">All work <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+    </nav>
+  </main>
+
+  <dialog class="intake" id="intake" aria-labelledby="intake-title">
+    <div class="intake__inner">
+      <button class="intake__close" type="button" aria-label="Close">×</button>
+      <div class="intake__form-wrap">
+        <p class="intake__eyebrow">Work with me</p>
+        <h2 class="intake__title" id="intake-title">Tell me about your project</h2>
+        <p class="intake__lede">A few details and I’ll get back to you, usually within a day. Your message opens ready to send in WhatsApp or email.</p>
+
+        <form class="intake__form" novalidate>
+          <div class="intake__row">
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span class="field__label">Company <span class="field__opt">(optional)</span></span>
+              <input name="company" type="text" autocomplete="organization">
+            </label>
+          </div>
+          <label class="field">
+            <span class="field__label">Email <span class="field__opt">(optional)</span></span>
+            <input name="email" type="email" autocomplete="email">
+          </label>
+
+          <fieldset class="field">
+            <legend class="field__label">What can I help with?</legend>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="help" value="Product design"><span>Product design</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="UX research"><span>UX research</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="AI workflows"><span>AI workflows</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Conversion and testing"><span>Conversion and testing</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Full-time role"><span>Full-time role</span></label>
+              <label class="choice"><input type="checkbox" name="help" value="Something else"><span>Something else</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span class="field__label">Timeline</span>
+            <select name="timeline">
+              <option value="">Choose one</option>
+              <option>As soon as possible</option>
+              <option>In the next month</option>
+              <option>In 1 to 3 months</option>
+              <option>Just exploring</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">About the project</span>
+            <textarea name="details" rows="5" required placeholder="What’s the problem, and what would a great outcome look like?"></textarea>
+          </label>
+
+          <p class="intake__error" role="alert" hidden>Please add your name and a little about the project.</p>
+
+          <div class="intake__actions">
+            <button class="intake__send" type="submit" value="whatsapp">Send on WhatsApp</button>
+            <button class="intake__send intake__send--alt" type="submit" value="email">Send by email</button>
+          </div>
+          <p class="intake__note">Nothing is stored on this site. Your message goes straight from your WhatsApp or email.</p>
+        </form>
+      </div>
+
+      <div class="intake__done" hidden tabindex="-1">
+        <p class="intake__eyebrow">Almost there</p>
+        <h2 class="intake__title">Your message is ready</h2>
+        <p class="intake__lede">Press send in <span data-channel>WhatsApp</span> and it comes straight to me. Thanks for reaching out.</p>
+        <button class="intake__send intake__send--alt" type="button" data-intake-reset>Back to the form</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="footer__marks"><img src="assets/icons/footer-marks.svg" alt=""></div>
+    <div>
+      <section aria-label="Location">
+        <p class="footer__coords">37.8136° S, 144.9631° E</p>
+        <p class="footer__note"><span>Remote first.</span> Residing in APAC timezone, but time is just a number.</p>
+      </section>
+      <section aria-label="Contact">
+        <p><a href="tel:+61466567953">+61 46 6567 953</a></p>
+        <p><a href="mailto:rowenabaulch@outlook.com">rowenabaulch@outlook.com</a></p>
+      </section>
+    </div>
+    <div class="footer__col--right">
+      <section aria-label="Social">
+        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-controls="intake">Work with me <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
+        <p><a class="link" href="https://www.linkedin.com/in/rowena-baulch-08396ab8/">LinkedIn <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a></p>
+      </section>
+    </div>
+  </footer>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

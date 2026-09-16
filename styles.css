@@ -1319,4 +1319,8 @@ legend.field__label { margin-bottom: 8px; }
 
 .case__links { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding: 0; list-style: none; font-size: 16px; }
 .case__gallery--trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px var(--gap); }
-@media (max-width: 600px) { .case__gallery--trio { grid-template-columns: minmax(0, 1fr); } }
+.case__gallery--pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px var(--gap); }
+@media (max-width: 600px) {
+  .case__gallery--trio,
+  .case__gallery--pair { grid-template-columns: minmax(0, 1fr); }
+}

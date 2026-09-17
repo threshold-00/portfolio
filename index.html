@@ -9,15 +9,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rowenabaulch.com.au/">
   <script>
-    // Apply the saved or system theme before first paint, so there is no flash.
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
+    // The homepage theme follows scroll position, so it always opens light,
+    // before first paint so there is no flash. Other pages use the saved
+    // or system theme as usual.
+    document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=58">
+  <link rel="stylesheet" href="styles.css?v=59">
 </head>
 <body>
   <header class="nav">
@@ -185,7 +182,7 @@
       <ul class="grid">
       <li class="card" data-filters="product-design ai">
         <div class="card__img card__media card__media--threshold">
-          <video class="card__video" src="assets/video/threshold-booking.mp4"
+          <video class="card__video card__video--fill" src="assets/video/threshold-booking.mp4"
                  poster="assets/img/home/threshold-booking-poster.webp"
                  autoplay loop muted playsinline preload="metadata"
                  aria-label="The Salty Cowboy booking app, answering two questions and rewriting the list of rides"></video>
@@ -724,7 +721,7 @@
       </section>
     </div>
   </footer>
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.js?v=2" defer></script>
   <script>
     // Portrait under the opening quote: scrolling down draws on the face and it
     // stays drawn on, including when the visitor stops. Scrolling up rubs it out.
@@ -740,6 +737,19 @@
         else if (y < last - 2) portrait.classList.remove('is-doodle');
         last = y;
       }, { passive: true });
+    })();
+
+    // The page opens light and turns dark as soon as the visitor scrolls,
+    // going back to light when they return to the top. The toggle still
+    // flips the theme by hand, and still saves that choice for the project
+    // pages, but here the next scroll puts the page back in step.
+    (function () {
+      var root = document.documentElement;
+      function sync() {
+        root.setAttribute('data-theme', window.scrollY > 8 ? 'dark' : 'light');
+      }
+      sync();
+      window.addEventListener('scroll', sync, { passive: true });
     })();
   </script>
 </body>

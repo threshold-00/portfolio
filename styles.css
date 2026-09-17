@@ -547,7 +547,7 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    compvis: "Case studies across phases". Hovering or tapping a stage slides its
    case study summary to the middle of the column at full opacity.
-   Clicking the middle card, or "Full project", opens the full case study drawer.
+   Clicking the middle card, or "Full project", opens that case study page.
    ========================================================= */
 
 /* Two columns: heading and cycle on the left, case study window on the right.
@@ -661,11 +661,15 @@ a { color: inherit; text-decoration: none; }
   flex: none;
   width: 260px;
   height: 260px;
-  border-radius: 50%;
+  border-radius: 12px;
   object-fit: cover;
   background: var(--placeholder);
 }
-/* Simple icon tiles: outlined circle, one Material Symbol (weight 200) per project */
+/* Square frame holding the project's own thumbnail, the same picture that
+   fronts it in All work, cropped to the square from its middle. */
+.compvis__img--shot { overflow: hidden; }
+.compvis__img--shot img { width: 100%; height: 100%; object-fit: cover; }
+/* Simple icon tiles: outlined square, one Material Symbol (weight 200) per project */
 .compvis__img--icon {
   display: grid;
   place-items: center;
@@ -1245,141 +1249,11 @@ legend.field__label { margin-bottom: 8px; }
   .case__next-link { font-size: 28px; }
 }
 
-/* ---------- Case study drawer: slides in from the right, covers the right half ---------- */
-
-.has-drawer, .has-drawer body { overflow: hidden; }
-
-.drawer { position: fixed; inset: 0; z-index: 100; }
-
-.drawer__backdrop {
-  position: absolute;
-  inset: 0;
-  background: var(--backdrop);
-  opacity: 0;
-  transition: opacity .5s ease;
-  cursor: pointer;
-}
-
-.study {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(50vw, 960px);
-  min-width: 560px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 32px 40px 64px;
-  background: var(--paper);
-  box-shadow: -24px 0 60px var(--shadow-panel);
-  transform: translateX(100%);
-  transition: transform .6s cubic-bezier(.22, .75, .2, 1);
-}
-
-.drawer.is-open .drawer__backdrop { opacity: 1; }
-.drawer.is-open .study { transform: none; }
-.drawer.is-closing .study { transition-duration: .45s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .study, .drawer__backdrop { transition: none; }
-}
-
-.study:focus { outline: none; }
-
-.study__close {
-  position: sticky;
-  top: 0;
-  float: right;
-  margin: -8px -12px 0 16px;
-  padding: 4px 8px;
-  border: 0;
-  background: none;
-  color: var(--ink);
-  font: inherit;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 1;
-}
-.study__close:hover { color: var(--muted); }
-.study__close:focus { outline: none; }
-.using-keyboard .study__close:focus-visible { color: var(--muted); text-decoration: underline; }
-
-.study__eyebrow { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
-
-.study__head h3 {
-  margin: 0;
-  font-size: clamp(28px, 2.8vw, 44px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-}
-
-.study__client { margin: 8px 0 0; color: var(--muted); font-size: 18px; }
-
-.study__hero {
-  width: 100%;
-  margin-top: 28px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 12px;
-  background: var(--placeholder);
-}
-
-.study__grid { display: block; margin-top: 32px; }
-
-.study__facts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 24px;
-  margin: 0 0 36px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--divider-soft);
-}
-.study__facts dt { color: var(--muted); font-size: 14px; }
-.study__facts dd { margin: 4px 0 20px; font-size: 15px; line-height: 1.4; }
-.study__facts dt:nth-of-type(3), .study__facts dd:nth-of-type(3) { grid-column: 1 / -1; }
-.study__facts dt:nth-of-type(1) { grid-column: 1; grid-row: 1; }
-.study__facts dd:nth-of-type(1) { grid-column: 1; grid-row: 2; }
-.study__facts dt:nth-of-type(2) { grid-column: 2; grid-row: 1; }
-.study__facts dd:nth-of-type(2) { grid-column: 2; grid-row: 2; }
-.study__facts .tags { margin-top: 8px; }
-
-.study__section + .study__section { margin-top: 32px; }
-.study__section h4 { margin: 0 0 10px; font-size: 14px; font-weight: 400; color: var(--muted); }
-.study__section p,
-.study__section li { margin: 0; font-size: 17px; line-height: 1.45; letter-spacing: -0.01em; }
-.study__section p + p, .study__section p + ul, .study__section ul + p { margin-top: 12px; }
-.study__section ul { margin: 0; padding-left: 1.1em; }
-.study__section li + li { margin-top: 6px; }
-
-.study__gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin: 48px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.study__gallery li { margin: 0; }
-.study__gallery figure { margin: 0; }
-.study__gallery img { width: 100%; border-radius: 12px; background: var(--placeholder); }
-.study__gallery figcaption { margin-top: 8px; color: var(--muted); font-size: 14px; line-height: 1.4; }
-
-@media (max-width: 800px) {
-  .study { width: 100%; min-width: 0; padding: 24px 20px 56px; box-shadow: none; }
-  .study__facts { grid-template-columns: 1fr; }
-  .study__facts dt, .study__facts dd { grid-column: 1 !important; grid-row: auto !important; }
-}
-
 @media (max-width: 600px) {
   .compvis__head { padding-top: 40px; }
   .compvis__title { font-size: 20px; line-height: 26px; }
   .compvis__stages { gap: 16px; }
   .compvis__trigger { font-size: 20px; line-height: 26px; }
-  .study__section p, .study__section li { font-size: 16px; }
-  .study__close { font-size: 28px; }
 }
 
 .case__links { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding: 0; list-style: none; font-size: 16px; }

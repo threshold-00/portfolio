@@ -14,7 +14,7 @@
     // or system theme as usual.
     document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=60">
+  <link rel="stylesheet" href="styles.css?v=61">
 </head>
 <body>
   <header class="nav">
@@ -42,12 +42,12 @@
     </section>
 
     <section class="hero hero--statement" aria-label="How I help">
-      <p class="hero__line">For industries that deal with complexity, Ro focuses on strategic design and research to find what is actually getting in people’s way, then designs the fix. More customers is what follows. She works at the intersection of people, tech and creativity.</p>
+      <p class="hero__line">For industries that deal with complexity, Ro focuses on strategic design and research to find what is actually getting in people’s way, then designs the fix. More customers is what follows.</p>
     </section>
 
     <section class="compvis" aria-labelledby="compvis-heading">
       <div class="compvis__head">
-        <h2 id="compvis-heading" class="compvis__title">Case study by competency</h2>
+        <h2 id="compvis-heading" class="compvis__title">Case studies across phases</h2>
         <p class="compvis__intro">Work that shows each of these pillars the clearest</p>
       </div>
       <div class="compvis__body">
@@ -569,7 +569,10 @@
       cards.forEach(function (c) {
         c.addEventListener('click', function (ev) {
           if (ev.target.closest('.compvis__more')) return;
-          select(c.dataset.stage);
+          // Clicking a dimmed study brings it to the middle. Clicking the one
+          // already there opens it, so the whole active card is a way in.
+          if (c.classList.contains('is-active')) open(c.dataset.stage, c.querySelector('.compvis__more'));
+          else select(c.dataset.stage);
         });
       });
       function settle() { select(selected, true); target = null; }

@@ -545,9 +545,9 @@ a { color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   compvis: "Case study by competency". Hovering or tapping a stage slides its
+   compvis: "Case studies across phases". Hovering or tapping a stage slides its
    case study summary to the middle of the column at full opacity.
-   "Full project" opens the full case study drawer.
+   Clicking the middle card, or "Full project", opens the full case study drawer.
    ========================================================= */
 
 /* Two columns: heading and cycle on the left, case study window on the right.
@@ -654,7 +654,9 @@ a { color: inherit; text-decoration: none; }
   scroll-snap-align: center;
   transition: opacity .4s ease;
 }
-.compvis__card.is-active { opacity: 1; cursor: default; }
+/* A dimmed study scrolls itself to the middle when clicked; the active one
+   opens, so the whole card stays a pointer either way. */
+.compvis__card.is-active { opacity: 1; }
 .compvis__img {
   flex: none;
   width: 260px;

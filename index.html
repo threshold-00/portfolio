@@ -17,7 +17,7 @@
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=54">
+  <link rel="stylesheet" href="styles.css?v=58">
 </head>
 <body>
   <header class="nav">
@@ -37,11 +37,15 @@
 
   <main>
     <section class="hero">
-      <h1>Business solutions at the intersection of people, tech &amp; creativity.</h1>
+      <h1>A wise person once said, “to get different results, one must do things differently”.</h1>
+      <span class="hero__portrait">
+        <img class="hero__face hero__face--plain" src="assets/img/home/ro-plain.webp" alt="Rowena Baulch" width="400" height="400" decoding="async">
+        <img class="hero__face hero__face--doodle" src="assets/img/home/ro-doodle.webp?v=2" alt="" aria-hidden="true" width="400" height="400" decoding="async">
+      </span>
     </section>
 
     <section class="hero hero--statement" aria-label="How I help">
-      <p class="hero__line">I help businesses find what their customers really need, then design, test and ship it, with AI speeding up every step.</p>
+      <p class="hero__line">For industries that deal with complexity, Ro focuses on strategic design and research to streamline business solutions and get more customers. She works at the intersection of people, tech and creativity.</p>
     </section>
 
     <section class="compvis" aria-labelledby="compvis-heading">
@@ -180,7 +184,7 @@
       <p class="visually-hidden" aria-live="polite" id="filter-status"></p>
       <ul class="grid">
       <li class="card" data-filters="product-design ai">
-        <div class="card__img card__media">
+        <div class="card__img card__media card__media--threshold">
           <video class="card__video" src="assets/video/threshold-booking.mp4"
                  poster="assets/img/home/threshold-booking-poster.webp"
                  autoplay loop muted playsinline preload="metadata"
@@ -201,7 +205,12 @@
           <a class="card__link" href="/projectafterpayb2b">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
       <li class="card" data-filters="product-design ai">
-        <img class="card__img" src="assets/img/home/afterpay-3.webp" alt="Afterpay B2B banner: Ready to grow your business?" loading="lazy" decoding="async">
+        <div class="card__img card__media card__media--afterpay">
+          <video class="card__video" src="assets/video/afterpay-nav.mp4?v=3"
+                 poster="assets/img/cases/afterpay-nav-poster.webp"
+                 autoplay loop muted playsinline preload="metadata"
+                 aria-label="The site’s main navigation, opening in turn on Product, Business type, Industry, Why Afterpay and Resources"></video>
+        </div>
         <h3 class="card__title">Afterpay</h3>
         <p class="card__client">Global B2B website</p>
         <ul class="tags"><li>UX</li><li>UI</li><li>AI</li></ul>
@@ -716,5 +725,22 @@
     </div>
   </footer>
   <script src="assets/site.js" defer></script>
+  <script>
+    // Portrait under the opening quote: scrolling down draws on the face and it
+    // stays drawn on, including when the visitor stops. Scrolling up rubs it out.
+    (function () {
+      var portrait = document.querySelector('.hero__portrait');
+      if (!portrait) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var last = window.scrollY;
+      window.addEventListener('scroll', function () {
+        var y = window.scrollY;
+        if (y > last + 2) portrait.classList.add('is-doodle');
+        else if (y < last - 2) portrait.classList.remove('is-doodle');
+        last = y;
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>

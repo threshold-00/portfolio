@@ -34,6 +34,7 @@
   --shadow-thumb: rgba(0, 0, 0, .16);
   --logo-filter: none;
   --threshold-paper: #f3f2ee;  /* the Threshold site's own background, behind its video thumbnail */
+  --afterpay-ink: #181818;     /* the Afterpay B2B site's own background, behind its video thumbnail */
 
   --gutter: 16px;        /* page edge, nav, hero, dividers */
   --inset: 30px;         /* project rows sit further in */
@@ -177,6 +178,7 @@ a { color: inherit; text-decoration: none; }
 /* Fills the first screen (minus the 45px nav), line centred in it. */
 .hero {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 45px);
@@ -196,6 +198,35 @@ a { color: inherit; text-decoration: none; }
   line-height: 60px;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+
+/* The second statement is a paragraph, not a headline, so it runs 40% smaller
+   than the h1 it follows. (17 Sep 2026.) */
+.hero__line { font-size: 32px; line-height: 36px; }
+
+/* Portrait under the opening quote. Scrolling down draws on the face and it
+   stays drawn on; scrolling up rubs it out. Both images are already circular
+   with transparent corners, so they sit on either theme.
+   The plain photo stays fully opaque as the base and only the doodled copy
+   fades over it, so the scribbles appear and vanish while the face never
+   flickers. Cross-fading both would let the page show through at the midpoint. */
+.hero__portrait {
+  position: relative;
+  display: block;
+  width: 132px;
+  height: 132px;
+  margin-top: 40px;
+}
+.hero__face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero__face--doodle { opacity: 0; transition: opacity .25s ease; }
+.hero__portrait.is-doodle .hero__face--doodle { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .hero__face--doodle { transition: none; }
 }
 
 /* ---------- Tabs ---------- */
@@ -366,6 +397,8 @@ a { color: inherit; text-decoration: none; }
   .nav__links { gap: 24px; font-size: 18px; }
 
   .hero h1, .hero__line { font-size: 34px; line-height: 39px; letter-spacing: -0.035em; }
+  .hero__line { font-size: 20px; line-height: 23px; }
+  .hero__portrait { width: 96px; height: 96px; margin-top: 28px; }
   .nav__links { gap: 16px; font-size: 16px; }
 
   .tabs { font-size: 20px; line-height: 26px; }
@@ -457,22 +490,24 @@ a { color: inherit; text-decoration: none; }
 
 .card:hover .card__img { opacity: .9; }
 
-/* A card whose thumbnail is a video loop instead of a still. The phone
-   recording is portrait, so it sits centred on the Threshold site's own
-   background rather than filling a landscape frame, in both themes.
-   (Threshold, 16 Sep 2026.) */
+/* A card whose thumbnail is a video loop instead of a still. Recordings keep
+   their own shape, sitting centred on the colour of the site they came from
+   rather than being cropped to a landscape frame, in both themes. */
 .card__media {
   position: relative;
   overflow: hidden;
-  background: var(--threshold-paper);
+  background: var(--media-bg, var(--placeholder));
 }
+.card__media--threshold { --media-bg: var(--threshold-paper); }
+.card__media--afterpay  { --media-bg: var(--afterpay-ink); }
 .card__video {
   position: absolute;
   inset: 0;
   margin: auto;
-  height: 100%;
   width: auto;
-  aspect-ratio: 780 / 1688;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 8px;
 }
 

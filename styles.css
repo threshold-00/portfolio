@@ -1347,8 +1347,9 @@ legend.field__label { margin-bottom: 8px; }
 /* Stacked steps would otherwise run the full width of the panel, putting a
    dozen words on a line. Capped near 46 characters, each line holds five to
    eight words, which is the length the rest of the site reads at. */
-.study .flow { justify-items: start; }
+.study .flow { justify-items: center; }
 .study .flow__step { width: 100%; max-width: 380px; }
+.study .case__flow figcaption { text-align: center; }
 .study .flow__box { min-height: 0; max-width: 380px; }
 .study .flow__arrow { top: calc(var(--arrow-gap) / -2); left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
 .study .flow__shot { max-width: 320px; }

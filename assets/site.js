@@ -1,5 +1,5 @@
 /* Shared behaviour for every page: keyboard focus styles, theme toggle,
-   Work with me intake dialog, scroll reveal, and local preview links.
+   Let’s chat intake dialog, scroll reveal, and local preview links.
    Loaded with defer, so the whole page (including the footer) exists first. */
 
 (function () {
@@ -114,7 +114,7 @@
     if (channel === 'whatsapp') {
       window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
     } else {
-      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Work with me: ' + name) + '&body=' + encodeURIComponent(text);
+      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Let’s chat: ' + name) + '&body=' + encodeURIComponent(text);
     }
     done.querySelector('[data-channel]').textContent = channel === 'email' ? 'your email app' : 'WhatsApp';
     formWrap.hidden = true;
@@ -129,3 +129,13 @@
   });
 })();
   
+/* Looping video thumbnails hold still for anyone who asks for less motion.
+   The poster frame stays, so the card still shows what the project is. */
+(function () {
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('video[autoplay]').forEach(function (video) {
+    video.removeAttribute('autoplay');
+    video.removeAttribute('loop');
+    video.pause();
+  });
+})();

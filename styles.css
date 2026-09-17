@@ -33,6 +33,7 @@
   --shadow-panel: rgba(0, 0, 0, .12);
   --shadow-thumb: rgba(0, 0, 0, .16);
   --logo-filter: none;
+  --threshold-paper: #f3f2ee;  /* the Threshold site's own background, behind its video thumbnail */
 
   --gutter: 16px;        /* page edge, nav, hero, dividers */
   --inset: 30px;         /* project rows sit further in */
@@ -455,6 +456,25 @@ a { color: inherit; text-decoration: none; }
 }
 
 .card:hover .card__img { opacity: .9; }
+
+/* A card whose thumbnail is a video loop instead of a still. The phone
+   recording is portrait, so it sits centred on the Threshold site's own
+   background rather than filling a landscape frame, in both themes.
+   (Threshold, 16 Sep 2026.) */
+.card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--threshold-paper);
+}
+.card__video {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 780 / 1688;
+  border-radius: 8px;
+}
 
 .card__title { margin: 16px 0 0; font-size: 20px; font-weight: 400; line-height: 24px; letter-spacing: 0; }
 .card__client { margin: 2px 0 0; color: var(--muted); font-size: 14px; line-height: 18px; font-weight: 400; }

@@ -510,14 +510,12 @@ a { color: inherit; text-decoration: none; }
   max-height: 100%;
   border-radius: 8px;
 }
-/* Fills the card instead, cropping to it: for a portrait phone recording that
-   reads better zoomed in, with its edges running off the frame. */
+/* Stands a portrait recording slightly taller than the card, so its top and
+   bottom run just off the frame. Filling the card's width instead would crop
+   away most of the screen and enlarge what was left until it looked soft. */
 .card__video--fill {
-  width: 100%;
-  height: 100%;
-  max-width: none;
+  height: 110%;
   max-height: none;
-  object-fit: cover;
   border-radius: 0;
 }
 

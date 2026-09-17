@@ -14,7 +14,7 @@
     // or system theme as usual.
     document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=64">
+  <link rel="stylesheet" href="styles.css?v=65">
 </head>
 <body>
   <header class="nav">
@@ -91,7 +91,7 @@
             </div>
           </li>
           <li class="compvis__card" id="card-execution" data-stage="execution" data-project="/projectafterpaywebsite">
-            <span class="compvis__img compvis__img--shot"><img src="assets/img/home/afterpay-site-1.webp" alt="The Afterpay business site’s main navigation, open on Product" loading="lazy" decoding="async"></span>
+            <span class="compvis__img compvis__img--shot"><img src="assets/img/home/afterpay-site-1.webp?v=2" alt="The Afterpay business site’s main navigation, open on Product" loading="lazy" decoding="async"></span>
             <div class="compvis__info">
               <div class="compvis__text">
                 <p class="compvis__pillar">Execution</p>
@@ -459,9 +459,15 @@
       // Desktop scrolls up and down; phones and small tablets scroll sideways.
       var list = root.querySelector('.compvis__cards');
       function sideways() { return getComputedStyle(list).flexDirection === 'row'; }
-      function mid(el) { return sideways() ? el.offsetLeft + el.offsetWidth / 2 : el.offsetTop + el.offsetHeight / 2; }
-      function centreOf(card) {
-        return mid(card) - (sideways() ? viewport.clientWidth : viewport.clientHeight) / 2;
+      function inset() { return parseFloat(getComputedStyle(list).paddingLeft) || 0; }
+      // Down the page, the study in play sits in the middle of the window.
+      // Across a phone it sits at the gutter, in line with everything else.
+      function anchor(el) { return sideways() ? el.offsetLeft : el.offsetTop + el.offsetHeight / 2; }
+      function reference() {
+        return sideways() ? viewport.scrollLeft + inset() : viewport.scrollTop + viewport.clientHeight / 2;
+      }
+      function restPos(card) {
+        return anchor(card) - (sideways() ? inset() : viewport.clientHeight / 2);
       }
 
       function select(stage, instant) {
@@ -469,7 +475,7 @@
         mark(stage);
         target = stage;
         var opts = { behavior: instant || reduce ? 'auto' : 'smooth' };
-        opts[sideways() ? 'left' : 'top'] = centreOf(card);
+        opts[sideways() ? 'left' : 'top'] = restPos(card);
         viewport.scrollTo(opts);
       }
 
@@ -479,11 +485,10 @@
         ticking = true;
         requestAnimationFrame(function () {
           ticking = false;
-          var across = sideways();
-          var centre = across ? viewport.scrollLeft + viewport.clientWidth / 2 : viewport.scrollTop + viewport.clientHeight / 2;
+          var ref = reference();
           var best = null, bestDist = Infinity;
           cards.forEach(function (c) {
-            var d = Math.abs(mid(c) - centre);
+            var d = Math.abs(anchor(c) - ref);
             if (d < bestDist) { bestDist = d; best = c; }
           });
           // While a hover-triggered scroll is travelling, keep the chosen stage lit.
@@ -538,7 +543,7 @@
       var panel = drawer && drawer.querySelector('#study-case');
       var load = drawer && drawer.querySelector('.study__load');
       var pages = {};
-      var current = null, opener = null, closeTimer = null;
+      var current = null, opener = null, closeTimer = null, lockedAt = 0;
 
       function get(url) {
         return fetch(url, { credentials: 'same-origin' }).then(function (res) {
@@ -577,11 +582,21 @@
         return true;
       }
 
+      // The panel opens on the tap, not when the page arrives, so a slow
+      // connection never looks like a dead link. The title of whatever was
+      // tapped holds the space until the content lands.
       function show(href, from) {
         if (!href || !drawer) return;
-        fetchPage(href).then(function (html) {
-          if (!fill(html, href)) { location.href = href; return; }
+        var pending = href;
+        if (current !== href) {
+          var label = from && from.closest('.card, .compvis__card');
+          var name = label && label.querySelector('.card__title, .compvis__name');
+          load.innerHTML = name ? '<div class="case__head"><h2 class="case__title">' + name.textContent + '</h2></div>' : '';
           open(href, from);
+        }
+        fetchPage(href).then(function (html) {
+          if (current !== pending) return;   // closed, or moved on, while it loaded
+          if (!fill(html, href)) location.href = href;
         }).catch(function () { location.href = href; });
       }
 
@@ -589,6 +604,10 @@
         clearTimeout(closeTimer);
         current = href;
         opener = from;
+        // iOS ignores overflow on the page behind a fixed panel, so hold the
+        // page in place and put the visitor back where they were on close.
+        lockedAt = window.scrollY;
+        document.body.style.top = -lockedAt + 'px';
         drawer.hidden = false;
         drawer.classList.remove('is-closing');
         panel.hidden = false;
@@ -605,6 +624,8 @@
         drawer.classList.remove('is-open');
         drawer.classList.add('is-closing');
         document.documentElement.classList.remove('has-drawer');
+        document.body.style.top = '';
+        window.scrollTo(0, lockedAt);
         closeTimer = setTimeout(function () {
           drawer.hidden = true;
           drawer.classList.remove('is-closing');
@@ -625,7 +646,9 @@
           ev.preventDefault();
           show(href, a);
         });
-        a.addEventListener('mouseenter', function () { fetchPage(href).catch(function () {}); });
+        ['mouseenter', 'touchstart'].forEach(function (type) {
+          a.addEventListener(type, function () { fetchPage(href).catch(function () {}); }, { passive: true });
+        });
       });
 
       if (drawer) {
@@ -764,7 +787,11 @@
     (function () {
       var root = document.documentElement;
       function sync() {
-        root.setAttribute('data-theme', window.scrollY > 8 ? 'dark' : 'light');
+        // Two marks rather than one, so a phone bouncing at the top of the
+        // page does not flick between the two themes.
+        var y = window.scrollY;
+        if (y > 70) root.setAttribute('data-theme', 'dark');
+        else if (y < 12) root.setAttribute('data-theme', 'light');
       }
       sync();
       window.addEventListener('scroll', sync, { passive: true });

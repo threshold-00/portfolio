@@ -743,7 +743,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 900px) {
   .compvis { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; }
-  .compvis__diagram { grid-row: 2; margin: 32px 0; justify-self: center; }
+  .compvis__diagram { grid-row: 2; margin: 32px 0; justify-self: start; }
   .compvis__stages { flex-direction: row; gap: 24px; }
   /* Case studies become a sideways swipe, each snapping to the centre. */
   .compvis__viewport {
@@ -754,17 +754,21 @@ a { color: inherit; text-decoration: none; }
     margin: 0 calc(var(--gutter) * -1);
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
+    /* Snapping aligns to the scrollport, so hold it in from the page edge to
+       keep each study in line with the heading above it. */
+    scroll-padding-left: var(--gutter);
   }
   .compvis__cards {
     flex-direction: row;
     align-items: flex-start;
     gap: 24px;
     width: max-content;
-    /* Side padding lets the first and last study sit in the centre too. */
-    padding: 0 calc((100vw - var(--card)) / 2) 48px;
+    /* Each study starts at the page gutter, in line with the heading, the
+       competencies and the All work section below. */
+    padding: 0 var(--gutter) 48px;
   }
-  .compvis__card { flex: 0 0 var(--card); flex-direction: column; gap: 16px; }
+  .compvis__card { flex: 0 0 var(--card); flex-direction: column; gap: 16px; scroll-snap-align: start; }
   .compvis__img { width: 100%; height: auto; aspect-ratio: 1; }
   .compvis__info { min-height: 0; max-width: none; gap: 20px; }
 }
@@ -1264,7 +1268,11 @@ legend.field__label { margin-bottom: 8px; }
    Opened from any project on the homepage. What fills it is the project page's
    own markup, fetched and dropped in, so there is one copy of each case study. */
 
+/* Holding the page still behind the panel. The fixed body is what actually
+   stops iOS scrolling the page underneath; the script puts the scroll
+   position back when the panel closes. */
 .has-drawer, .has-drawer body { overflow: hidden; }
+.has-drawer body { position: fixed; left: 0; right: 0; width: 100%; }
 
 .drawer { position: fixed; inset: 0; z-index: 100; }
 
@@ -1360,8 +1368,6 @@ legend.field__label { margin-bottom: 8px; }
 .study .flow__shot { margin-inline: auto; }
 .study .flow__arrow { top: calc(var(--arrow-gap) / -2); left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
 .study .flow__shot { max-width: 320px; margin-inline: auto; }
-.study .case__gallery--trio,
-.study .case__gallery--pair { grid-template-columns: minmax(0, 1fr); }
 /* The way out to the full page, so a visitor can keep or share the link. */
 .study__page { margin: 32px 0 0; font-size: 16px; }
 

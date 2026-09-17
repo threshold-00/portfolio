@@ -1256,6 +1256,115 @@ legend.field__label { margin-bottom: 8px; }
   .compvis__trigger { font-size: 20px; line-height: 26px; }
 }
 
+/* ---------- Case study panel: slides in from the right, covers the right half ----------
+   Opened from any project on the homepage. What fills it is the project page's
+   own markup, fetched and dropped in, so there is one copy of each case study. */
+
+.has-drawer, .has-drawer body { overflow: hidden; }
+
+.drawer { position: fixed; inset: 0; z-index: 100; }
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--backdrop);
+  opacity: 0;
+  transition: opacity .5s ease;
+  cursor: pointer;
+}
+
+.study {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(50vw, 960px);
+  min-width: 560px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 32px 40px 64px;
+  background: var(--paper);
+  box-shadow: -24px 0 60px var(--shadow-panel);
+  transform: translateX(100%);
+  transition: transform .6s cubic-bezier(.22, .75, .2, 1);
+}
+
+.drawer.is-open .drawer__backdrop { opacity: 1; }
+.drawer.is-open .study { transform: none; }
+.drawer.is-closing .study { transition-duration: .45s; }
+@media (prefers-reduced-motion: reduce) {
+  .study, .drawer__backdrop { transition: none; }
+}
+.study:focus { outline: none; }
+
+/* Content scrolls under the sticky close button, so it sits on its own patch
+   of paper rather than on top of a sentence. */
+.study__close {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  float: right;
+  margin: -8px -12px 0 16px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+.study__close:hover { color: var(--muted); }
+.study__close:focus { outline: none; }
+.using-keyboard .study__close:focus-visible { color: var(--muted); text-decoration: underline; }
+
+/* The page's three column tracks do not fit in half a screen, so every row
+   stacks here: label first, then content. */
+.study .case__head,
+.study .case__row {
+  display: block;
+  margin: 0;
+}
+.study .case__head { padding: 0 0 32px; }
+.study .case__title { margin-top: 12px; font-size: 34px; line-height: 38px; }
+.study .case__summary { margin-top: 12px; font-size: 18px; }
+.study .case__facts { display: block; margin-top: 28px; }
+.study .case__facts > div + div { margin-top: 16px; }
+.study .case__facts dd { max-width: none; }
+.study .case__hero { max-width: 100%; max-height: none; }
+.study .case__row { padding: 32px 0; }
+.study .case__row > .section-title { margin-bottom: 16px; }
+.study .case__lead { font-size: 20px; }
+.study .case__flow { display: block; }
+.study .flow {
+  grid-auto-flow: row;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: none;
+  gap: var(--arrow-gap);
+}
+.study .case__flow--shots .flow__step { display: flex; flex-direction: column; gap: 12px; grid-row: auto; }
+/* Stacked steps would otherwise run the full width of the panel, putting a
+   dozen words on a line. Capped near 46 characters, each line holds five to
+   eight words, which is the length the rest of the site reads at. */
+.study .flow { justify-items: start; }
+.study .flow__step { width: 100%; max-width: 380px; }
+.study .flow__box { min-height: 0; max-width: 380px; }
+.study .flow__arrow { top: calc(var(--arrow-gap) / -2); left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+.study .flow__shot { max-width: 320px; }
+.study .case__gallery--trio,
+.study .case__gallery--pair { grid-template-columns: minmax(0, 1fr); }
+/* The way out to the full page, so a visitor can keep or share the link. */
+.study__page { margin: 32px 0 0; font-size: 16px; }
+
+@media (max-width: 800px) {
+  .study { width: 100%; min-width: 0; padding: 24px 20px 56px; box-shadow: none; }
+}
+@media (max-width: 600px) {
+  .study__close { font-size: 28px; }
+  .study .case__title { font-size: 28px; line-height: 32px; }
+}
+
 .case__links { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding: 0; list-style: none; font-size: 16px; }
 .case__gallery--trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px var(--gap); }
 .case__gallery--pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px var(--gap); }

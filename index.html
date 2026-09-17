@@ -14,7 +14,7 @@
     // or system theme as usual.
     document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=62">
+  <link rel="stylesheet" href="styles.css?v=63">
 </head>
 <body>
   <header class="nav">
@@ -105,6 +105,14 @@
         </div>
       </div>
     </section>
+
+    <div class="drawer" hidden>
+      <div class="drawer__backdrop" data-drawer-close></div>
+      <article class="study" role="dialog" aria-modal="true" id="study-case" aria-label="Case study" tabindex="-1" hidden>
+        <button class="study__close" type="button" aria-label="Close case study">×</button>
+        <div class="study__load"></div>
+      </article>
+    </div>
 
     <section id="work" aria-labelledby="work-heading">
       <div class="work__head">
@@ -511,7 +519,7 @@
           // Clicking a dimmed study brings it to the middle. Clicking the one
           // already there opens its case study, so the whole active card is a
           // way in to the page.
-          if (c.classList.contains('is-active')) location.href = c.dataset.project;
+          if (c.classList.contains('is-active')) show(c.dataset.project, c);
           else select(c.dataset.stage);
         });
       });
@@ -520,6 +528,122 @@
       window.addEventListener('load', settle);
       window.addEventListener('resize', function () { select(selected, true); });
 
+      // Every project on this page opens in the panel that slides in from the
+      // right, and what fills it is the project page itself, fetched and
+      // dropped in. Each case study is written once, on its own page, so the
+      // panel can never fall out of step with it. Without JavaScript, or if
+      // the fetch fails, the link goes to the page as it always did.
+      var drawer = document.querySelector('.drawer');
+      var panel = drawer && drawer.querySelector('#study-case');
+      var load = drawer && drawer.querySelector('.study__load');
+      var pages = {};
+      var current = null, opener = null, closeTimer = null;
+
+      function get(url) {
+        return fetch(url, { credentials: 'same-origin' }).then(function (res) {
+          if (!res.ok) throw new Error(res.status);
+          return res.text();
+        });
+      }
+
+      function fetchPage(href) {
+        if (!pages[href]) {
+          // Live, the clean URL works. Opened from a file, or from a plain
+          // local preview server, only the file itself is there.
+          var url = location.protocol === 'file:' ? href.replace(/^\//, '') + '.html' : href;
+          pages[href] = (url === href ? get(url).catch(function () { return get(url + '.html'); }) : get(url))
+            .catch(function (err) { delete pages[href]; throw err; });
+        }
+        return pages[href];
+      }
+
+      function fill(html, href) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var main = doc.querySelector('main.case');
+        if (!main) return false;
+        // The next case study and All work links belong to the page, not here.
+        var next = main.querySelector('.case__next');
+        if (next) next.remove();
+        // The reveal animation only watches what was on the page at load, so
+        // anything arriving now would sit invisible.
+        main.querySelectorAll('[data-reveal]').forEach(function (el) { el.removeAttribute('data-reveal'); });
+        load.innerHTML = '';
+        while (main.firstChild) load.appendChild(main.firstChild);
+        load.insertAdjacentHTML('beforeend',
+          '<p class="study__page"><a class="link" href="' + href + '">Open this case study as a page ' +
+          '<svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false">' +
+          '<path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a></p>');
+        return true;
+      }
+
+      function show(href, from) {
+        if (!href || !drawer) return;
+        fetchPage(href).then(function (html) {
+          if (!fill(html, href)) { location.href = href; return; }
+          open(href, from);
+        }).catch(function () { location.href = href; });
+      }
+
+      function open(href, from) {
+        clearTimeout(closeTimer);
+        current = href;
+        opener = from;
+        drawer.hidden = false;
+        drawer.classList.remove('is-closing');
+        panel.hidden = false;
+        panel.scrollTop = 0;
+        document.documentElement.classList.add('has-drawer');
+        void drawer.offsetWidth;
+        drawer.classList.add('is-open');
+        (keyboard ? panel.querySelector('.study__close') : panel).focus({ preventScroll: true });
+      }
+
+      function close() {
+        if (!current) return;
+        current = null;
+        drawer.classList.remove('is-open');
+        drawer.classList.add('is-closing');
+        document.documentElement.classList.remove('has-drawer');
+        closeTimer = setTimeout(function () {
+          drawer.hidden = true;
+          drawer.classList.remove('is-closing');
+          panel.hidden = true;
+          load.innerHTML = '';
+        }, reduce ? 0 : 480);
+        if (opener && keyboard) opener.focus({ preventScroll: true });
+        else if (document.activeElement && drawer.contains(document.activeElement)) document.activeElement.blur();
+      }
+
+      // Every way in to a project: the All work grid, the three highlighted
+      // case studies and the AI section.
+      document.querySelectorAll('main a[href^="/project"]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        a.addEventListener('click', function (ev) {
+          // A new tab, a new window or a saved link behaves as it always has.
+          if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button) return;
+          ev.preventDefault();
+          show(href, a);
+        });
+        a.addEventListener('mouseenter', function () { fetchPage(href).catch(function () {}); });
+      });
+
+      if (drawer) {
+        drawer.addEventListener('click', function (ev) {
+          if (ev.target.closest('[data-drawer-close]') || ev.target.closest('.study__close')) close();
+        });
+        document.addEventListener('keydown', function (ev) {
+          if (!current) return;
+          if (ev.key === 'Escape') { close(); return; }
+          if (ev.key === 'Tab') {
+            // Keep keyboard focus inside the open panel.
+            var items = panel.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+            if (!items.length) return;
+            var first = items[0], last = items[items.length - 1];
+            if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+            else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+          }
+        });
+      }
     })();
   </script>
 

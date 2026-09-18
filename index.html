@@ -14,7 +14,7 @@
     // or system theme as usual.
     document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=65">
+  <link rel="stylesheet" href="styles.css?v=66">
 </head>
 <body>
   <header class="nav">
@@ -53,11 +53,11 @@
       <div class="compvis__body">
         <div class="compvis__diagram">
           <ol class="compvis__stages">
-          <li class="compvis__stage compvis__stage--discovery">
-            <button class="compvis__trigger" type="button" data-stage="discovery" aria-controls="card-discovery">Discovery</button>
+          <li class="compvis__stage compvis__stage--discovery is-active">
+            <button class="compvis__trigger" type="button" data-stage="discovery" aria-controls="card-discovery" aria-current="true">Discovery</button>
           </li>
-          <li class="compvis__stage compvis__stage--research is-active">
-            <button class="compvis__trigger" type="button" data-stage="research" aria-controls="card-research" aria-current="true">Research</button>
+          <li class="compvis__stage compvis__stage--research">
+            <button class="compvis__trigger" type="button" data-stage="research" aria-controls="card-research">Research</button>
           </li>
           <li class="compvis__stage compvis__stage--execution">
             <button class="compvis__trigger" type="button" data-stage="execution" aria-controls="card-execution">Execution</button>
@@ -436,7 +436,7 @@
       var viewport = root.querySelector('.compvis__viewport');
       var cards = root.querySelectorAll('.compvis__card');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var selected = 'research', keyboard = false;
+      var selected = 'discovery', keyboard = false;
 
       document.addEventListener('keydown', function (ev) {
         if (ev.key === 'Tab' || ev.key === 'Enter' || ev.key === ' ') { keyboard = true; document.documentElement.classList.add('using-keyboard'); }
@@ -774,7 +774,11 @@
       var last = window.scrollY;
       window.addEventListener('scroll', function () {
         var y = window.scrollY;
-        if (y > last + 2) portrait.classList.add('is-doodle');
+        // Back at the top the page is light again, so the face is always clean.
+        // Without this, the little bounce at the end of a flick upwards reads as
+        // scrolling down and leaves the drawing on over the white.
+        if (y < 12) portrait.classList.remove('is-doodle');
+        else if (y > last + 2) portrait.classList.add('is-doodle');
         else if (y < last - 2) portrait.classList.remove('is-doodle');
         last = y;
       }, { passive: true });

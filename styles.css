@@ -791,7 +791,8 @@ a:hover > .icon--arrow, button:hover > .icon--arrow { transform: translate(2px, 
 
 .ai {
   margin: 0 var(--gutter);
-  padding: 48px 0;
+  padding: 64px 0 48px;
+  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .ai__title { margin: 0; font-size: 24px; font-weight: 400; line-height: 31px; letter-spacing: -0.02em; }

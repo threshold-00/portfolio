@@ -1180,7 +1180,7 @@ legend.field__label { margin-bottom: 8px; }
    (the steps need the room), caption back on the content column. */
 .case__row > .case__flow { grid-column: 1 / -1; }
 .case__flow { display: grid; grid-template-columns: subgrid; margin: 16px 0; }
-.case__flow figcaption { grid-column: 2 / -1; margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.35; }
+.case__flow figcaption { grid-column: 1 / -1; margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.35; text-align: center; }
 .flow {
   --arrow-gap: 40px;
   grid-column: 1 / -1;
@@ -1380,7 +1380,7 @@ legend.field__label { margin-bottom: 8px; }
   .study .case__title { font-size: 28px; line-height: 32px; }
 }
 
-.case__links { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding: 0; list-style: none; font-size: 16px; }
+.case__links { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 16px; }
 .case__gallery--trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px var(--gap); }
 .case__gallery--pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px var(--gap); }
 @media (max-width: 600px) {

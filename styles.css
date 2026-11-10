@@ -207,12 +207,8 @@ a { color: inherit; text-decoration: none; }
    rest, so it lands as the point rather than as the end of a paragraph. */
 .hero__line--last { margin-top: 36px; }
 
-/* Portrait under the opening quote. Scrolling down draws on the face and it
-   stays drawn on; scrolling up rubs it out. Both images are already circular
-   with transparent corners, so they sit on either theme.
-   The plain photo stays fully opaque as the base and only the doodled copy
-   fades over it, so the scribbles appear and vanish while the face never
-   flickers. Cross-fading both would let the page show through at the midpoint. */
+/* Portrait under the opening quote. Already circular with transparent
+   corners, so it sits on either theme. */
 .hero__portrait {
   position: relative;
   display: block;
@@ -225,11 +221,6 @@ a { color: inherit; text-decoration: none; }
   inset: 0;
   width: 100%;
   height: 100%;
-}
-.hero__face--doodle { opacity: 0; transition: opacity .25s ease; }
-.hero__portrait.is-doodle .hero__face--doodle { opacity: 1; }
-@media (prefers-reduced-motion: reduce) {
-  .hero__face--doodle { transition: none; }
 }
 
 /* ---------- Tabs ---------- */

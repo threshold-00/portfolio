@@ -229,6 +229,11 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 .hero { position: relative; }
+/* On desktop the line sits a little above centre, leaving room under it
+   for the preview card to open without spilling out of the first screen. */
+@media (min-width: 801px) {
+  .hero { padding-bottom: 240px; }
+}
 
 .hero h1 {
   max-width: 1000px;
@@ -261,8 +266,8 @@ a { color: inherit; text-decoration: none; }
   left: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  width: min(660px, 100%);
-  height: 288px;
+  width: min(680px, 100%);
+  height: 312px;
   /* White in both themes: the card re-points the theme tokens at its own
      fixed values, so its pills, button and text follow without extra rules. */
   --paper: var(--peek-paper);
@@ -303,7 +308,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   gap: 16px;
   min-width: 0;
-  padding: 24px;
+  padding: 28px 24px 28px 32px;
 }
 .peek__client { margin: 0; color: var(--muted); font-size: 14px; line-height: 18px; }
 .peek__title { margin: 4px 0 0; font-size: 26px; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
@@ -345,7 +350,7 @@ a { color: inherit; text-decoration: none; }
 .using-keyboard .peek__link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .peek__media {
   position: relative;
-  margin: 8px;
+  margin: 14px;
   overflow: hidden;
   border-radius: 8px;
   background: var(--media-bg, var(--placeholder));
@@ -355,8 +360,8 @@ a { color: inherit; text-decoration: none; }
 .peek__close {
   display: none;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 22px;
+  right: 22px;
   place-items: center;
   width: 32px;
   height: 32px;
@@ -390,12 +395,12 @@ a { color: inherit; text-decoration: none; }
     height: auto;
     margin: 0 auto;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 132px auto;
+    grid-template-rows: 144px auto;
     transform: translateY(24px);
   }
   .peek::before { display: none; }
-  .peek__media { grid-row: 1; margin: 8px 8px 0; }
-  .peek__text { grid-row: 2; padding: 14px 16px 16px; gap: 10px; }
+  .peek__media { grid-row: 1; margin: 12px 12px 0; }
+  .peek__text { grid-row: 2; padding: 18px 20px 22px; gap: 12px; }
   .peek__summary { -webkit-line-clamp: 3; }
   .peek__tags { margin-top: 8px; }
   .peek__title { font-size: 22px; }

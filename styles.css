@@ -256,7 +256,24 @@ a { color: inherit; text-decoration: none; }
 /* While a word is hovered, focused or open, it turns handwritten. The
    handwritten copy sits over the typed one, which keeps its space, so the
    line never reflows. */
-.hero__word { position: relative; }
+.hero__word { position: relative; display: inline-block; }
+/* Keeps punctuation on the same line as a word that is an inline block. */
+.hero__keep { white-space: nowrap; }
+
+/* On load "research" wafts, drifting up and tilting a little, until the
+   visitor first reaches for one of the words (see the script in index.html). */
+@keyframes hero-waft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  50% { transform: translateY(-1px) rotate(.5deg); }
+  75% { transform: translateY(-6px) rotate(1.5deg); }
+}
+.hero__word--waft {
+  transform-origin: 50% 80%;
+  animation: hero-waft 3.2s ease-in-out .8s infinite;
+}
+.hero.is-settled .hero__word--waft { animation: none; }
+@media (prefers-reduced-motion: reduce) { .hero__word--waft { animation: none; } }
 .hero__type { transition: opacity .25s ease; }
 .hero__hand {
   position: absolute;

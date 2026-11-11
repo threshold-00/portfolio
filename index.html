@@ -17,7 +17,11 @@
       document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=74">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Handwriting for the four hero words, only the letters they use. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap&text=researchdesigntestingcomplex">
+  <link rel="stylesheet" href="styles.css?v=75">
 </head>
 <body>
   <header class="nav">
@@ -38,7 +42,7 @@
 
   <main>
     <section class="hero">
-      <h1>Ro brings <a class="hero__word" href="/projectmyki" data-title="Victoria’s new myki system">research</a>, <a class="hero__word" href="/projectafterpaywebsite" data-title="Afterpay’s new B2B site">design</a> and <a class="hero__word" href="/projectafterpayb2b" data-title="CRO tests to generate leads">testing</a> to <a class="hero__word" href="/projectsaf3" data-title="SAF3 MVP">complex</a> industries, making sure products work for the people who rely on them.</h1>
+      <h1>Ro brings <a class="hero__word" href="/projectmyki" data-title="Victoria’s new myki system"><span class="hero__type">research</span><span class="hero__hand" aria-hidden="true">research</span></a>, <a class="hero__word" href="/projectafterpaywebsite" data-title="Afterpay’s new B2B site"><span class="hero__type">design</span><span class="hero__hand" aria-hidden="true">design</span></a> and <a class="hero__word" href="/projectafterpayb2b" data-title="CRO tests to generate leads"><span class="hero__type">testing</span><span class="hero__hand" aria-hidden="true">testing</span></a> to <a class="hero__word" href="/projectsaf3" data-title="SAF3 MVP"><span class="hero__type">complex</span><span class="hero__hand" aria-hidden="true">complex</span></a> industries, making sure products work for the people who rely on them.</h1>
       <aside class="peek" id="peek" aria-label="Case study preview">
         <div class="peek__text">
           <div>

@@ -253,7 +253,33 @@ a { color: inherit; text-decoration: none; }
   text-underline-offset: 0.12em;
   transition: color .2s ease;
 }
-.hero__word:hover, .hero__word[aria-expanded="true"] { color: var(--muted); }
+/* While a word is hovered, focused or open, it turns handwritten. The
+   handwritten copy sits over the typed one, which keeps its space, so the
+   line never reflows. */
+.hero__word { position: relative; }
+.hero__type { transition: opacity .25s ease; }
+.hero__hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+  font-size: 1.32em;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -52%);
+  transition: opacity .25s ease;
+}
+.hero__word:hover .hero__type,
+.hero__word:focus-visible .hero__type,
+.hero__word[aria-expanded="true"] .hero__type { opacity: 0; }
+.hero__word:hover .hero__hand,
+.hero__word:focus-visible .hero__hand,
+.hero__word[aria-expanded="true"] .hero__hand { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero__type, .hero__hand { transition: none; } }
 .hero__word:focus { outline: none; }
 .using-keyboard .hero__word:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
 

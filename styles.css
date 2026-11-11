@@ -293,15 +293,18 @@ a { color: inherit; text-decoration: none; }
 /* Keeps punctuation on the same line as a word that is an inline block. */
 .hero__keep { white-space: nowrap; }
 
-/* On load "research" wafts, floating gently up and down (no tilt), until the
+/* On load "research" bounces, a hop and a smaller rebound then a rest, until the
    visitor first reaches for one of the words (see the script in index.html). */
 @keyframes hero-waft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%, 40%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(.3, 0, .5, 1); }
+  10% { transform: translateY(-12px); animation-timing-function: cubic-bezier(.5, 0, .7, 1); }
+  20% { transform: translateY(0); animation-timing-function: cubic-bezier(.3, 0, .5, 1); }
+  27% { transform: translateY(-4px); animation-timing-function: cubic-bezier(.5, 0, .7, 1); }
+  34% { transform: translateY(0); }
 }
 .hero__word--waft {
   transform-origin: 50% 80%;
-  animation: hero-waft 3.2s ease-in-out .8s infinite;
+  animation: hero-waft 2.4s .8s infinite;
 }
 .hero.is-settled .hero__word--waft { animation: none; }
 @media (prefers-reduced-motion: reduce) { .hero__word--waft { animation: none; } }

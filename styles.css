@@ -280,7 +280,7 @@ a { color: inherit; text-decoration: none; }
 
 /* The four key words each pop out a preview card of a case study:
    on hover with a mouse, on tap on a phone, on Enter from the keyboard.
-   They carry no underline: one of them is always waving instead, and the
+   One of them is always waving and the other three are underlined; the
    word being pointed at fades to 20%. */
 .hero__word {
   text-decoration: none;
@@ -289,9 +289,6 @@ a { color: inherit; text-decoration: none; }
 .hero__word:hover,
 .hero__word:focus-visible,
 .hero__word[aria-expanded="true"] { opacity: .2; }
-/* While a word is hovered, focused or open, it also turns handwritten. The
-   handwritten copy sits over the typed one, which keeps its space, so the
-   line never reflows. */
 .hero__word { position: relative; display: inline-block; }
 /* Keeps punctuation on the same line as a word that is an inline block. */
 .hero__keep { white-space: nowrap; }
@@ -309,36 +306,26 @@ a { color: inherit; text-decoration: none; }
   75%  { transform: translateY(0.18em);  animation-timing-function: cubic-bezier(.33, 0, .67, .33); }
   100% { transform: translateY(0); }
 }
-.hero__char { display: inline-block; }
+/* The words that are not waving are underlined. Each letter carries its own
+   underline, since an underline does not reach into inline blocks; the
+   waving word's underline fades out as the wave arrives and back in as it
+   leaves. */
+.hero__char {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.12em;
+  text-decoration-color: currentColor;
+  transition: text-decoration-color .3s ease;
+}
 .hero__word.is-waving .hero__char {
+  text-decoration-color: transparent;
   animation: hero-wave 4s infinite;
   animation-delay: calc(var(--i) * .15s);
   will-change: transform;
 }
-@media (prefers-reduced-motion: reduce) { .hero__word.is-waving .hero__char { animation: none; } }
-.hero__type { transition: opacity .25s ease; }
-.hero__hand {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-family: "Caveat", "Bradley Hand", "Segoe Print", cursive;
-  font-size: 1.32em;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -52%);
-  transition: opacity .25s ease;
-}
-.hero__word:hover .hero__type,
-.hero__word:focus-visible .hero__type,
-.hero__word[aria-expanded="true"] .hero__type { opacity: 0; }
-.hero__word:hover .hero__hand,
-.hero__word:focus-visible .hero__hand,
-.hero__word[aria-expanded="true"] .hero__hand { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .hero__type, .hero__hand { transition: none; } }
+/* With reduced motion nothing waves, so all four words keep their underline. */
+@media (prefers-reduced-motion: reduce) { .hero__word.is-waving .hero__char { animation: none; text-decoration-color: currentColor; } }
 .hero__word:focus { outline: none; }
 .using-keyboard .hero__word:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
 

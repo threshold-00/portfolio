@@ -278,42 +278,44 @@ a { color: inherit; text-decoration: none; }
   text-wrap: balance;
 }
 
-/* The four underlined words each pop out a preview card of a case study:
-   on hover with a mouse, on tap on a phone, on Enter from the keyboard. */
+/* The four key words each pop out a preview card of a case study:
+   on hover with a mouse, on tap on a phone, on Enter from the keyboard.
+   They carry no underline: one of them is always waving instead, and the
+   word being pointed at fades to 20%. */
 .hero__word {
-  text-decoration: underline;
-  text-decoration-thickness: 0.05em;
-  text-underline-offset: 0.12em;
-  transition: color .2s ease;
+  text-decoration: none;
+  transition: opacity .25s ease;
 }
-/* While a word is hovered, focused or open, it turns handwritten. The
+.hero__word:hover,
+.hero__word:focus-visible,
+.hero__word[aria-expanded="true"] { opacity: .2; }
+/* While a word is hovered, focused or open, it also turns handwritten. The
    handwritten copy sits over the typed one, which keeps its space, so the
    line never reflows. */
 .hero__word { position: relative; display: inline-block; }
 /* Keeps punctuation on the same line as a word that is an inline block. */
 .hero__keep { white-space: nowrap; }
 
-/* On load the letters of "research" wave: each one rises and falls in
-   turn, staggered 0.15s apart, until the visitor first reaches for one of
-   the words. The script in index.html splits the word into letters
-   (.hero__char, each with its index in --i and the count in --n). Each letter
-   carries its own underline, since an underline does not reach into inline
-   blocks, so the underline waves with it. */
+/* One word waves at a time, letter by letter, each letter starting 0.15s
+   after the one before. It starts on "research"; when the visitor reaches
+   for a word, that word settles and the wave passes to the word after it
+   (after "complex" it goes back to "research"). The script in index.html
+   splits each word into letters (.hero__char, index in --i) and moves the
+   .is-waving class. Each letter starts and ends on the line, so the wave
+   can begin on any word without a jump. */
 @keyframes hero-wave {
-  from { transform: translateY(-0.18em); }
-  to { transform: translateY(0.18em); }
+  0%   { transform: translateY(0);       animation-timing-function: cubic-bezier(.33, .67, .67, 1); }
+  25%  { transform: translateY(-0.18em); animation-timing-function: ease-in-out; }
+  75%  { transform: translateY(0.18em);  animation-timing-function: cubic-bezier(.33, 0, .67, .33); }
+  100% { transform: translateY(0); }
 }
-.hero__char {
-  display: inline-block;
-  text-decoration: underline;
-  text-decoration-thickness: 0.05em;
-  text-underline-offset: 0.12em;
-  animation: hero-wave 2s ease-in-out infinite alternate;
-  animation-delay: calc((var(--i) - var(--n)) * .15s);
+.hero__char { display: inline-block; }
+.hero__word.is-waving .hero__char {
+  animation: hero-wave 4s infinite;
+  animation-delay: calc(var(--i) * .15s);
   will-change: transform;
 }
-.hero.is-settled .hero__char { animation: none; will-change: auto; }
-@media (prefers-reduced-motion: reduce) { .hero__char { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero__word.is-waving .hero__char { animation: none; } }
 .hero__type { transition: opacity .25s ease; }
 .hero__hand {
   position: absolute;

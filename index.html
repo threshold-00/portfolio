@@ -21,7 +21,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Handwriting for the four hero words, only the letters they use. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap&text=researchdesigntestingcomplex">
-  <link rel="stylesheet" href="styles.css?v=82">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=83">
 </head>
 <body>
   <header class="nav">
@@ -642,14 +645,12 @@
       // A short grace period lets the pointer travel from the word to the card.
       function later() { clearTimeout(hideTimer); hideTimer = setTimeout(hide, 300); }
 
-      // "research" waves on load as a hint that the words open something.
-      // It settles for good the first time the visitor points at, taps or
-      // tabs to any of the words.
-      // Split "research" into letters so they can wave (see .hero__char).
-      var waft = hero.querySelector('.hero__word--waft');
-      var chars = [];
-      if (waft) {
-        var type = waft.querySelector('.hero__type');
+      // One word waves at a time as a hint that the words open something.
+      // It starts on "research". Reaching for a word (pointing, tapping or
+      // tabbing) settles it and passes the wave to the word after it.
+      var list = Array.prototype.slice.call(words);
+      list.forEach(function (w) {
+        var type = w.querySelector('.hero__type');
         var letters = type.textContent.split('');
         type.textContent = '';
         letters.forEach(function (ch, i) {
@@ -657,16 +658,16 @@
           s.className = 'hero__char';
           s.textContent = ch;
           s.style.setProperty('--i', i);
-          s.style.setProperty('--n', letters.length);
           type.appendChild(s);
-          chars.push(s);
         });
-      }
+      });
+      var waving = hero.querySelector('.hero__word--waft') || list[0];
+      waving.classList.add('is-waving');
       // Each letter eases back to the line from wherever it was mid-wave.
-      function settle() {
-        if (!waft || hero.classList.contains('is-settled')) return;
+      function stopWave(w) {
+        var chars = Array.prototype.slice.call(w.querySelectorAll('.hero__char'));
         var now = chars.map(function (c) { return getComputedStyle(c).transform; });
-        hero.classList.add('is-settled');
+        w.classList.remove('is-waving');
         chars.forEach(function (c, i) {
           if (now[i] !== 'none' && c.animate) {
             c.animate([{ transform: now[i] }, { transform: 'none' }],
@@ -674,10 +675,17 @@
           }
         });
       }
+      function passWave(w) {
+        var next = list[(list.indexOf(w) + 1) % list.length];
+        if (waving === next) return;
+        if (waving) stopWave(waving);
+        waving = next;
+        next.classList.add('is-waving');
+      }
 
       words.forEach(function (w) {
         ['mouseenter', 'touchstart', 'focus', 'click'].forEach(function (type) {
-          w.addEventListener(type, settle, { passive: true });
+          w.addEventListener(type, function () { passWave(w); }, { passive: true });
         });
         w.setAttribute('aria-expanded', 'false');
         w.setAttribute('aria-controls', 'peek');

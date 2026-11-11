@@ -293,21 +293,27 @@ a { color: inherit; text-decoration: none; }
 /* Keeps punctuation on the same line as a word that is an inline block. */
 .hero__keep { white-space: nowrap; }
 
-/* On load "research" bounces, a hop and a smaller rebound then a rest, until the
-   visitor first reaches for one of the words (see the script in index.html). */
-@keyframes hero-waft {
-  0%, 40%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(.3, 0, .5, 1); }
-  10% { transform: translateY(-12px); animation-timing-function: cubic-bezier(.5, 0, .7, 1); }
-  20% { transform: translateY(0); animation-timing-function: cubic-bezier(.3, 0, .5, 1); }
-  27% { transform: translateY(-4px); animation-timing-function: cubic-bezier(.5, 0, .7, 1); }
-  34% { transform: translateY(0); }
+/* On load the letters of "research" wave: each one rises and falls in
+   turn, staggered 0.15s apart, until the visitor first reaches for one of
+   the words. The script in index.html splits the word into letters
+   (.hero__char, each with its index in --i and the count in --n). Each letter
+   carries its own underline, since an underline does not reach into inline
+   blocks, so the underline waves with it. */
+@keyframes hero-wave {
+  from { transform: translateY(-0.18em); }
+  to { transform: translateY(0.18em); }
 }
-.hero__word--waft {
-  transform-origin: 50% 80%;
-  animation: hero-waft 2.4s .8s infinite;
+.hero__char {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.12em;
+  animation: hero-wave 2s ease-in-out infinite alternate;
+  animation-delay: calc((var(--i) - var(--n)) * .15s);
+  will-change: transform;
 }
-.hero.is-settled .hero__word--waft { animation: none; }
-@media (prefers-reduced-motion: reduce) { .hero__word--waft { animation: none; } }
+.hero.is-settled .hero__char { animation: none; will-change: auto; }
+@media (prefers-reduced-motion: reduce) { .hero__char { animation: none; } }
 .hero__type { transition: opacity .25s ease; }
 .hero__hand {
   position: absolute;

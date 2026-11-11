@@ -14,7 +14,7 @@
     // or system theme as usual.
     document.documentElement.setAttribute('data-theme', 'light');
   </script>
-  <link rel="stylesheet" href="styles.css?v=67">
+  <link rel="stylesheet" href="styles.css?v=68">
 </head>
 <body>
   <header class="nav">
@@ -22,6 +22,7 @@
     <div class="nav__end">
       <nav aria-label="Main">
         <ul class="nav__links">
+          <li class="nav__status"><span class="nav__dot" aria-hidden="true"></span>Available now</li>
           <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Let’s chat</button></li>
         </ul>
       </nav>
@@ -34,76 +35,10 @@
 
   <main>
     <section class="hero">
-      <h1>A wise person once said, “to get different results, one must do things differently”.</h1>
+      <h1>Ro brings <a class="hero__word" href="/projectmyki" data-title="Victoria’s new myki system">research</a>, <a class="hero__word" href="/projectafterpaywebsite" data-title="Afterpay’s new B2B site">design</a> and <a class="hero__word" href="/projectafterpayb2b" data-title="CRO tests to generate leads">testing</a> to <a class="hero__word" href="/projectsaf3" data-title="SAF3 MVP">complex</a> industries, making sure products work for the people who rely on them.</h1>
       <span class="hero__portrait">
         <img class="hero__face hero__face--plain" src="assets/img/home/ro-plain.webp" alt="Rowena Baulch" width="400" height="400" decoding="async">
       </span>
-    </section>
-
-    <section class="hero hero--statement" aria-label="How I help">
-      <p class="hero__line">For industries that deal with complexity, Ro focuses on strategic design and research to find what is actually getting in people’s way, then designs the fix.</p>
-      <p class="hero__line hero__line--last">More customers is what follows.</p>
-    </section>
-
-    <section class="compvis" aria-labelledby="compvis-heading">
-      <div class="compvis__head">
-        <h2 id="compvis-heading" class="compvis__title">Case studies across phases</h2>
-      </div>
-      <div class="compvis__body">
-        <div class="compvis__diagram">
-          <ol class="compvis__stages">
-          <li class="compvis__stage compvis__stage--discovery is-active">
-            <button class="compvis__trigger" type="button" data-stage="discovery" aria-controls="card-discovery" aria-current="true">Discovery</button>
-          </li>
-          <li class="compvis__stage compvis__stage--research">
-            <button class="compvis__trigger" type="button" data-stage="research" aria-controls="card-research">Research</button>
-          </li>
-          <li class="compvis__stage compvis__stage--execution">
-            <button class="compvis__trigger" type="button" data-stage="execution" aria-controls="card-execution">Execution</button>
-          </li>
-          </ol>
-        </div>
-        <div class="compvis__viewport" tabindex="0" aria-label="Case studies, scrollable">
-          <ul class="compvis__cards">
-          <li class="compvis__card" id="card-discovery" data-stage="discovery" data-project="/projectsaf3">
-            <span class="compvis__img compvis__img--shot"><img src="assets/img/home/saf3-2.webp" alt="SAF3 logo on a laptop screen" loading="lazy" decoding="async"></span>
-            <div class="compvis__info">
-              <div class="compvis__text">
-                <p class="compvis__pillar">Discovery</p>
-                <h3 class="compvis__name">SAF3, a secure crypto custodian</h3>
-                <p>Large institutional and ultra high-net-worth investors needed a secure, regulated way to store and manage digital assets.</p>
-                <ul class="tags compvis__skills" aria-label="Skills"><li>Product design (end-to-end)</li><li>MVP creation</li><li>Workshop facilitation</li><li>Research via self-recruitment</li></ul>
-              </div>
-              <a class="compvis__more" href="/projectsaf3">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
-            </div>
-          </li>
-          <li class="compvis__card" id="card-research" data-stage="research" data-project="/projectmyki">
-            <span class="compvis__img compvis__img--shot"><img src="assets/img/home/myki-2.webp" alt="Ticket gates at a Victorian train station" loading="lazy" decoding="async"></span>
-            <div class="compvis__info">
-              <div class="compvis__text">
-                <p class="compvis__pillar">Research</p>
-                <h3 class="compvis__name">Victorian Public Transport, Contactless Ticketing Pilot</h3>
-                <p>The Department of Transport needed the new contactless ticket readers to be intuitive and accessible, without slowing the gates.</p>
-                <ul class="tags compvis__skills" aria-label="Skills"><li>Strategic design</li><li>Research ops</li><li>Ethnographic studies</li><li>Report writing</li></ul>
-              </div>
-              <a class="compvis__more" href="/projectmyki">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
-            </div>
-          </li>
-          <li class="compvis__card" id="card-execution" data-stage="execution" data-project="/projectafterpaywebsite">
-            <span class="compvis__img compvis__img--shot"><img src="assets/img/home/afterpay-site-1.webp?v=2" alt="The Afterpay business site’s main navigation, open on Product" loading="lazy" decoding="async"></span>
-            <div class="compvis__info">
-              <div class="compvis__text">
-                <p class="compvis__pillar">Execution</p>
-                <h3 class="compvis__name">Afterpay’s new B2B site</h3>
-                <p>Afterpay needed a new B2B website for every international market, with many page types for different businesses, all built consistently from one design system.</p>
-                <ul class="tags compvis__skills" aria-label="Skills"><li>UX strategy</li><li>Wireframes</li><li>UI design</li><li>Design systems</li></ul>
-              </div>
-              <a class="compvis__more" href="/projectafterpaywebsite">Full project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
-            </div>
-          </li>
-          </ul>
-        </div>
-      </div>
     </section>
 
     <div class="drawer" hidden>
@@ -252,13 +187,9 @@
 
     <section class="ai" aria-labelledby="ai-heading">
       <div class="ai__header">
-        <h2 class="ai__title" id="ai-heading">
-          <button class="ai__toggle" type="button" aria-expanded="true" aria-controls="ai-panel">
-            <span>How I use AI in my practice</span>
-            <span class="ai__sign" aria-hidden="true"><svg class="icon icon--add" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg><svg class="icon icon--remove" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M200-440v-80h560v80H200Z"/></svg></span>
-          </button>
-        </h2>
+        <h2 class="ai__title" id="ai-heading">How I use AI in my practice</h2>
         <p class="ai__intro">AI gets me from a messy problem to something real, faster. I use it to widen research, speed up design and ship working products, and I decide where a person needs to stay in charge.</p>
+        <button class="ai__more" type="button" aria-expanded="false" aria-controls="ai-panel"><span class="ai__more-label">More detail</span><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg></button>
       </div>
 
       <div class="ai__panel" id="ai-panel">
@@ -337,33 +268,51 @@
       <ol class="companies__list">
           <li class="companies__row" data-reveal>
             <p class="companies__years">2025 – 2026</p>
-            <h3 class="companies__name">Dijitally (Freelance)<span>UX Lead</span></h3>
-            <p class="companies__desc">Dijitally builds and scales digital products for businesses such as Afterpay. I led strategy and design for Afterpay’s new global B2B website and owned its CRO (conversion rate optimisation) strategy. I also worked directly with the founder to design and implement new features in the booking engine, Roomstay.</p>
+            <div class="companies__co">
+              <span class="companies__logo" style="--logo: url(assets/img/companies/afterpay.svg); --logo-w: 26px; --logo-h: 26px" aria-hidden="true"></span>
+              <h3 class="companies__name">Afterpay (Freelance)<span>UX Lead</span></h3>
+            </div>
+            <p class="companies__desc">Led strategy and design for Afterpay’s new global B2B website, and owned its CRO (conversion rate optimisation) strategy.</p>
           </li>
           <li class="companies__row" data-reveal>
             <p class="companies__years">2025</p>
-            <h3 class="companies__name">Today (Freelance)<span>Strategic Designer</span></h3>
-            <p class="companies__desc">Today is a design and technology agency for social innovation, contracted by the Department of Transport and Planning to research Victoria’s new myki readers. I ran longitudinal and ethnographic studies to uncover customer trends and accessibility needs, led research operations and delivered the final report to the department.</p>
+            <div class="companies__co">
+              <span class="companies__logo" style="--logo: url(assets/img/companies/today.svg); --logo-w: 30px; --logo-h: 9px" aria-hidden="true"></span>
+              <h3 class="companies__name">Today (Freelance)<span>Strategic Designer</span></h3>
+            </div>
+            <p class="companies__desc">Uncovered customer trends and accessibility needs for Victoria’s new myki readers, and delivered the final report to the Department of Transport and Planning.</p>
           </li>
           <li class="companies__row" data-reveal>
             <p class="companies__years">2022 – 2025</p>
-            <h3 class="companies__name">NAB Innovation Team<span>Product Designer</span></h3>
-            <p class="companies__desc">NAB’s innovation team works apart from the wider bank to move and test quickly. I used design to identify the biggest disruptive threats and opportunities for the bank across climate, payments, AI and crypto, designed and delivered NAB’s first crypto-based MVP for institutional customers, and built an AI tool for paralegals that cut trust-deed review from 45 minutes to 5.</p>
+            <div class="companies__co">
+              <span class="companies__logo" style="--logo: url(assets/img/companies/nab.svg)" aria-hidden="true"></span>
+              <h3 class="companies__name">NAB Innovation Team<span>Product Designer</span></h3>
+            </div>
+            <p class="companies__desc">Delivered NAB’s first crypto MVP for institutional customers, and an AI tool that cut trust-deed review from 45 minutes to 5.</p>
           </li>
           <li class="companies__row" data-reveal>
             <p class="companies__years">2021 – 2022</p>
-            <h3 class="companies__name">ED.<span>UX/UI Designer</span></h3>
-            <p class="companies__desc">ED. is a digital agency crafting original ideas and web applications for clients from universities to NGOs. I led evaluative customer research for Athena Home Loans and designed The Sydney Dialogues website.</p>
+            <div class="companies__co">
+              <span class="companies__logo" aria-hidden="true">ED.</span>
+              <h3 class="companies__name">ED.<span>UX/UI Designer</span></h3>
+            </div>
+            <p class="companies__desc">Led evaluative research for Athena Home Loans and designed The Sydney Dialogues website.</p>
           </li>
           <li class="companies__row" data-reveal>
             <p class="companies__years">2019 – 2021</p>
-            <h3 class="companies__name">Deliveroo<span>APAC Designer</span></h3>
-            <p class="companies__desc">A global food delivery company founded in the UK, where I worked primarily with the UK and global teams. I designed multilingual digital campaigns, including Arabic and Cantonese, and optimised content with global marketing to lift click-through rates.</p>
+            <div class="companies__co">
+              <span class="companies__logo" style="--logo: url(assets/img/companies/deliveroo.svg); --logo-w: 20px; --logo-h: 20px" aria-hidden="true"></span>
+              <h3 class="companies__name">Deliveroo<span>APAC Designer</span></h3>
+            </div>
+            <p class="companies__desc">Designed multilingual campaigns, including Arabic and Cantonese, that lifted click-through rates.</p>
           </li>
           <li class="companies__row" data-reveal>
             <p class="companies__years">2017 – 2018</p>
-            <h3 class="companies__name">HM.<span>Designer</span></h3>
-            <p class="companies__desc">HM is a strategic brand and communication agency serving clients from government to aged care. I designed wayfinding for Metro and PTV.</p>
+            <div class="companies__co">
+              <span class="companies__logo" aria-hidden="true">HM.</span>
+              <h3 class="companies__name">HM.<span>Designer</span></h3>
+            </div>
+            <p class="companies__desc">Designed wayfinding for Metro and PTV.</p>
           </li>
       </ol>
     </section>
@@ -412,11 +361,13 @@
     (function () {
       var section = document.querySelector('.ai');
       if (!section) return;
-      var btn = section.querySelector('.ai__toggle');
+      var btn = section.querySelector('.ai__more');
+      var label = btn.querySelector('.ai__more-label');
       var panel = section.querySelector('.ai__panel');
       section.classList.add('is-enhanced');
       function set(open) {
         btn.setAttribute('aria-expanded', open);
+        label.textContent = open ? 'Less detail' : 'More detail';
         section.classList.toggle('is-open', open);
         panel.inert = !open;
       }
@@ -427,111 +378,14 @@
 
   <script>
     (function () {
-      var root = document.querySelector('.compvis');
-      if (!root) return;
-      root.classList.add('is-enhanced');
-      var stages = root.querySelectorAll('.compvis__stage');
-      var triggers = root.querySelectorAll('.compvis__trigger');
-      var viewport = root.querySelector('.compvis__viewport');
-      var cards = root.querySelectorAll('.compvis__card');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var selected = 'discovery', keyboard = false;
+      var keyboard = false;
 
       document.addEventListener('keydown', function (ev) {
         if (ev.key === 'Tab' || ev.key === 'Enter' || ev.key === ' ') { keyboard = true; document.documentElement.classList.add('using-keyboard'); }
       }, true);
       document.addEventListener('pointerdown', function () { keyboard = false; document.documentElement.classList.remove('using-keyboard'); }, true);
       document.addEventListener('pointermove', function () { if (keyboard) { keyboard = false; document.documentElement.classList.remove('using-keyboard'); } }, true);
-
-      // The case study column scrolls. Whichever study sits in the middle is the
-      // active one, and the cycle follows it. Choosing a competency scrolls to its study.
-      function mark(stage) {
-        if (stage === selected && root.querySelector('.compvis__card.is-active')) return;
-        selected = stage;
-        stages.forEach(function (li) { li.classList.toggle('is-active', li.classList.contains('compvis__stage--' + stage)); });
-        triggers.forEach(function (t) {
-          if (t.dataset.stage === stage) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
-        });
-        cards.forEach(function (c) { c.classList.toggle('is-active', c.dataset.stage === stage); });
-      }
-
-      // Desktop scrolls up and down; phones and small tablets scroll sideways.
-      var list = root.querySelector('.compvis__cards');
-      function sideways() { return getComputedStyle(list).flexDirection === 'row'; }
-      function inset() { return parseFloat(getComputedStyle(list).paddingLeft) || 0; }
-      // Down the page, the study in play sits in the middle of the window.
-      // Across a phone it sits at the gutter, in line with everything else.
-      function anchor(el) { return sideways() ? el.offsetLeft : el.offsetTop + el.offsetHeight / 2; }
-      function reference() {
-        return sideways() ? viewport.scrollLeft + inset() : viewport.scrollTop + viewport.clientHeight / 2;
-      }
-      function restPos(card) {
-        return anchor(card) - (sideways() ? inset() : viewport.clientHeight / 2);
-      }
-
-      function select(stage, instant) {
-        var card = root.querySelector('#card-' + stage);
-        mark(stage);
-        target = stage;
-        var opts = { behavior: instant || reduce ? 'auto' : 'smooth' };
-        opts[sideways() ? 'left' : 'top'] = restPos(card);
-        viewport.scrollTo(opts);
-      }
-
-      var target = null, ticking = false, settleTimer = null;
-      viewport.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-          ticking = false;
-          var ref = reference();
-          var best = null, bestDist = Infinity;
-          cards.forEach(function (c) {
-            var d = Math.abs(anchor(c) - ref);
-            if (d < bestDist) { bestDist = d; best = c; }
-          });
-          // While a hover-triggered scroll is travelling, keep the chosen stage lit.
-          if (!target) mark(best.dataset.stage);
-        });
-        clearTimeout(settleTimer);
-        settleTimer = setTimeout(function () { target = null; }, 120);
-      }, { passive: true });
-      // Any direct scrolling by the visitor hands control back to the scroll position.
-      ['wheel', 'touchstart'].forEach(function (type) {
-        viewport.addEventListener(type, function () { target = null; }, { passive: true });
-      });
-      // Once the first or last study is reached, the same wheel or trackpad gesture
-      // carries on scrolling the page, instead of stalling inside the column.
-      viewport.addEventListener('wheel', function (ev) {
-        if (sideways() || ev.ctrlKey || Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) return;
-        var dy = ev.deltaY * (ev.deltaMode === 1 ? 16 : ev.deltaMode === 2 ? window.innerHeight : 1);
-        var atTop = viewport.scrollTop <= 2;
-        var atEnd = viewport.scrollTop >= viewport.scrollHeight - viewport.clientHeight - 2;
-        if ((dy > 0 && atEnd) || (dy < 0 && atTop)) {
-          ev.preventDefault();
-          window.scrollBy(0, dy);
-        }
-      }, { passive: false });
-
-      triggers.forEach(function (t) {
-        t.addEventListener('mouseenter', function () { select(t.dataset.stage); });
-        t.addEventListener('focus', function () { select(t.dataset.stage); });
-        t.addEventListener('click', function () { select(t.dataset.stage); });
-      });
-      cards.forEach(function (c) {
-        c.addEventListener('click', function (ev) {
-          if (ev.target.closest('.compvis__more')) return;
-          // Clicking a dimmed study brings it to the middle. Clicking the one
-          // already there opens its case study, so the whole active card is a
-          // way in to the page.
-          if (c.classList.contains('is-active')) show(c.dataset.project, c);
-          else select(c.dataset.stage);
-        });
-      });
-      function settle() { select(selected, true); target = null; }
-      settle();
-      window.addEventListener('load', settle);
-      window.addEventListener('resize', function () { select(selected, true); });
 
       // Every project on this page opens in the panel that slides in from the
       // right, and what fills it is the project page itself, fetched and
@@ -542,6 +396,9 @@
       var panel = drawer && drawer.querySelector('#study-case');
       var load = drawer && drawer.querySelector('.study__load');
       var pages = {};
+      function mark(from, on) {
+        if (from && from.classList.contains('hero__word')) from.setAttribute('aria-expanded', on);
+      }
       var current = null, opener = null, closeTimer = null, lockedAt = 0;
 
       function get(url) {
@@ -588,9 +445,9 @@
         if (!href || !drawer) return;
         var pending = href;
         if (current !== href) {
-          var label = from && from.closest('.card, .compvis__card');
-          var name = label && label.querySelector('.card__title, .compvis__name');
-          load.innerHTML = name ? '<div class="case__head"><h2 class="case__title">' + name.textContent + '</h2></div>' : '';
+          var label = from && from.closest('.card');
+          var name = from && from.dataset.title || (label && label.querySelector('.card__title') || {}).textContent;
+          load.innerHTML = name ? '<div class="case__head"><h2 class="case__title">' + name + '</h2></div>' : '';
           open(href, from);
         }
         fetchPage(href).then(function (html) {
@@ -601,8 +458,10 @@
 
       function open(href, from) {
         clearTimeout(closeTimer);
+        mark(opener, false);
         current = href;
         opener = from;
+        mark(opener, true);
         // iOS ignores overflow on the page behind a fixed panel, so hold the
         // page in place and put the visitor back where they were on close.
         lockedAt = window.scrollY;
@@ -620,6 +479,7 @@
       function close() {
         if (!current) return;
         current = null;
+        mark(opener, false);
         drawer.classList.remove('is-open');
         drawer.classList.add('is-closing');
         document.documentElement.classList.remove('has-drawer');
@@ -635,8 +495,8 @@
         else if (document.activeElement && drawer.contains(document.activeElement)) document.activeElement.blur();
       }
 
-      // Every way in to a project: the All work grid, the three highlighted
-      // case studies and the AI section.
+      // Every way in to a project: the four words in the opening line, the
+      // All work grid and the AI section.
       document.querySelectorAll('main a[href^="/project"]').forEach(function (a) {
         var href = a.getAttribute('href');
         a.addEventListener('click', function (ev) {
@@ -648,6 +508,21 @@
         ['mouseenter', 'touchstart'].forEach(function (type) {
           a.addEventListener(type, function () { fetchPage(href).catch(function () {}); }, { passive: true });
         });
+      });
+
+      // With a mouse, resting on one of the opening line's words opens its
+      // case study. The short wait stops a pointer passing across the line
+      // from throwing panels open. Phones and keyboards open it on tap or Enter.
+      var hoverable = window.matchMedia('(hover: hover) and (pointer: fine)');
+      document.querySelectorAll('.hero__word').forEach(function (a) {
+        var timer = null;
+        a.setAttribute('aria-haspopup', 'dialog');
+        a.addEventListener('mouseenter', function () {
+          if (!hoverable.matches) return;
+          clearTimeout(timer);
+          timer = setTimeout(function () { if (current !== a.getAttribute('href')) show(a.getAttribute('href'), a); }, 220);
+        });
+        a.addEventListener('mouseleave', function () { clearTimeout(timer); });
       });
 
       if (drawer) {

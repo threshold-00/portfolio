@@ -22,7 +22,6 @@
   color-scheme: light;
   --ink: #000;
   --muted: #767676;          /* 4.54:1 on white */
-  --cycle-idle: #c4c4c4;     /* inactive compvis words and dots, deliberately faint */
   --paper: #fff;
   --line: #000;
   --stroke: #949494;         /* pill outlines, 3.03:1 on white */
@@ -33,6 +32,7 @@
   --shadow-panel: rgba(0, 0, 0, .12);
   --shadow-thumb: rgba(0, 0, 0, .16);
   --logo-filter: none;
+  --available: #16a34a;      /* "Available now" dot */
   --threshold-paper: #f3f2ee;  /* the Threshold site's own background, behind its video thumbnail */
   --afterpay-ink: #181818;     /* the Afterpay B2B site's own background, behind its video thumbnail */
 
@@ -48,7 +48,6 @@
   color-scheme: dark;
   --ink: #f2f2f2;
   --muted: #9a9a9a;          /* 6.71:1 on #111 */
-  --cycle-idle: #4d4d4d;
   --paper: #111111;
   --line: #f2f2f2;
   --stroke: #636363;         /* 3.14:1 on #111 */
@@ -59,6 +58,7 @@
   --shadow-panel: rgba(0, 0, 0, .5);
   --shadow-thumb: rgba(0, 0, 0, .5);
   --logo-filter: invert(1);
+  --available: #34d36b;
 }
 
 body { transition: background-color .3s ease, color .3s ease; }
@@ -170,6 +170,40 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
 }
 .nav__cta:hover { color: var(--muted); }
+
+/* "Available now" beside Let's chat: a status, not a link. */
+.nav__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.nav__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--available);
+}
+.nav__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--available);
+  animation: nav-pulse 2.4s ease-out infinite;
+}
+@keyframes nav-pulse {
+  0% { transform: scale(1); opacity: .6; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .nav__dot::after { animation: none; opacity: 0; } }
+@media (max-width: 600px) {
+  .nav__status { gap: 6px; font-size: 14px; }
+}
 .nav__cta:focus { outline: none; }
 .using-keyboard .nav__cta:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -189,9 +223,8 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
-.hero h1,
-.hero__line {
-  max-width: 760px;
+.hero h1 {
+  max-width: 900px;
   margin: 0;
   font-size: 54px;
   font-weight: 400;
@@ -200,12 +233,17 @@ a { color: inherit; text-decoration: none; }
   text-wrap: balance;
 }
 
-/* The second statement is a paragraph, not a headline, so it runs 40% smaller
-   than the h1 it follows. (17 Sep 2026.) */
-.hero__line { font-size: 32px; line-height: 36px; }
-/* The closing sentence stands on its own, a line's worth of space below the
-   rest, so it lands as the point rather than as the end of a paragraph. */
-.hero__line--last { margin-top: 36px; }
+/* The four underlined words each open a case study in the slide-out panel:
+   on hover with a mouse, on tap on a phone, on Enter from the keyboard. */
+.hero__word {
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.12em;
+  transition: color .2s ease;
+}
+.hero__word:hover, .hero__word[aria-expanded="true"] { color: var(--muted); }
+.hero__word:focus { outline: none; }
+.using-keyboard .hero__word:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
 
 /* Portrait under the opening quote. Already circular with transparent
    corners, so it sits on either theme. */
@@ -378,7 +416,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Tablet (800) ---------- */
 
 @media (max-width: 1024px) {
-  .hero h1, .hero__line { max-width: 640px; }
+  .hero h1 { max-width: 700px; }
   .tile { width: 56vw; }
   .project__meta { grid-template-columns: 52px 1fr minmax(0, 290px); }
   .footer { grid-template-columns: 1fr 1fr; }
@@ -390,9 +428,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
   .nav__links { gap: 24px; font-size: 18px; }
 
-  .hero h1, .hero__line { font-size: 34px; line-height: 39px; letter-spacing: -0.035em; }
-  .hero__line { font-size: 20px; line-height: 23px; }
-  .hero__line--last { margin-top: 23px; }
+  .hero h1 { font-size: 34px; line-height: 39px; letter-spacing: -0.035em; }
   .hero__portrait { width: 96px; height: 96px; margin-top: 28px; }
   .nav__links { gap: 16px; font-size: 16px; }
 
@@ -540,231 +576,6 @@ a { color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   compvis: "Case studies across phases". Hovering or tapping a stage slides its
-   case study summary to the middle of the column at full opacity.
-   Clicking the middle card, or "Full project", opens that case study page.
-   ========================================================= */
-
-/* Two columns: heading and cycle on the left, case study window on the right.
-   The window runs the full height of the section, touching both dividers. */
-.compvis {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-  margin: 0 var(--gutter);
-  border-bottom: 1px solid var(--line);
-}
-
-.compvis__head {
-  grid-column: 1;
-  grid-row: 1;
-  padding-top: 64px;
-}
-.compvis__intro {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.3;
-}
-.compvis__title {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 31px;
-  letter-spacing: -0.02em;
-}
-
-.compvis__body { display: contents; }
-
-/* Plain vertical list of the three competencies, in the same order as the
-   case studies beside it. (Replaced the Figma cycle diagram on 15 Sep 2026.) */
-.compvis__diagram {
-  grid-column: 1;
-  grid-row: 2;
-  align-self: center;
-  justify-self: center;
-  margin: 40px 0 64px;
-}
-.compvis__stages {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.compvis__trigger {
-  margin: 0;
-  padding: 2px 0;
-  border: 0;
-  background: none;
-  -webkit-appearance: none;
-  appearance: none;
-  color: var(--cycle-idle);
-  font: inherit;
-  font-size: 24px;
-  line-height: 31px;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color .25s ease;
-}
-.compvis__stage.is-active .compvis__trigger,
-.compvis__trigger:hover { color: var(--ink); }
-.compvis__trigger:focus { outline: none; }
-.using-keyboard .compvis__trigger:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
-
-/* Case study column: a fixed window, the active study slides to its middle. */
-.compvis__viewport {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  position: relative;
-  --window: 660px;
-  --tile: 260px;
-  height: var(--window);
-  overflow-y: auto;
-  overscroll-behavior-y: auto;
-  scroll-snap-type: y mandatory;
-  scrollbar-width: none;
-}
-.compvis__viewport::-webkit-scrollbar { display: none; }
-.compvis__viewport:focus { outline: none; }
-.using-keyboard .compvis__viewport:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
-.compvis__cards {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 69px;
-  /* Room above the first and below the last study so each can reach the middle. */
-  padding: calc((var(--window) - var(--tile)) / 2) 0;
-}
-.compvis__card {
-  display: flex;
-  align-items: flex-start;
-  gap: 35px;
-  opacity: .5;
-  cursor: pointer;
-  scroll-snap-align: center;
-  transition: opacity .4s ease;
-}
-/* A dimmed study scrolls itself to the middle when clicked; the active one
-   opens, so the whole card stays a pointer either way. */
-.compvis__card.is-active { opacity: 1; }
-.compvis__img {
-  flex: none;
-  width: 260px;
-  height: 260px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: var(--placeholder);
-}
-/* Square frame holding the project's own thumbnail, the same picture that
-   fronts it in All work, cropped to the square from its middle. */
-.compvis__img--shot { overflow: hidden; }
-.compvis__img--shot img { width: 100%; height: 100%; object-fit: cover; }
-/* Simple icon tiles: outlined square, one Material Symbol (weight 200) per project */
-.compvis__img--icon {
-  display: grid;
-  place-items: center;
-  box-sizing: border-box;
-  border: 1px solid var(--stroke);
-  background: none;
-}
-.compvis__img--icon svg { width: 38%; height: 38%; fill: currentColor; }
-.compvis__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  min-height: 260px;
-  max-width: 340px;
-}
-.compvis__skills { gap: 4px; margin-top: 2px; }
-.compvis__text {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-.compvis__text p { margin: 0; }
-/* Hairline tag naming the competency a study belongs to. */
-.compvis__text .compvis__pillar {
-  margin-bottom: 2px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0;
-}
-.compvis__name { margin: 0; color: var(--ink); font-size: 14px; font-weight: 400; line-height: 1.25; }
-.compvis__more {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  align-self: flex-start;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  -webkit-appearance: none;
-  appearance: none;
-  color: var(--muted);
-  font: inherit;
-  font-size: 12px;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  transition: color .2s ease;
-}
-.compvis__more .icon--arrow { width: 14px; height: 14px; }
-.compvis__more:hover { color: var(--ink); }
-.compvis__more:focus { outline: none; }
-.using-keyboard .compvis__more:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
-.compvis__card:not(.is-active) .compvis__more { pointer-events: none; }
-@media (prefers-reduced-motion: reduce) {
-  .compvis__card { transition: none; }
-}
-/* Without JavaScript every case study shows at full strength. */
-.compvis:not(.is-enhanced) .compvis__viewport { height: auto; }
-.compvis:not(.is-enhanced) .compvis__cards { padding: 32px 0; }
-.compvis:not(.is-enhanced) .compvis__card { opacity: 1; }
-
-@media (max-width: 900px) {
-  .compvis { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; }
-  .compvis__diagram { grid-row: 2; margin: 32px 0; justify-self: start; }
-  .compvis__stages { flex-direction: row; gap: 24px; }
-  /* Case studies become a sideways swipe, each snapping to the centre. */
-  .compvis__viewport {
-    --card: min(78vw, 340px);
-    grid-column: 1;
-    grid-row: 3;
-    height: auto;
-    margin: 0 calc(var(--gutter) * -1);
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x proximity;
-    /* Snapping aligns to the scrollport, so hold it in from the page edge to
-       keep each study in line with the heading above it. */
-    scroll-padding-left: var(--gutter);
-  }
-  .compvis__cards {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 24px;
-    width: max-content;
-    /* Each study starts at the page gutter, in line with the heading, the
-       competencies and the All work section below. */
-    padding: 0 var(--gutter) 48px;
-  }
-  .compvis__card { flex: 0 0 var(--card); flex-direction: column; gap: 16px; scroll-snap-align: start; }
-  .compvis__img { width: 100%; height: auto; aspect-ratio: 1; }
-  .compvis__info { min-height: 0; max-width: none; gap: 20px; }
-}
-
-/* =========================================================
    Icons: Material Symbols Outlined (weight 400), inlined as SVG.
    Every link that points somewhere else carries the arrow_outward icon.
    ========================================================= */
@@ -776,8 +587,8 @@ a:hover > .icon--arrow, button:hover > .icon--arrow { transform: translate(2px, 
 .link:hover { color: var(--muted); }
 
 /* =========================================================
-   AI in practice: an accordion holding a process diagram,
-   the workflows Ro has built, case study links and what an employer gets.
+   AI in practice: heading and intro, then a "More detail" pill that opens
+   the workflows Ro has built and the case study links.
    ========================================================= */
 
 .ai {
@@ -787,37 +598,37 @@ a:hover > .icon--arrow, button:hover > .icon--arrow { transform: translate(2px, 
   border-bottom: 1px solid var(--line);
 }
 .ai__title { margin: 0; font-size: 24px; font-weight: 400; line-height: 31px; letter-spacing: -0.02em; }
-.ai__toggle {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
+.ai__header { max-width: 640px; }
+
+/* "More detail" pill under the intro opens the rest of the section. Same
+   outline as the filter pills; the chevron turns over when it is open. */
+.ai__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 24px 0 0;
+  padding: 10px 14px 10px 16px;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-  color: var(--ink);
-  font: inherit;
-  letter-spacing: inherit;
-  text-align: left;
-  cursor: pointer;
+  transition: border-color .2s ease;
 }
-/* The plus / minus sits centred against the heading and intro together. */
-.ai__header { position: relative; padding-right: 64px; }
-.ai__sign {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  display: inline-flex;
-  font-size: 32px;
-  transform: translateY(-50%);
-}
-.ai__sign .icon { width: 1em; height: 1em; vertical-align: 0; }
-.ai__toggle[aria-expanded="true"] .icon--add,
-.ai__toggle[aria-expanded="false"] .icon--remove { display: none; }
-.ai:not(.is-enhanced) .ai__sign { display: none; }
-.ai__toggle:focus { outline: none; }
-.using-keyboard .ai__toggle:focus-visible span:first-child { text-decoration: underline; text-underline-offset: 5px; }
+.ai__more:hover { border-color: var(--ink); }
+.ai__more:focus { outline: none; }
+.using-keyboard .ai__more:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.ai__more .icon { width: 20px; height: 20px; vertical-align: 0; transition: transform .3s ease; }
+.ai__more[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.ai:not(.is-enhanced) .ai__more { display: none; }
+@media (prefers-reduced-motion: reduce) { .ai__more .icon { transition: none; } }
 .ai__intro { max-width: 640px; margin: 8px 0 0; color: var(--muted); font-size: 16px; line-height: 1.3; }
 
 /* Open and close by animating the row height. */
@@ -885,7 +696,6 @@ a:hover > .icon--arrow, button:hover > .icon--arrow { transform: translate(2px, 
 @media (max-width: 600px) {
   .ai { padding: 40px 0; }
   .ai__title { font-size: 20px; line-height: 26px; }
-  .ai__sign { font-size: 28px; }
   .ai__tools { grid-template-columns: minmax(0, 1fr); }
   .ai__links a { font-size: 18px; }
 }
@@ -1050,6 +860,30 @@ legend.field__label { margin-bottom: 8px; }
 .companies__years { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.25; }
 .companies__name { margin: 0; font-size: 16px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; }
 .companies__name span { display: block; color: var(--muted); }
+/* Logo tile beside each company: the mark is a mask filled with the text
+   colour, so every logo is one colour and follows the theme. */
+.companies__co { display: flex; align-items: flex-start; gap: 12px; min-width: 0; }
+.companies__logo {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--divider-soft);
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.companies__logo[style]::before {
+  content: "";
+  width: var(--logo-w, 22px);
+  height: var(--logo-h, 22px);
+  background: currentColor;
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
+}
 .companies__desc { max-width: 36ch; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 
 /* Same column tracks as the footer so the photo lines up with the coordinates. */
@@ -1247,13 +1081,6 @@ legend.field__label { margin-bottom: 8px; }
   .case__row { padding: 40px 0; gap: 16px; }
   .case__lead { font-size: 20px; }
   .case__next-link { font-size: 28px; }
-}
-
-@media (max-width: 600px) {
-  .compvis__head { padding-top: 40px; }
-  .compvis__title { font-size: 20px; line-height: 26px; }
-  .compvis__stages { gap: 16px; }
-  .compvis__trigger { font-size: 20px; line-height: 26px; }
 }
 
 /* ---------- Case study panel: slides in from the right, covers the right half ----------

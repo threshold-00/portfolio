@@ -9,15 +9,15 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rowenabaulch.com.au/">
   <script>
-    // Apply the saved or system theme before first paint, so there is no flash.
+    // Dark by default (Ro's call, 11 Nov 2026). A visitor who picks light with
+    // the toggle keeps it. Set before first paint, so there is no flash.
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=70">
+  <link rel="stylesheet" href="styles.css?v=71">
 </head>
 <body>
   <header class="nav">
@@ -196,6 +196,6 @@
       </section>
     </div>
   </footer>
-  <script src="assets/site.js?v=2" defer></script>
+  <script src="assets/site.js?v=3" defer></script>
 </body>
 </html>

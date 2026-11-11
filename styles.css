@@ -33,6 +33,12 @@
   --shadow-thumb: rgba(0, 0, 0, .16);
   --logo-filter: none;
   --available: #16a34a;      /* "Available now" dot */
+  /* The hero's preview card stays white in both themes. */
+  --peek-paper: #fff;
+  --peek-ink: #000;
+  --peek-muted: #767676;
+  --peek-stroke: #949494;
+  --peek-placeholder: #eee;
   --threshold-paper: #f3f2ee;  /* the Threshold site's own background, behind its video thumbnail */
   --afterpay-ink: #181818;     /* the Afterpay B2B site's own background, behind its video thumbnail */
 
@@ -257,9 +263,17 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   width: min(660px, 100%);
   height: 288px;
-  border: 1px solid var(--line);
+  /* White in both themes: the card re-points the theme tokens at its own
+     fixed values, so its pills, button and text follow without extra rules. */
+  --paper: var(--peek-paper);
+  --ink: var(--peek-ink);
+  --line: var(--peek-ink);
+  --muted: var(--peek-muted);
+  --stroke: var(--peek-stroke);
+  --placeholder: var(--peek-placeholder);
   border-radius: 12px;
   background: var(--paper);
+  color: var(--ink);
   box-shadow: 0 20px 48px -12px var(--shadow-panel);
   text-align: left;
   visibility: hidden;
@@ -280,8 +294,6 @@ a { color: inherit; text-decoration: none; }
   left: var(--notch, 50%);
   width: 12px;
   height: 12px;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
   background: var(--paper);
   transform: translateX(-50%) rotate(45deg);
 }

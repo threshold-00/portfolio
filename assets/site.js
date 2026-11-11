@@ -30,21 +30,12 @@
     btn.querySelector('.theme-toggle__label').textContent = dark ? 'Light' : 'Dark';
   }
   label();
-  // The scroll-driven theme on the homepage changes data-theme too,
-  // so relabel whenever it changes rather than only on click.
+  // Relabel whenever data-theme changes, not only on click.
   new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   btn.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) {}
-    label();
-  });
-  // Follow system changes until the visitor picks a theme.
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (ev) {
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) {}
-    if (saved) return;
-    root.setAttribute('data-theme', ev.matches ? 'dark' : 'light');
     label();
   });
 })();

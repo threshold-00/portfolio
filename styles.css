@@ -177,6 +177,25 @@ a { color: inherit; text-decoration: none; }
 }
 .nav__cta:hover { color: var(--muted); }
 
+/* "Ventures": an outlined pill in the nav, matching the theme toggle. */
+.nav__pill {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.nav__links a.nav__pill:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.nav__pill:focus { outline: none; }
+.using-keyboard .nav__pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
 /* "Available now" beside Let's chat: a status, not a link. */
 .nav__status {
   display: inline-flex;
@@ -209,6 +228,20 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) { .nav__dot::after { animation: none; opacity: 0; } }
 @media (max-width: 600px) {
   .nav__status { gap: 6px; font-size: 14px; }
+}
+/* Small phones: the words step aside so the nav fits; the dot stays beside
+   Let's chat and screen readers still hear "Available now". */
+@media (max-width: 480px) {
+  .nav__links { gap: 12px; }
+  .nav__end { gap: 12px; }
+  .nav__status-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }
 .nav__cta:focus { outline: none; }
 .using-keyboard .nav__cta:focus-visible { text-decoration: underline; text-underline-offset: 4px; }

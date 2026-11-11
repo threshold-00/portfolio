@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Handwriting for the four hero words, only the letters they use. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap&text=researchdesigntestingcomplex">
-  <link rel="stylesheet" href="styles.css?v=78">
+  <link rel="stylesheet" href="styles.css?v=80">
 </head>
 <body>
   <header class="nav">
@@ -29,7 +29,8 @@
     <div class="nav__end">
       <nav aria-label="Main">
         <ul class="nav__links">
-          <li class="nav__status"><span class="nav__dot" aria-hidden="true"></span>Available now</li>
+          <li><a class="nav__pill" href="/projectrealdays">Ventures</a></li>
+          <li class="nav__status"><span class="nav__dot" aria-hidden="true"></span><span class="nav__status-text">Available now</span></li>
           <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Let’s chat</button></li>
         </ul>
       </nav>
@@ -74,15 +75,23 @@
         <p class="work__intro">Product, research and brand projects.</p>
       </div>
       <ul class="filters" aria-label="Filter projects by tag" hidden>
-        <li><button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">14</span></button></li>
-        <li><button class="filter" type="button" data-filter="product-design" aria-pressed="false">Product design <span class="filter__count">8</span></button></li>
-        <li><button class="filter" type="button" data-filter="research" aria-pressed="false">Research <span class="filter__count">7</span></button></li>
-        <li><button class="filter" type="button" data-filter="ai" aria-pressed="false">AI <span class="filter__count">3</span></button></li>
+        <li><button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">15</span></button></li>
+        <li><button class="filter" type="button" data-filter="product-design" aria-pressed="false">Product design <span class="filter__count">9</span></button></li>
+        <li><button class="filter" type="button" data-filter="research" aria-pressed="false">Research <span class="filter__count">8</span></button></li>
+        <li><button class="filter" type="button" data-filter="ai" aria-pressed="false">AI <span class="filter__count">4</span></button></li>
         <li><button class="filter" type="button" data-filter="fintech" aria-pressed="false">Fintech <span class="filter__count">3</span></button></li>
         <li><button class="filter" type="button" data-filter="brand" aria-pressed="false">Brand <span class="filter__count">4</span></button></li>
       </ul>
       <p class="visually-hidden" aria-live="polite" id="filter-status"></p>
       <ul class="grid">
+      <li class="card" data-filters="product-design research ai">
+        <img class="card__img" src="assets/img/home/realdays-1.webp" alt="RealDays homepage: Something you’ll actually remember doing" loading="lazy" decoding="async">
+        <h3 class="card__title">RealDays</h3>
+        <p class="card__client">My venture, Victoria and Bali</p>
+        <ul class="tags"><li>Venture</li><li>Product design</li><li>AI</li></ul>
+        <p class="card__summary">A booking platform for small, owner-run experience businesses, from motorbike research in Bali to Stripe payments and listings arranged for AI search.</p>
+          <a class="card__link" href="/projectrealdays">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
+      </li>
       <li class="card" data-filters="product-design ai">
         <div class="card__img card__media card__media--threshold">
           <video class="card__video card__video--fill" src="assets/video/threshold-booking.mp4"
@@ -90,10 +99,10 @@
                  autoplay loop muted playsinline preload="metadata"
                  aria-label="The Salty Cowboy booking app, answering two questions and rewriting the list of rides"></video>
         </div>
-        <h3 class="card__title">Threshold, a booking engine</h3>
+        <h3 class="card__title">Salty Cowboy booking engine</h3>
         <p class="card__client">Salty Cowboy</p>
         <ul class="tags"><li>Product design</li><li>AI</li></ul>
-        <p class="card__summary">A booking engine for a horse rescue in Bali that only offers riders the rides that fit them. Designed, built and shipped with AI.</p>
+        <p class="card__summary">A booking engine for a horse rescue in Bali that only offers riders the rides that fit them. Designed and built with AI, and the start of RealDays.</p>
           <a class="card__link" href="/projectthreshold">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
       <li class="card" data-filters="product-design research fintech">
@@ -254,9 +263,9 @@
             </li>
             <li>
               <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-40-343 237-137-237-137-237 137 237 137ZM160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11L160-252Zm320-228Z"/></svg></span>
-              <h4>Design to shipped product</h4>
+              <h4>Design to working product</h4>
               <p>A trilingual booking engine designed, coded, tested and deployed with Claude Code.</p>
-              <span class="ai__tool-src">Salty Cowboy, Threshold</span>
+              <span class="ai__tool-src">Salty Cowboy, RealDays</span>
             </li>
             <li>
               <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg></span>
@@ -270,7 +279,7 @@
           <div class="ai__examples">
             <h3 class="ai__subtitle">See it in practice</h3>
             <ul class="ai__links">
-              <li><a class="link" href="/projectthreshold">Salty Cowboy, now Threshold <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>Designed, built and shipped with AI</span></li>
+              <li><a class="link" href="/projectrealdays">RealDays <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>Designed and built with AI, from research to payments</span></li>
               <li><a class="link" href="/projectafterpaywebsite">Afterpay’s new B2B site <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>AI wireframe, review and UX to UI workflows</span></li>
             </ul>
           </div>

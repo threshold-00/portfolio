@@ -222,9 +222,10 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--line);
   text-align: center;
 }
+.hero { position: relative; }
 
 .hero h1 {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0;
   font-size: 54px;
   font-weight: 400;
@@ -233,7 +234,7 @@ a { color: inherit; text-decoration: none; }
   text-wrap: balance;
 }
 
-/* The four underlined words each open a case study in the slide-out panel:
+/* The four underlined words each pop out a preview card of a case study:
    on hover with a mouse, on tap on a phone, on Enter from the keyboard. */
 .hero__word {
   text-decoration: underline;
@@ -245,20 +246,149 @@ a { color: inherit; text-decoration: none; }
 .hero__word:focus { outline: none; }
 .using-keyboard .hero__word:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
 
-/* Portrait under the opening quote. Already circular with transparent
-   corners, so it sits on either theme. */
-.hero__portrait {
-  position: relative;
-  display: block;
-  width: 132px;
-  height: 132px;
-  margin-top: 40px;
-}
-.hero__face {
+/* Preview card. Desktop: under the opening line, never over it, with a
+   notch pointing up at the word. Text on the left, image on the right. */
+.peek {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: min(660px, 100%);
+  height: 288px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 20px 48px -12px var(--shadow-panel);
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .3s cubic-bezier(.22, .75, .2, 1), visibility 0s linear .3s;
+}
+.peek.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity .2s ease, transform .3s cubic-bezier(.22, .75, .2, 1), left .3s cubic-bezier(.22, .75, .2, 1);
+}
+.peek::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: var(--notch, 50%);
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+  transform: translateX(-50%) rotate(45deg);
+}
+.peek__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding: 24px;
+}
+.peek__client { margin: 0; color: var(--muted); font-size: 14px; line-height: 18px; }
+.peek__title { margin: 4px 0 0; font-size: 26px; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+.peek__tags { gap: 4px; }
+.peek__summary {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+/* An outlined pill with the arrow in a filled circle at its end. */
+.peek__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 4px 4px 4px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1;
+  transition: background-color .2s ease;
+}
+.peek__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+}
+.peek__arrow .icon { width: 16px; height: 16px; vertical-align: 0; transition: transform .2s ease; }
+.peek__link:hover .peek__arrow .icon { transform: translate(1px, -1px) rotate(45deg); }
+.peek__link:focus { outline: none; }
+.using-keyboard .peek__link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.peek__media {
+  position: relative;
+  margin: 8px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--media-bg, var(--placeholder));
+}
+.peek__img, .peek__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.peek__video { object-fit: contain; }
+.peek__close {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .peek, .peek.is-open { transition: none; transform: none; }
+}
+
+/* Phones and tablets: a card at the bottom of the screen, centred,
+   image on top, with a close button. */
+@media (max-width: 800px) {
+  .peek {
+    position: fixed;
+    z-index: 30;
+    top: auto;
+    right: var(--gutter);
+    bottom: 16px;
+    left: var(--gutter);
+    width: auto;
+    max-width: 440px;
+    height: auto;
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 132px auto;
+    transform: translateY(24px);
+  }
+  .peek::before { display: none; }
+  .peek__media { grid-row: 1; margin: 8px 8px 0; }
+  .peek__text { grid-row: 2; padding: 14px 16px 16px; gap: 10px; }
+  .peek__summary { -webkit-line-clamp: 3; }
+  .peek__tags { margin-top: 8px; }
+  .peek__title { font-size: 22px; }
+  .peek__link { margin-top: 12px; }
+  .peek__close { display: grid; }
 }
 
 /* ---------- Tabs ---------- */
@@ -416,7 +546,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Tablet (800) ---------- */
 
 @media (max-width: 1024px) {
-  .hero h1 { max-width: 700px; }
+  .hero h1 { max-width: 760px; }
   .tile { width: 56vw; }
   .project__meta { grid-template-columns: 52px 1fr minmax(0, 290px); }
   .footer { grid-template-columns: 1fr 1fr; }
@@ -429,7 +559,6 @@ a { color: inherit; text-decoration: none; }
   .nav__links { gap: 24px; font-size: 18px; }
 
   .hero h1 { font-size: 34px; line-height: 39px; letter-spacing: -0.035em; }
-  .hero__portrait { width: 96px; height: 96px; margin-top: 28px; }
   .nav__links { gap: 16px; font-size: 16px; }
 
   .tabs { font-size: 20px; line-height: 26px; }
@@ -852,7 +981,7 @@ legend.field__label { margin-bottom: 8px; }
   display: grid;
   grid-template-columns: 110px minmax(0, 1fr) minmax(0, 36ch);
   gap: var(--gap);
-  padding: 20px 0 24px;
+  padding: 32px 0 36px;
   border-top: 1px solid var(--stroke);
 }
 .companies__row:first-child { padding-top: 4px; border-top: 0; }

@@ -333,8 +333,11 @@ a { color: inherit; text-decoration: none; }
   left: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  width: min(680px, 100%);
-  height: 312px;
+  /* One fixed-height row: the text can never stretch the card, so the image
+     keeps the same 14px inset at the top and bottom. */
+  grid-template-rows: minmax(0, 1fr);
+  width: min(580px, 100%);
+  height: 282px;
   /* White in both themes: the card re-points the theme tokens at its own
      fixed values, so its pills, button and text follow without extra rules. */
   --paper: var(--peek-paper);
@@ -370,22 +373,17 @@ a { color: inherit; text-decoration: none; }
 }
 /* Not enough room under the line: the card opens above it, notch pointing down. */
 .peek--above::before { top: auto; bottom: -7px; }
-/* Laptop screens: a shorter card (two summary lines), so it fits under the
-   centred line without dropping below the fold. */
-@media (min-width: 801px) and (max-height: 860px) {
-  .peek { height: 272px; }
-  .peek__summary { -webkit-line-clamp: 2; }
-}
 .peek__text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
   min-width: 0;
-  padding: 28px 24px 28px 32px;
+  padding: 22px 20px 22px 26px;
+  overflow: hidden;
 }
 .peek__client { margin: 0; color: var(--muted); font-size: 14px; line-height: 18px; }
-.peek__title { margin: 4px 0 0; font-size: 26px; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+.peek__title { margin: 4px 0 0; font-size: 22px; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
 .peek__tags { gap: 4px; }
 .peek__summary {
   display: -webkit-box;
@@ -393,7 +391,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   font-size: 14px;
   line-height: 20px;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 /* An outlined pill with the arrow in a filled circle at its end. */
@@ -424,10 +422,17 @@ a { color: inherit; text-decoration: none; }
 .using-keyboard .peek__link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .peek__media {
   position: relative;
-  margin: 14px 14px 14px 32px;
+  margin: 14px 14px 14px 28px;
   overflow: hidden;
   border-radius: 8px;
   background: var(--media-bg, var(--placeholder));
+}
+/* Laptop screens: two summary lines and a shorter card, so it fits under the
+   centred line without dropping below the fold. Comes after the base rules
+   so it wins. */
+@media (min-width: 801px) and (max-height: 860px) {
+  .peek { height: 262px; }
+  .peek__summary { -webkit-line-clamp: 2; }
 }
 .peek__img, .peek__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .peek__video { object-fit: contain; }

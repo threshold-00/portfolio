@@ -20,7 +20,7 @@
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=85">
+  <link rel="stylesheet" href="styles.css?v=88">
 </head>
 <body>
   <header class="nav">
@@ -605,15 +605,25 @@
       }
 
       // Under the whole line, centred on the word as far as the page allows,
-      // with the notch on top pointing back up at it.
+      // with the notch on top pointing back up at it. The card always opens
+      // inside the screen: if it won't fit under the line it goes above it,
+      // and on a very short screen it sits as low as the screen allows.
       function place(word) {
-        if (sheet.matches) { peek.style.left = peek.style.top = ''; return; }
+        if (sheet.matches) { peek.style.left = peek.style.top = ''; peek.classList.remove('peek--above'); return; }
         var hr = hero.getBoundingClientRect(), wr = word.getBoundingClientRect(), tr = h1.getBoundingClientRect();
-        var w = peek.offsetWidth;
+        var w = peek.offsetWidth, h = peek.offsetHeight, vh = window.innerHeight;
+        var gap = 32, edge = 16, navH = 45;
+        var top = tr.bottom + gap;
+        if (top + h > vh - edge) top = tr.bottom + 24;
+        if (top + h > vh - edge) {
+          var above = tr.top - gap - h;
+          top = above >= navH + edge ? above : Math.max(navH + edge, vh - edge - h);
+        }
+        peek.classList.toggle('peek--above', top < tr.top);
         var centre = wr.left + wr.width / 2 - hr.left;
         var left = Math.max(0, Math.min(hr.width - w, centre - w / 2));
         peek.style.left = left + 'px';
-        peek.style.top = (tr.bottom - hr.top + 32) + 'px';
+        peek.style.top = (top - hr.top) + 'px';
         peek.style.setProperty('--notch', Math.max(24, Math.min(w - 24, centre - left)) + 'px');
       }
 

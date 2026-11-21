@@ -1,0 +1,301 @@
+/* Neue Haas Grotesk as installed on this Mac: Text Pro has only a Bold, so regular and medium come from Display Pro. local() only, no font files are served. */
+@font-face { font-family: "Ro Grotesk"; font-weight: 400; src: local("NeueHaasDisplay-Roman"), local("Neue Haas Grotesk Display Pro 55 Roman"), local("Neue Haas Grotesk Text Pro"), local("NHaasGroteskTXPro-55Rg"); }
+@font-face { font-family: "Ro Grotesk"; font-weight: 500; src: local("NeueHaasDisplay-Mediu"), local("NeueHaasDisplay-Medium"), local("Neue Haas Grotesk Display Pro 65 Medium"); }
+@font-face { font-family: "Ro Grotesk"; font-weight: 700; src: local("NeueHaasDisplay-Bold"), local("Neue Haas Grotesk Display Pro 75 Bold"), local("Neue Haas Grotesk Text Pro Bold"), local("NHaasGroteskTXPro-75Bd"); }
+/* New red landing preview. Tokens first, no hard-coded colours below. */
+:root {
+  --red: #d20300;
+  --red-ink: #000;
+  --hero-bg: #fff;
+  --nav-start: #fff;            /* nav before the hero fades */
+  --nav-start-ink: #000;
+  --ticker-paper: var(--red);
+  --ticker-ink: #000;
+  --ticker-shadow: rgba(0, 0, 0, .25);
+  --intro-fade: rgba(0, 0, 0, .78);
+  --intro-cap: #fff;
+  --tile-bg: #161616;          /* logo tiles stay dark in both themes so white logos read */
+  --tile-stroke: #2e2e2e;
+  --slack-bg: #1a1d21;
+  --slack-text: #d1d2d3;
+  --slack-time: #ababad;
+  --slack-mention-bg: rgba(29, 155, 209, .16);
+  --slack-mention: #5fbcec;
+  --slack-line: #35383d;
+  --star: #f5b400;
+  --p: 0;                       /* 0 at the top of the page, 1 once the hero has faded to black */
+}
+
+/* Nav: the hero's red with black text, then it follows the page as the hero fades. */
+.nav {
+  --mix: calc((1 - var(--p)) * 100%);
+  --nav-bg: color-mix(in srgb, var(--nav-start) var(--mix), var(--paper));
+  --nav-ink: color-mix(in srgb, var(--nav-start-ink) var(--mix), var(--ink));
+  background:
+    linear-gradient(var(--line), var(--line)) no-repeat center bottom / calc(100% - var(--gutter) * 2) var(--hair),
+    var(--nav-bg);
+  color: var(--nav-ink);
+}
+.nav .nav__logo img { filter: none; }
+.is-past-hero .nav .nav__logo img { filter: var(--logo-filter); }
+.nav .theme-toggle { transition: opacity .3s ease, color .3s ease; color: var(--nav-ink); border-color: var(--nav-ink); background: transparent; }
+.nav__cta .icon--arrow { margin-left: 2px; }
+
+/* Hero */
+.rhero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: max(560px, min(755px, 100svh - 45px));
+  overflow: hidden;
+  background: color-mix(in srgb, var(--hero-bg) calc((1 - var(--p)) * 100%), var(--paper));
+  color: var(--red-ink);
+}
+.rhero__letters {
+  display: flex;
+  align-items: flex-start;
+  width: min(879px, 72vw);
+  margin-top: -6%;
+}
+.rhero__letters img { display: block; height: auto; }
+.rhero__r { width: 45.9%; position: relative; z-index: 1; }
+.rhero__o { width: 52.2%; margin-left: 1.9%; position: relative; }
+.rhero__o img { width: 100%; }
+/* The band weaves through the O: it passes under the left half and over the right half. */
+.rhero__o-l { position: absolute; inset: 0; z-index: 3; clip-path: inset(0 50% 0 0); }
+.rhero__o-r { position: relative; z-index: 1; clip-path: inset(0 0 0 50%); }
+
+.rhero__ticker {
+  position: absolute;
+  left: 0; right: 0;
+  top: 44%;
+  z-index: 2;
+  overflow: hidden;
+  padding: 6px 0;
+  background: var(--ticker-paper);
+  color: var(--ticker-ink);
+  box-shadow: 0 14px 0 var(--ticker-shadow);
+}
+.rhero__track {
+  display: flex;
+  width: max-content;
+  gap: 19px;
+  align-items: center;
+  font-size: 25px;
+  line-height: 27px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: rhero-scroll 40s linear infinite;
+}
+.rhero__track span { flex: none; }
+@keyframes rhero-scroll { to { transform: translateX(calc(-50% - 9.5px)); } }
+
+.rhero__tag {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: clamp(32px, 9%, 72px);
+  z-index: 4;
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Intro: scrolling flips the highlighted word and the project beside it. */
+.intro-scroll { position: relative; height: 250vh; }
+.intro {
+  position: sticky;
+  top: 45px;
+  display: grid;
+  grid-template-columns: 629fr 651fr;
+  height: calc(100svh - 45px);
+  min-height: 520px;
+  border-bottom: var(--hair) solid var(--line);
+  background: var(--paper);
+}
+.intro__text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22px var(--gutter) 32px;
+}
+.intro__lede {
+  margin: 0;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 31px;
+  line-height: 36px;
+  font-weight: 400;
+}
+.intro__word {
+  margin: 0; padding: 0; border: 0; background: none;
+  font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer;
+  transition: color .35s ease;
+}
+.intro__word.is-on { color: var(--ink); font-weight: 700; }
+.intro__word:hover { color: var(--ink); }
+.intro__meta { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 53px; max-width: 440px; }
+.intro__sums { display: grid; max-width: 440px; min-height: 66px; }
+.intro__sum {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-size: 16px; line-height: 22px; letter-spacing: 0;
+  opacity: 0; transition: opacity .35s ease;
+}
+.intro__sum.is-on { opacity: 1; }
+.intro__media { position: relative; overflow: hidden; background: var(--placeholder); }
+.intro__slide {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity .45s ease, visibility .45s;
+}
+.intro__slide.is-on { opacity: 1; visibility: visible; }
+.intro__slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.intro__slide--fit { background: var(--tile-bg); }
+.intro__slide--fit[data-slide="2"] { background: #000; }   /* matches the black edges of the CRO artwork */
+.intro__slide--fit img { inset: 0 0 112px; height: calc(100% - 112px); object-fit: contain; }
+.intro__slide--fit::after { display: none; }
+.intro__slide::after {
+  content: ""; position: absolute; inset: 55% 0 0;
+  background: linear-gradient(transparent, var(--intro-fade));
+}
+.intro__cap {
+  position: absolute; z-index: 1;
+  left: 30px; right: 30px; bottom: 28px;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  color: var(--intro-cap);
+}
+.intro__cap h2 { margin: 0 0 4px; font-size: 18px; line-height: 22px; font-weight: 500; }
+.intro__cap p { margin: 0; font-size: 14px; line-height: 18px; }
+.intro__view {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  padding: 8px 13px;
+  border: 1px solid var(--intro-cap); border-radius: 999px;
+  color: inherit; text-decoration: none; font-size: 14px; line-height: 1;
+}
+.intro__view:hover { background: var(--intro-cap); color: var(--paper); }
+.intro__view .icon { width: 16px; height: 16px; }
+
+/* Praise: Slack-style messages drift past, with a fade at each end. */
+.praise {
+  display: grid;
+  grid-template-columns: minmax(180px, 300px) 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 126px 0 126px var(--gutter);
+  border-bottom: var(--hair) solid var(--line);
+  overflow: hidden;
+}
+.praise h2 { margin: 0 0 10px; font-size: 18px; font-weight: 400; letter-spacing: 0; }
+.praise__stars { display: flex; gap: 2px; margin: 0; padding: 0; list-style: none; color: var(--star); }
+.praise__stars svg { width: 24px; height: 24px; fill: currentColor; }
+.praise__window { position: relative; overflow: hidden; }
+.praise__window::before, .praise__window::after {
+  content: ""; position: absolute; top: 0; bottom: 0; z-index: 1; width: 140px; pointer-events: none;
+}
+.praise__window::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
+.praise__window::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
+.praise-js .praise__track { animation: none; will-change: transform; }
+.praise-js .praise__set[aria-hidden="true"] { display: none; }
+.praise-js .praise { position: sticky; top: 45px; min-height: calc(100svh - 45px); padding-top: 40px; padding-bottom: 40px; background: var(--paper); }
+.praise__track { display: flex; width: max-content; animation: praise-scroll 90s linear infinite; }
+@keyframes praise-scroll { to { transform: translateX(-50%); } }
+.praise__window:hover .praise__track { animation-play-state: paused; }
+.praise__set { display: flex; align-items: flex-start; gap: 14px; padding: 0 14px 0 0; margin: 0; list-style: none; }
+.slack {
+  flex: none; width: 360px;
+  display: grid; gap: 10px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--slack-bg);
+  color: var(--slack-text);
+  font-size: 14px; line-height: 20px; letter-spacing: 0;
+}
+.slack__msg { display: grid; grid-template-columns: 36px 1fr; gap: 10px; }
+.slack__msg + .slack__msg { padding-top: 10px; border-top: 1px solid var(--slack-line); }
+.slack__av {
+  display: grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--av);
+  color: #fff; font-size: 13px; font-weight: 700;
+}
+.slack__head { margin: 0; color: var(--slack-text); }
+.slack__head b { color: #fff; font-weight: 700; }
+.slack__head time { margin-left: 6px; color: var(--slack-time); font-size: 12px; }
+.slack__body { margin: 2px 0 0; }
+.slack__link { display: grid; gap: 4px; margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--slack-line); color: var(--slack-time); font-size: 12px; line-height: 17px; }
+.slack__link b { color: #fff; font-size: 13px; line-height: 18px; }
+.slack__link em { color: var(--slack-text); font-style: normal; font-weight: 700; }
+.slack__msg:has(.slack__link) > div { min-width: 0; }
+.intro__count { margin: 0 0 1px; color: var(--ink); font-size: 16px; line-height: 22px; font-variant-numeric: tabular-nums; }
+.slack__at { padding: 0 2px; border-radius: 3px; background: var(--slack-mention-bg); color: var(--slack-mention); }
+:root { --hair: .5px; --line: #cfcfcf; }
+:root[data-theme="dark"] { --paper: #000; --line: #333; }   /* fully black dark mode, softer grey lines */
+.footer, .project + .project { border-top-width: var(--hair); }
+/* One font everywhere: Neue Haas Grotesk, whichever way it is installed. */
+:root { --font: "Ro Grotesk", "Site Grotesk", "Neue Haas Grotesk Text Pro", "Neue Haas Grotesk Display Pro", "Neue Haas Grotesk", "neue-haas-grotesk-text", "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+body, body * { font-family: var(--font); }
+body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 0 kerning */
+/* Nav text is one size. */
+.nav__links, .nav__cta, .nav__status, .nav .theme-toggle { font-size: 16px; }
+:root { --av-1: #7a4fd1; --av-2: #1f8a70; --av-3: #c2561d; --av-4: #2c6db5; --av-5: #b5367a; }
+
+/* Proof */
+.proof { padding: 112px var(--gutter) 126px; text-align: center; }
+.proof h2 { margin: 0 auto; max-width: 900px; font-size: 24px; line-height: 30px; font-weight: 400; letter-spacing: 0; text-wrap: balance; }
+.proof__sub { margin: 18px 0 0; color: var(--muted); font-size: 16px; letter-spacing: 0; }
+.proof__logos {
+  display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center;
+  gap: 12px;
+  margin: 56px auto 0; padding: 0; list-style: none; max-width: 1100px;
+}
+.proof__logos li {
+  display: grid; place-items: center;
+  width: 200px; height: 96px;
+  border: 1px solid var(--tile-stroke); border-radius: 16px;
+  background: var(--tile-bg);
+}
+.proof__logos img { display: block; width: auto; max-width: 140px; height: var(--lh, 28px); filter: brightness(0) invert(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rhero__track, .praise__track { animation: none; }
+  .praise__window { overflow-x: auto; }
+  .praise__set[aria-hidden="true"] { display: none; }
+}
+@media (max-width: 800px) {
+  .intro { grid-template-columns: 1fr; grid-template-rows: 44% 1fr; }
+  .intro__media { order: -1; }
+  .intro__text { justify-content: flex-start; gap: 20px; padding-top: 24px; }
+  .intro__lede { font-size: 20px; line-height: 24px; }
+  .intro__meta { position: static; }
+  .intro__cap { left: 16px; right: 16px; bottom: 16px; }
+  .praise { grid-template-columns: 1fr; padding: 67px 0 67px var(--gutter); gap: 28px; }
+  .praise__window::before, .praise__window::after { width: 48px; }
+  .slack { width: 300px; }
+  .rhero__letters { width: 84vw; }
+  .rhero__track { font-size: 18px; line-height: 20px; }
+  .rhero__ticker { padding: 5px 0; }
+  .proof__logos li { width: calc(50% - 6px); }
+}
+
+/* Kerning 0% everywhere on this page, including the shared nav, grid and footer. */
+body *, body *::before, body *::after { letter-spacing: 0 !important; }
+
+/* Footer: a Patrick Bateman GIF replaces the two marks. */
+.footer__marks img.x { filter: none; }
+.footer__gif { margin: 0; max-width: 300px; }
+.footer__marks .footer__gif img { display: block; width: 100%; height: auto; filter: none; border-radius: 12px; }
+.footer__gif figcaption { margin-top: 12px; font-size: 14px; line-height: 18px; color: var(--muted); }
+/* Footer button matches the LinkedIn link beside it. */
+.footer .nav__cta { font-size: inherit; }
+
+/* "Available now" matches "Book a meeting": same size and colour, the green dot carries the status. */
+.nav__status { color: var(--nav-ink); }
+
+/* Nav spacing: one 32px step between status, button and toggle. */
+.nav__end { gap: 32px; }
+.nav__links { gap: 32px; }

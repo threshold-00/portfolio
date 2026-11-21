@@ -21,6 +21,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=90">
+  <link rel="stylesheet" href="assets/landing.css?v=1">
 </head>
 <body>
   <header class="nav">
@@ -29,7 +30,7 @@
       <nav aria-label="Main">
         <ul class="nav__links">
           <li class="nav__status"><span class="nav__dot" aria-hidden="true"></span><span class="nav__status-text">Available now</span></li>
-          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Let’s chat</button></li>
+          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></li>
         </ul>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
@@ -40,23 +41,77 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Ro brings <span class="hero__keep"><a class="hero__word hero__word--waft" href="/projectmyki" data-title="Victoria’s new myki system"><span class="hero__type">research</span></a>,</span> <a class="hero__word" href="/projectafterpaywebsite" data-title="Afterpay’s new B2B site"><span class="hero__type">design</span></a> and <a class="hero__word" href="/projectafterpayb2b" data-title="CRO tests to generate leads"><span class="hero__type">testing</span></a> to <a class="hero__word" href="/projectsaf3" data-title="SAF3 MVP"><span class="hero__type">complex</span></a> industries, making sure products work for the people who rely on them.</h1>
-      <aside class="peek" id="peek" aria-label="Case study preview">
-        <div class="peek__text">
-          <div>
-            <p class="peek__client"></p>
-            <h2 class="peek__title"></h2>
-            <ul class="tags peek__tags" aria-label="Skills"></ul>
-          </div>
-          <div>
-            <p class="peek__summary"></p>
-            <a class="peek__link" href="/projectmyki">Full project <span class="peek__arrow"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></span></a>
+    <section class="rhero" aria-labelledby="rhero-h">
+      <h1 id="rhero-h" class="visually-hidden">Ro. I make things suck less.</h1>
+      <div class="rhero__letters" aria-hidden="true">
+        <img class="rhero__r" src="assets/img/new/ro-r.svg" alt="">
+        <div class="rhero__o">
+          <img class="rhero__o-r" src="assets/img/new/ro-o.svg" alt="">
+          <img class="rhero__o-l" src="assets/img/new/ro-o.svg" alt="">
+        </div>
+      </div>
+      <div class="rhero__ticker"><div class="rhero__track"><span>Strategic design</span><span aria-hidden="true">👩🏻‍💻</span><span>AI engine setup</span><span aria-hidden="true">🤖</span><span>Product and web optimisation</span><span aria-hidden="true">📈</span><span>Startup consulting</span><span aria-hidden="true">🚀</span><span aria-hidden="true">Strategic design</span><span aria-hidden="true">👩🏻‍💻</span><span aria-hidden="true">AI engine setup</span><span aria-hidden="true">🤖</span><span aria-hidden="true">Product and web optimisation</span><span aria-hidden="true">📈</span><span aria-hidden="true">Startup consulting</span><span aria-hidden="true">🚀</span></div></div>
+      <p class="rhero__tag" aria-hidden="true">[I make things suck less]</p>
+    </section>
+
+    <div class="intro-scroll" id="intro-scroll">
+      <section class="intro" aria-label="Featured work">
+        <div class="intro__text">
+          <p class="intro__lede">Ro brings <button class="intro__word is-on" type="button" data-word="0">research</button>, <button class="intro__word" type="button" data-word="1">design</button> and <button class="intro__word" type="button" data-word="2">testing</button> to <button class="intro__word" type="button" data-word="3">complex</button> industries, ensuring products work for the people who rely on them.</p>
+          <div class="intro__meta">
+            <p class="intro__count" aria-hidden="true"><span data-count>1</span>/4</p>
+            <div class="intro__sums" aria-live="polite"><p class="intro__sum is-on" data-sum="0">Working with the Department of Transport and Planning to ensure new myki system meets the needs of Victoria’s general public.</p><p class="intro__sum" data-sum="1">Designing Afterpay’s new B2B website for every international market, with AI workflows that go from strategy to wireframes to UI.</p><p class="intro__sum" data-sum="2">Setting up Afterpay’s Global CRO (Conversion Rate Optimisation) program, with a UX lens.</p><p class="intro__sum" data-sum="3">Defined the design and research direction for SAF3, an institutional crypto custody solution from NAB and Zodia Custody’s partnership to bridge traditional finance and crypto.</p></div>
           </div>
         </div>
-        <div class="peek__media"></div>
-        <button class="peek__close" type="button" aria-label="Close preview">×</button>
-      </aside>
+        <div class="intro__media">
+          <div class="intro__slide is-on" data-slide="0">
+            <img src="assets/img/home/myki-2.webp" alt="Ticket gates at a Victorian train station">
+            <div class="intro__cap">
+              <div><h2>Victoria’s new myki system</h2><p>Department of Transport and Planning</p></div>
+              <a class="intro__view" href="/projectmyki">View <svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg><span class="visually-hidden"> Victoria’s new myki system</span></a>
+            </div>
+          </div>
+          <div class="intro__slide intro__slide--fit" data-slide="1" aria-hidden="true">
+            <img src="assets/img/cases/afterpay-nav-poster.webp" alt="The site’s main navigation, opening in turn on Product, Business type, Industry, Why Afterpay and Resources">
+            <div class="intro__cap">
+              <div><h2>Afterpay’s new B2B site</h2><p>Afterpay</p></div>
+              <a class="intro__view" href="/projectafterpaywebsite" tabindex="-1">View <svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg><span class="visually-hidden"> Afterpay’s new B2B site</span></a>
+            </div>
+          </div>
+          <div class="intro__slide intro__slide--fit" data-slide="2" aria-hidden="true">
+            <img src="assets/img/home/afterpay-1.webp" alt="Afterpay logo on a browser window">
+            <div class="intro__cap">
+              <div><h2>CRO tests to generate leads</h2><p>Afterpay</p></div>
+              <a class="intro__view" href="/projectafterpayb2b" tabindex="-1">View <svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg><span class="visually-hidden"> CRO tests to generate leads</span></a>
+            </div>
+          </div>
+          <div class="intro__slide" data-slide="3" aria-hidden="true">
+            <img src="assets/img/home/saf3-2.webp" alt="SAF3 logo on a laptop screen">
+            <div class="intro__cap">
+              <div><h2>SAF3 MVP</h2><p>NAB’s Innovation Team x Zodia Custody</p></div>
+              <a class="intro__view" href="/projectsaf3" tabindex="-1">View <svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg><span class="visually-hidden"> SAF3 MVP</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="praise-scroll" id="praise-scroll">
+    <section class="praise" aria-labelledby="praise-h">
+      <div>
+        <h2 id="praise-h">Good things said about me</h2>
+        <ul class="praise__stars" role="img" aria-label="Five stars"><svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg><svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg><svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg><svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg><svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></ul>
+      </div>
+      <div class="praise__window">
+        <div class="praise__track"><ul class="praise__set"><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-1)" aria-hidden="true">EH</span><div><p class="slack__head"><b>Evan Hughes</b><time>2:14 PM</time></p><p class="slack__body">Much of the capability was already in the Zodia tech stack we experimented with through 2023. Thanks to <span class="slack__at">@Rowena Baulch</span>, that old stack has been reimagined with a considered user experience. Still to be confirmed, but I expect this UX uplift to shape the global offering directly. A great example of design leadership.</p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-2)" aria-hidden="true">HS</span><div><p class="slack__head"><b>Howard S</b><time>10:41 AM</time></p><p class="slack__body">Hi <span class="slack__at">@Ro</span>, just wanted to say your update to the HomeID steeco today was brilliant. Loved it!</p></div></div><div class="slack__msg"><span class="slack__av" style="--av:var(--av-3)" aria-hidden="true"></span><div><p class="slack__head"><b></b><time>10:44 AM</time></p><p class="slack__body">Echoing Howard’s feedback, that was super impressive, Ro. Great to see truly customer-led innovation taking shape.</p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-5)" aria-hidden="true">AS</span><div><p class="slack__head"><b>Alicia Stenhouse</b><time>9:32 AM</time></p><p class="slack__body">Hi team, great to see the Legal Use case in the AFR this morning! Well done <span class="slack__at">@Rowena Baulch</span> <span class="slack__at">@Zain Zama</span> <span class="slack__at">@Thomas Galindo (External)</span> and <span class="slack__at">@Matt Zaba</span> for all the work inputting into this and representing the work of the team!<span class="slack__link"><b>National Australia Bank is rolling out generative AI in these three areas</b><span>James Eyers</span><span>National Australia Bank said generative AI is identifying systemic risks from customer complaints and helping bankers assess documents used…</span><em>Australian Financial Review</em></span></p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-4)" aria-hidden="true">LH</span><div><p class="slack__head"><b>Luke Haddrick</b><time>7:12 PM</time></p><p class="slack__body">Also, wanted to give a shout out to <span class="slack__at">@Ro</span> for her work on the CRO program. Had lunch with the client today and they were full of praise for it. That’s the kind of feedback I truly love to hear. Well done 👏</p></div></div></li></ul><ul class="praise__set" aria-hidden="true"><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-1)" aria-hidden="true">EH</span><div><p class="slack__head"><b>Evan Hughes</b><time>2:14 PM</time></p><p class="slack__body">Much of the capability was already in the Zodia tech stack we experimented with through 2023. Thanks to <span class="slack__at">@Rowena Baulch</span>, that old stack has been reimagined with a considered user experience. Still to be confirmed, but I expect this UX uplift to shape the global offering directly. A great example of design leadership.</p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-2)" aria-hidden="true">HS</span><div><p class="slack__head"><b>Howard S</b><time>10:41 AM</time></p><p class="slack__body">Hi <span class="slack__at">@Ro</span>, just wanted to say your update to the HomeID steeco today was brilliant. Loved it!</p></div></div><div class="slack__msg"><span class="slack__av" style="--av:var(--av-3)" aria-hidden="true"></span><div><p class="slack__head"><b></b><time>10:44 AM</time></p><p class="slack__body">Echoing Howard’s feedback, that was super impressive, Ro. Great to see truly customer-led innovation taking shape.</p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-5)" aria-hidden="true">AS</span><div><p class="slack__head"><b>Alicia Stenhouse</b><time>9:32 AM</time></p><p class="slack__body">Hi team, great to see the Legal Use case in the AFR this morning! Well done <span class="slack__at">@Rowena Baulch</span> <span class="slack__at">@Zain Zama</span> <span class="slack__at">@Thomas Galindo (External)</span> and <span class="slack__at">@Matt Zaba</span> for all the work inputting into this and representing the work of the team!<span class="slack__link"><b>National Australia Bank is rolling out generative AI in these three areas</b><span>James Eyers</span><span>National Australia Bank said generative AI is identifying systemic risks from customer complaints and helping bankers assess documents used…</span><em>Australian Financial Review</em></span></p></div></div></li><li class="slack"><div class="slack__msg"><span class="slack__av" style="--av:var(--av-4)" aria-hidden="true">LH</span><div><p class="slack__head"><b>Luke Haddrick</b><time>7:12 PM</time></p><p class="slack__body">Also, wanted to give a shout out to <span class="slack__at">@Ro</span> for her work on the CRO program. Had lunch with the client today and they were full of praise for it. That’s the kind of feedback I truly love to hear. Well done 👏</p></div></div></li></ul></div>
+      </div>
+    </section>
+    </div>
+
+    <section class="proof" aria-labelledby="proof-h">
+      <h2 id="proof-h">Nine years across fintech, government, social innovation and global consumer brands.</h2>
+      <p class="proof__sub">Some of the companies I’ve worked with</p>
+      <ul class="proof__logos"><li><img src="assets/img/logos/afterpay.svg" alt="Afterpay" style="--lh:30px"></li><li><img src="assets/img/logos/nab.svg" alt="NAB" style="--lh:34px"></li><li><img src="assets/img/logos/victoria.png" alt="Victorian Government" style="--lh:52px"></li><li><img src="assets/img/logos/deliveroo.svg" alt="Deliveroo" style="--lh:30px"></li><li><img src="assets/img/logos/athena.svg" alt="Athena Home Loans" style="--lh:26px"></li></ul>
     </section>
 
     <div class="drawer" hidden>
@@ -73,11 +128,11 @@
         <p class="work__intro">Product, research and brand projects.</p>
       </div>
       <ul class="filters" aria-label="Filter projects by tag" hidden>
-        <li><button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">15</span></button></li>
-        <li><button class="filter" type="button" data-filter="product-design" aria-pressed="false">Product design <span class="filter__count">9</span></button></li>
-        <li><button class="filter" type="button" data-filter="research" aria-pressed="false">Research <span class="filter__count">8</span></button></li>
+        <li><button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">13</span></button></li>
+        <li><button class="filter" type="button" data-filter="product-design" aria-pressed="false">Product design <span class="filter__count">8</span></button></li>
+        <li><button class="filter" type="button" data-filter="research" aria-pressed="false">Research <span class="filter__count">6</span></button></li>
         <li><button class="filter" type="button" data-filter="ai" aria-pressed="false">AI <span class="filter__count">4</span></button></li>
-        <li><button class="filter" type="button" data-filter="fintech" aria-pressed="false">Fintech <span class="filter__count">3</span></button></li>
+        <li><button class="filter" type="button" data-filter="fintech" aria-pressed="false">Fintech <span class="filter__count">2</span></button></li>
         <li><button class="filter" type="button" data-filter="brand" aria-pressed="false">Brand <span class="filter__count">4</span></button></li>
         <li><button class="filter" type="button" data-filter="ventures" aria-pressed="false">Ventures <span class="filter__count">2</span></button></li>
       </ul>
@@ -157,14 +212,6 @@
         <p class="card__summary">Working with the Department of Transport and Planning to ensure new myki system meets the needs of Victoria’s general public.</p>
           <a class="card__link" href="/projectmyki">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
-      <li class="card" data-filters="research fintech">
-        <img class="card__img" src="assets/img/home/stablecoin-2.webp" alt="Detail of the stablecoin service blueprint: a trade instruction passing from the sales desk to the stablecoin desk, then into DASH" loading="lazy" decoding="async">
-        <h3 class="card__title">Mapping NAB’s Stablecoin (AUDN)</h3>
-        <p class="card__client">NAB</p>
-        <ul class="tags"><li>Blueprint mapping</li><li>Finance</li></ul>
-        <p class="card__summary">Mapping NAB’s first-ever stablecoin (AUDN) to assist with gap identification and compliance mapping.</p>
-          <a class="card__link" href="/projectstablecoin">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
-      </li>
       <li class="card" data-filters="product-design research">
         <img class="card__img" src="assets/img/home/nod-2.webp" alt="Nod app: a simple exchange of kindness" loading="lazy" decoding="async">
         <h3 class="card__title">Nod</h3>
@@ -172,14 +219,6 @@
         <ul class="tags"><li>UX/UI</li><li>MVP Creation</li></ul>
         <p class="card__summary">Having fun with research and concept creation whilst designing to make an impact for service workers.</p>
           <a class="card__link" href="/projectnod">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
-      </li>
-      <li class="card" data-filters="product-design research">
-        <img class="card__img" src="assets/img/home/localhost.webp" alt="Local Host produce overview dashboard for farmers" loading="lazy" decoding="async">
-        <h3 class="card__title">Local Host</h3>
-        <p class="card__client">Direct-from-farm produce platform</p>
-        <ul class="tags"><li>Product Design</li><li>MVP Creation</li></ul>
-        <p class="card__summary">Concept, enabling farmers to manage and sell produce directly to customers.</p>
-          <a class="card__link" href="/projectlocalhost">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
       <li class="card" data-filters="brand">
         <img class="card__img" src="assets/img/home/deliveroo.webp" alt="Deliveroo UAE social ads on a grid of phones" loading="lazy" decoding="async">
@@ -210,146 +249,6 @@
         <p class="card__summary">Melbourne furniture designer Emma Berton’s work embodies Bauhaus-inspired simplicity, practicality, and intentional form. Her brand identity includes a custom word-mark with gentle curves and precise cuts that mirror her design approach.</p>
       </li>
       </ul>
-    </section>
-
-    <section class="ai" aria-labelledby="ai-heading">
-      <div class="ai__header">
-        <h2 class="ai__title" id="ai-heading">How I use AI in my practice</h2>
-        <p class="ai__intro">AI gets me from a messy problem to something real, faster. I use it to widen research, speed up design and ship working products, and I decide where a person needs to stay in charge.</p>
-        <button class="ai__more" type="button" aria-expanded="false" aria-controls="ai-panel"><span class="ai__more-label">More detail</span><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg></button>
-      </div>
-
-      <div class="ai__panel" id="ai-panel">
-        <div class="ai__panel-inner">
-          <div class="ai__toolkit">
-            <h3 class="ai__subtitle">AI workflows I’ve built</h3>
-            <ul class="ai__tools">
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg></span>
-              <h4>Wireframe builder</h4>
-              <p>Figma and Claude turn strategy, personas and approved modules into wireframe pages.</p>
-              <span class="ai__tool-src">Afterpay</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M500-520h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80Zm-80 160h240v-80H420v80ZM320-200q-33 0-56.5-23.5T240-280v-560q0-33 23.5-56.5T320-920h280l240 240v400q0 33-23.5 56.5T760-200H320Zm0-80h440v-360L560-840H320v560ZM160-40q-33 0-56.5-23.5T80-120v-560h80v560h440v80H160Zm160-240v-560 560Z"/></svg></span>
-              <h4>Learn from my edits</h4>
-              <p>Compares my reworked wireframe with the AI draft and updates the workflow so the correction sticks.</p>
-              <span class="ai__tool-src">Afterpay</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></span>
-              <h4>UX to UI</h4>
-              <p>Builds high-fidelity pages and locale variants from real design system components.</p>
-              <span class="ai__tool-src">Afterpay</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M400-40v-80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h200v-80h80v880h-80ZM200-240h200v-240L200-240Zm360 120v-360l200 240v-520H560v-80h200q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H560Z"/></svg></span>
-              <h4>Competitive usability evaluation</h4>
-              <p>Plans, runs and reports competitor reviews using the Nielsen Norman Group method.</p>
-              <span class="ai__tool-src">Discovery</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M600-120v-120H440v-400h-80v120H80v-320h280v120h240v-120h280v320H600v-120h-80v320h80v-120h280v320H600ZM160-760v160-160Zm520 400v160-160Zm0-400v160-160Zm0 160h120v-160H680v160Zm0 400h120v-160H680v160ZM160-600h120v-160H160v160Z"/></svg></span>
-              <h4>Audits, user flows and sitemaps</h4>
-              <p>A documented AI process for competitor audits, user flow and sitemap generation.</p>
-              <span class="ai__tool-src">Discovery</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
-              <h4>Deep research</h4>
-              <p>Gemini Deep Research and research workflows in Claude to widen discovery before decisions are made.</p>
-              <span class="ai__tool-src">Research</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-40-343 237-137-237-137-237 137 237 137ZM160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11L160-252Zm320-228Z"/></svg></span>
-              <h4>Design to working product</h4>
-              <p>A trilingual booking engine designed, coded, tested and deployed with Claude Code.</p>
-              <span class="ai__tool-src">Salty Cowboy, RealDays</span>
-            </li>
-            <li>
-              <span class="ai__tool-icon"><svg class="icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg></span>
-              <h4>This portfolio</h4>
-              <p>Moved out of Figma into code I edit by prompting, so changes and new work go live in minutes.</p>
-              <span class="ai__tool-src">rowenabaulch.com.au</span>
-            </li>
-            </ul>
-          </div>
-
-          <div class="ai__examples">
-            <h3 class="ai__subtitle">See it in practice</h3>
-            <ul class="ai__links">
-              <li><a class="link" href="/projectrealdays">RealDays <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>Designed and built with AI, from research to payments</span></li>
-              <li><a class="link" href="/projectafterpaywebsite">Afterpay’s new B2B site <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a><span>AI wireframe, review and UX to UI workflows</span></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="companies" aria-labelledby="companies-heading">
-      <div class="companies__head" data-reveal>
-        <h2 id="companies-heading" class="section-title">Companies</h2>
-        <p class="section-intro">Nine years across fintech, government, social innovation and global consumer brands.</p>
-      </div>
-      <ol class="companies__list">
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2025 – 2026</p>
-            <div class="companies__co">
-              <span class="companies__logo" style="--logo: url(assets/img/companies/afterpay.svg); --logo-w: 26px; --logo-h: 26px" aria-hidden="true"></span>
-              <h3 class="companies__name">Afterpay (Freelance)<span>UX Lead</span></h3>
-            </div>
-            <p class="companies__desc">Led strategy and design for Afterpay’s new global B2B website, and owned its CRO (conversion rate optimisation) strategy.</p>
-          </li>
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2025</p>
-            <div class="companies__co">
-              <span class="companies__logo" style="--logo: url(assets/img/companies/today.svg); --logo-w: 30px; --logo-h: 9px" aria-hidden="true"></span>
-              <h3 class="companies__name">Today (Freelance)<span>Strategic Designer</span></h3>
-            </div>
-            <p class="companies__desc">Uncovered customer trends and accessibility needs for Victoria’s new myki readers, and delivered the final report to the Department of Transport and Planning.</p>
-          </li>
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2022 – 2025</p>
-            <div class="companies__co">
-              <span class="companies__logo" style="--logo: url(assets/img/companies/nab.svg)" aria-hidden="true"></span>
-              <h3 class="companies__name">NAB Innovation Team<span>Product Designer</span></h3>
-            </div>
-            <p class="companies__desc">Delivered NAB’s first crypto MVP for institutional customers, and an AI tool that cut trust-deed review from 45 minutes to 5.</p>
-          </li>
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2021 – 2022</p>
-            <div class="companies__co">
-              <span class="companies__logo" aria-hidden="true">ED.</span>
-              <h3 class="companies__name">ED.<span>UX/UI Designer</span></h3>
-            </div>
-            <p class="companies__desc">Led evaluative research for Athena Home Loans and designed The Sydney Dialogues website.</p>
-          </li>
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2019 – 2021</p>
-            <div class="companies__co">
-              <span class="companies__logo" style="--logo: url(assets/img/companies/deliveroo.svg); --logo-w: 20px; --logo-h: 20px" aria-hidden="true"></span>
-              <h3 class="companies__name">Deliveroo<span>APAC Designer</span></h3>
-            </div>
-            <p class="companies__desc">Designed multilingual campaigns, including Arabic and Cantonese, that lifted click-through rates.</p>
-          </li>
-          <li class="companies__row" data-reveal>
-            <p class="companies__years">2017 – 2018</p>
-            <div class="companies__co">
-              <span class="companies__logo" aria-hidden="true">HM.</span>
-              <h3 class="companies__name">HM.<span>Designer</span></h3>
-            </div>
-            <p class="companies__desc">Designed wayfinding for Metro and PTV.</p>
-          </li>
-      </ol>
-    </section>
-
-    <section class="beyond" aria-labelledby="beyond-heading">
-      <div class="beyond__text">
-        <h2 id="beyond-heading" class="section-title">Beyond work</h2>
-        <p class="beyond__copy">Outside of work, I’m an avid explorer drawn to adventures. Pictured here is a moment from my stay in Mongolia with a family of eagle hunters (sadly not pictured). Back home, I spend my time climbing, life drawing, hiking, and experimenting with photography.</p>
-      </div>
-      <img class="beyond__img" src="assets/img/about/mongolia.webp" alt="Ro sitting on a grassy Mongolian hillside with three dogs under a blue sky" width="1280" height="1600" loading="lazy" decoding="async">
     </section>
   </main>
 
@@ -809,7 +708,7 @@
 
 
   <footer class="footer">
-    <div class="footer__marks"><img src="assets/icons/footer-marks.svg" alt=""></div>
+    <div class="footer__marks"><figure class="footer__gif"><img src="assets/img/new/bateman.gif" alt="Patrick Bateman in American Psycho, reading a business card with quiet admiration" width="429" height="178" loading="lazy"><figcaption>I like many industries, but finance is my preferred one.</figcaption></figure></div>
     <div>
       <section aria-label="Location">
         <p class="footer__coords">37.8136° S, 144.9631° E</p>
@@ -822,11 +721,92 @@
     </div>
     <div class="footer__col--right">
       <section aria-label="Social">
-        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-controls="intake">Let’s chat <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
+        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-controls="intake">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
         <p><a class="link" href="https://www.linkedin.com/in/rowena-baulch-08396ab8/">LinkedIn <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a></p>
       </section>
     </div>
   </footer>
+  <script>
+    // Scroll drives the page: the hero fades from red to black, and the intro flips through
+    // research, design, testing and complex, each with its project.
+    (function () {
+      var root = document.documentElement;
+      var hero = document.querySelector('.rhero');
+      var wrap = document.getElementById('intro-scroll');
+      var words = wrap.querySelectorAll('[data-word]');
+      var slides = wrap.querySelectorAll('[data-slide]');
+      var sums = wrap.querySelectorAll('[data-sum]');
+      var current = 0, ticking = false;
+      function clamp(n) { return Math.max(0, Math.min(1, n)); }
+      function range() { return wrap.offsetHeight - (window.innerHeight - 45); }
+      function set(i) {
+        if (i === current) return; current = i;
+        words.forEach(function (w, k) { w.classList.toggle('is-on', k === i); });
+        var cnt = wrap.querySelector('[data-count]'); if (cnt) cnt.textContent = i + 1;
+        sums.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
+        slides.forEach(function (s, k) {
+          s.classList.toggle('is-on', k === i);
+          if (k === i) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+          var a = s.querySelector('a'); if (k === i) a.removeAttribute('tabindex'); else a.setAttribute('tabindex', '-1');
+        });
+      }
+      function update() {
+        ticking = false;
+        var p = clamp(window.scrollY / (hero.offsetHeight * 0.75));
+        root.style.setProperty('--p', p.toFixed(3));
+        root.classList.toggle('is-past-hero', p >= 1);
+        var t = clamp(-wrap.getBoundingClientRect().top / range());
+        set(Math.min(words.length - 1, Math.floor(t * words.length)));
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      words.forEach(function (w, i) {
+        w.addEventListener('click', function () {
+          var top = wrap.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: top + (i + 0.5) / words.length * range(), behavior: 'smooth' });
+        });
+      });
+      update();
+    })();
+
+    // Testimonials: the section pins until the strip has reached its last message. Scrolling
+    // moves the strip; if the visitor pauses it keeps drifting a little way ahead on its own.
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var wrap = document.getElementById('praise-scroll');
+      var section = wrap.querySelector('.praise');
+      var win = section.querySelector('.praise__window');
+      var track = section.querySelector('.praise__track');
+      var set = track.querySelector('.praise__set');
+      var root = document.documentElement;
+      root.classList.add('praise-js');
+      var travel = 0, drift = 0, shown = 0, last = performance.now(), hover = false;
+      function measure() {
+        travel = Math.max(0, set.offsetWidth - win.clientWidth + 140);
+        wrap.style.height = (window.innerHeight - 45 + travel) + 'px';
+      }
+      function scrolled() {
+        return Math.max(0, Math.min(travel, 45 - wrap.getBoundingClientRect().top));
+      }
+      win.addEventListener('mouseenter', function () { hover = true; });
+      win.addEventListener('mouseleave', function () { hover = false; });
+      window.addEventListener('resize', measure);
+      measure();
+      function frame(now) {
+        var dt = Math.min(0.05, (now - last) / 1000); last = now;
+        var s = scrolled();
+        var pinned = wrap.getBoundingClientRect().top <= 45 && s < travel;
+        if (pinned && !hover) drift += 70 * dt;
+        drift = Math.min(drift, s + travel * 0.25);   // never far ahead of the scrolling
+        var target = Math.min(travel, Math.max(s, drift));
+        if (!pinned && s <= 0) { drift = 0; target = 0; }
+        shown += (target - shown) * 0.18;
+        track.style.transform = 'translate3d(' + (-shown).toFixed(2) + 'px,0,0)';
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+  </script>
   <script src="assets/site.js?v=4" defer></script>
 </body>
 </html>

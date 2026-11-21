@@ -34,6 +34,9 @@
   new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   btn.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    // Fade every surface together so nothing snaps ahead of the rest.
+    root.classList.add('theme-fade');
+    clearTimeout(root._fade); root._fade = setTimeout(function () { root.classList.remove('theme-fade'); }, 450);
     root.setAttribute('data-theme', next);
     try { sessionStorage.setItem('theme', next); } catch (e) {}
     label();

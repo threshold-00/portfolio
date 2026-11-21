@@ -399,3 +399,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 /* Light/dark switch: no per-element transitions while it runs (the page cross-fades as one, see site.js). */
 .theme-snap, .theme-snap *, .theme-snap *::before, .theme-snap *::after { transition: none !important; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .3s; animation-timing-function: ease; }
+
+/* Client logos: dark tiles with white logos in dark mode, inverted (light tiles, black logos) in light mode. */
+:root[data-theme="light"] .proof__logos li { background: #f2f2f2; border-color: #e0e0e0; }
+:root[data-theme="light"] .proof__logos img { filter: brightness(0); }

@@ -90,7 +90,7 @@
   animation: rhero-scroll 40s linear infinite;
 }
 .rhero__track span { flex: none; }
-@keyframes rhero-scroll { to { transform: translateX(calc(-50% - 9.5px)); } }
+@keyframes rhero-scroll { to { transform: translateX(calc(-1 * var(--shift, 50%))); } }
 
 .rhero__tag {
   position: absolute;

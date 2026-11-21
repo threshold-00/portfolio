@@ -22,7 +22,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=91">
-  <link rel="stylesheet" href="assets/landing.css?v=9">
+  <link rel="stylesheet" href="assets/landing.css?v=10">
 </head>
 <body>
   <header class="nav">
@@ -895,6 +895,29 @@
       done.querySelector('[data-doneslot]').textContent = label();
       show('done'); done.focus();
     });
+  })();
+  </script>
+  <script>
+  // Keeps the ticker band full on any screen width: repeats the text until it is wider than the screen, then loops by exactly one set.
+  (function () {
+    var tr = document.querySelector('.rhero__track');
+    if (!tr) return;
+    var base = [].slice.call(tr.children), half = base.length / 2, set = base.slice(half);
+    function build() {
+      [].slice.call(tr.querySelectorAll('[data-clone]')).forEach(function (n) { n.remove(); });
+      var gap = parseFloat(getComputedStyle(tr).columnGap) || 0;
+      var setW = (tr.offsetWidth + gap) / 2;
+      var want = Math.max(window.innerWidth, window.screen.width) + setW + gap;
+      var n = 2;
+      while (n * setW - gap < want && n < 12) {
+        set.forEach(function (el) { var c = el.cloneNode(true); c.setAttribute('data-clone', ''); tr.appendChild(c); });
+        n++;
+      }
+      tr.style.setProperty('--shift', setW + 'px');
+    }
+    build();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); });
   })();
   </script>
   <script src="assets/site.js?v=6" defer></script>

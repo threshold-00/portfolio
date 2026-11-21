@@ -403,3 +403,6 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 /* Client logos: dark tiles with white logos in dark mode, inverted (light tiles, black logos) in light mode. */
 :root[data-theme="light"] .proof__logos li { background: #f2f2f2; border-color: #e0e0e0; }
 :root[data-theme="light"] .proof__logos img { filter: brightness(0); }
+
+/* Hairline between the client logos and the testimonials. */
+.proof { border-bottom: var(--hair) solid var(--line); }

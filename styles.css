@@ -1429,3 +1429,7 @@ legend.field__label { margin-bottom: 8px; }
   .case__gallery--trio,
   .case__gallery--pair { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Light/dark switch: the page cross-fades as one (site.js), so per-element transitions pause meanwhile. */
+.theme-snap, .theme-snap *, .theme-snap *::before, .theme-snap *::after { transition: none !important; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .3s; animation-timing-function: ease; }

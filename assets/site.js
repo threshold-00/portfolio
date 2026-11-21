@@ -34,12 +34,23 @@
   new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   btn.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    // Fade every surface together so nothing snaps ahead of the rest.
-    root.classList.add('theme-fade');
-    clearTimeout(root._fade); root._fade = setTimeout(function () { root.classList.remove('theme-fade'); }, 450);
-    root.setAttribute('data-theme', next);
-    try { sessionStorage.setItem('theme', next); } catch (e) {}
-    label();
+    function apply() {
+      root.classList.add('is-themed');
+      root.setAttribute('data-theme', next);
+      try { sessionStorage.setItem('theme', next); } catch (e) {}
+      label();
+    }
+    // One cross-fade of the whole page, so the nav and the page change together.
+    // Per-element transitions are switched off meanwhile so nothing runs ahead.
+    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.classList.add('theme-snap');
+      var t = document.startViewTransition(apply);
+      t.finished.then(function () { root.classList.remove('theme-snap'); }, function () { root.classList.remove('theme-snap'); });
+    } else {
+      root.classList.add('theme-snap');
+      apply();
+      requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.remove('theme-snap'); }); });
+    }
   });
 })();
   

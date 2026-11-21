@@ -384,16 +384,18 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .faq__item .icon { flex: none; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
 .faq__item[open] .icon { transform: rotate(180deg); }
 .faq__item p { margin: 0; padding: 0 40px 20px 0; color: var(--muted); font-size: 16px; line-height: 22px; max-width: 34em; }
-.faq__cta { padding: 32px; border-radius: 20px; background: var(--red); color: #fff; }
-.faq__cta h3 { margin: 0 0 32px; max-width: 12em; font-size: 40px; line-height: 1; font-weight: 500; }
-.faq .faq__book { display: block; width: 100%; padding: 16px; border: 0; border-radius: 10px; background: #fff; color: #000; font-size: 16px; cursor: pointer; text-align: center; }
-.faq__mail { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; color: #fff; font-size: 14px; line-height: 18px; }
-.faq__mail b { font-weight: 500; } .faq__mail span { color: rgba(255,255,255,.8); }
-.faq__mail .icon { flex: none; box-sizing: content-box; width: 20px; height: 20px; padding: 6px; border-radius: 50%; background: #fff; fill: #000; }
+.fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 32px; padding: 64px var(--gutter); border-top: var(--hair) solid var(--line); }
+.fit__title { margin: 0; font-size: 40px; line-height: 40px; font-weight: 400; }
+.fit__act { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.fit .fit__book { display: inline-flex; align-items: center; gap: 10px; padding: 0; border: 0; background: none; color: inherit; font-size: 40px; line-height: 42px; letter-spacing: -.004em; cursor: pointer; text-align: left; }
+.fit__book .icon { flex: none; width: 42px; height: 42px; fill: currentColor; }
+.fit__mail { color: inherit; font-size: 14px; line-height: 18px; text-decoration: none; }
+.fit__mail b { font-weight: 500; }
 @media (max-width: 800px) {
   .faq { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 64px var(--gutter); }
   .faq__title { font-size: 32px; }
-  .faq__cta { position: static; padding: 24px; } .faq__cta h3 { font-size: 32px; }
+  .fit { grid-template-columns: minmax(0, 1fr); padding: 48px var(--gutter); }
+  .fit__title, .fit .fit__book { font-size: 28px; line-height: 32px; } .fit__book .icon { width: 30px; height: 30px; }
 }
 
 /* Light/dark switch: no per-element transitions while it runs (the page cross-fades as one, see site.js). */

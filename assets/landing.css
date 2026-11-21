@@ -406,3 +406,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 
 /* Hairline between the client logos and the testimonials. */
 .proof { border-bottom: var(--hair) solid var(--line); }
+
+/* Impact line under each project summary. */
+.intro__impact { display: block; margin-top: 10px; color: var(--muted); }
+.intro__impact b { color: var(--ink); font-weight: 700; }

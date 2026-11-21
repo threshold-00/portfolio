@@ -37,6 +37,7 @@
   color: var(--nav-ink);
 }
 .nav .nav__logo img { filter: none; }
+.is-themed:not(.is-past-hero) .nav .nav__logo img { filter: var(--logo-filter); }
 .is-past-hero .nav .nav__logo img { filter: var(--logo-filter); }
 .nav .theme-toggle { transition: opacity .3s ease, color .3s ease; color: var(--nav-ink); border-color: var(--nav-ink); background: transparent; }
 .nav__cta .icon--arrow { margin-left: 2px; }
@@ -269,9 +270,9 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 @media (max-width: 800px) {
   .intro { grid-template-columns: 1fr; grid-template-rows: 44% 1fr; }
   .intro__media { order: -1; }
-  .intro__text { justify-content: flex-start; gap: 20px; padding-top: 24px; }
-  .intro__lede { font-size: 20px; line-height: 24px; }
-  .intro__meta { position: static; }
+  .intro__text { justify-content: flex-start; gap: 20px; padding: 24px var(--gutter) 24px; }
+  .intro__lede { font-size: 20px; line-height: 24px; margin-bottom: 20px; }
+  .intro__meta { position: static; margin-top: auto; }
   .intro__cap { left: 16px; right: 16px; bottom: 16px; }
   .praise { grid-template-columns: 1fr; padding: 67px 0 67px var(--gutter); gap: 28px; }
   .praise__window::before, .praise__window::after { width: 48px; }
@@ -304,3 +305,19 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .is-themed { --hero-bg: var(--paper); --nav-start: var(--paper); --nav-start-ink: var(--ink); }
 .is-themed .rhero { color: var(--ink); }
 .is-themed .rhero__letters img { filter: var(--logo-filter); }
+
+/* RealDays thumbnail: the site's hero with its video playing behind the headline. */
+.card__media--realdays { --media-bg: #000; container-type: inline-size; }
+.rdthumb { position: absolute; left: 8%; right: 8%; top: 12.3%; bottom: 12.5%; border-radius: 3cqw; overflow: hidden; background: #f1efea; color: #111; }
+.rdthumb__nav { height: 10.4%; display: flex; align-items: center; gap: 3cqw; padding: 0 3cqw; font-size: 1.15cqw; font-family: ui-monospace, Menlo, monospace; border-bottom: .5px solid #d8d5ce; }
+.rdthumb__nav b { margin-right: auto; font-family: var(--font); font-size: 2cqw; font-weight: 700; }
+.rdthumb__nav i { font-style: normal; border: .5px solid #bbb; padding: 1cqw 1.4cqw; }
+.rdthumb__hero { position: absolute; inset: 10.4% 0 0; color: #f6f3ec; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.rdthumb__hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.55); z-index: 0; }
+.rdthumb__hero > :not(video) { position: relative; z-index: 1; }
+.rdthumb__h { margin: 0; max-width: 62cqw; font-family: var(--font); font-weight: 700; font-size: 5cqw; line-height: 1.12; }
+.rdthumb__s { margin: 3cqw 0 0; font-family: ui-monospace, Menlo, monospace; font-size: .95cqw; }
+.rdthumb__form { margin-top: 3.5cqw; display: flex; gap: 1.1cqw; padding: 1.4cqw; background: rgba(255,255,255,.14); border-radius: .6cqw; font-family: ui-monospace, Menlo, monospace; font-size: .95cqw; text-align: left; }
+.rdthumb__form span { width: 10.8cqw; display: flex; flex-direction: column; gap: .7cqw; }
+.rdthumb__form em { font-style: normal; border: .5px solid rgba(255,255,255,.6); padding: 1cqw 1.1cqw; }
+.rdthumb__form strong { align-self: flex-end; background: #f6f3ec; color: #111; padding: 1.2cqw 2.6cqw; font-weight: 400; }

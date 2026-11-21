@@ -22,7 +22,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=90">
-  <link rel="stylesheet" href="assets/landing.css?v=2">
+  <link rel="stylesheet" href="assets/landing.css?v=3">
 </head>
 <body>
   <header class="nav">
@@ -140,7 +140,17 @@
       <p class="visually-hidden" aria-live="polite" id="filter-status"></p>
       <ul class="grid">
       <li class="card" data-filters="product-design research ai ventures">
-        <img class="card__img" src="assets/img/home/realdays-1.webp?v=3" alt="RealDays homepage: Something you’ll actually remember doing" loading="lazy" decoding="async">
+        <div class="card__img card__media card__media--realdays" role="img" aria-label="RealDays homepage: Something you’ll actually remember doing, over a looping video of a surfer on a beach">
+          <div class="rdthumb" aria-hidden="true">
+            <div class="rdthumb__nav"><b>RealDays.</b><span>FOR CUSTOMERS</span><span>FOR BUSINESSES</span><i>AUD $</i></div>
+            <div class="rdthumb__hero">
+              <video src="assets/video/realdays-hero.mp4" poster="assets/img/home/realdays-hero-poster.webp" autoplay loop muted playsinline preload="metadata" tabindex="-1"></video>
+              <p class="rdthumb__h">Something you’ll actually remember doing.</p>
+              <p class="rdthumb__s">UNIQUE EXPERIENCES, RUN BY THE LOCAL PEOPLE WHO STARTED THEM.</p>
+              <div class="rdthumb__form"><span>WHAT<em>ANYTHING</em></span><span>WHERE<em>ANYWHERE</em></span><span>SITUATION<em>ANYONE</em></span><strong>GO</strong></div>
+            </div>
+          </div>
+        </div>
         <h3 class="card__title">RealDays</h3>
         <p class="card__client">My venture, Victoria and Bali</p>
         <ul class="tags"><li>Venture</li><li>Product design</li><li>AI</li></ul>
@@ -182,7 +192,7 @@
           <a class="card__link" href="/projectafterpaywebsite">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
       <li class="card" data-filters="product-design ai">
-        <img class="card__img" src="assets/img/home/legaldoc-3.webp?v=2" alt="Legal Document Review Tool cover: trust deed pre-check and trust deed powers cards" loading="lazy" decoding="async">
+        <img class="card__img" src="assets/img/home/legaldoc-4.webp" alt="Legal Document Review Tool cover: trust deed pre-check and trust deed powers cards" loading="lazy" decoding="async">
         <h3 class="card__title">Legal Document Review Tool</h3>
         <p class="card__client">NAB’s Innovation Team</p>
         <ul class="tags"><li>Product Design</li><li>AI</li></ul>
@@ -198,7 +208,7 @@
           <a class="card__link" href="/projectsaf3">See Project <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a>
       </li>
       <li class="card" data-filters="product-design research">
-        <img class="card__img" src="assets/img/home/climate-1.webp" alt="Climate risk app on a phone held in a home" loading="lazy" decoding="async">
+        <img class="card__img" src="assets/img/home/climate-2.webp" alt="Climate risk dashboard comparing expected loss per suburb against the NAB benchmark" loading="lazy" decoding="async">
         <h3 class="card__title">Climate Risk Dashboard</h3>
         <p class="card__client">NAB’s Innovation Team</p>
         <ul class="tags"><li>Product Design</li><li>Climate</li></ul>

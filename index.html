@@ -22,7 +22,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=90">
-  <link rel="stylesheet" href="assets/landing.css?v=3">
+  <link rel="stylesheet" href="assets/landing.css?v=4">
 </head>
 <body>
   <header class="nav">
@@ -31,7 +31,7 @@
       <nav aria-label="Main">
         <ul class="nav__links">
           <li class="nav__status"><span class="nav__dot" aria-hidden="true"></span><span class="nav__status-text">Available now</span></li>
-          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-controls="intake">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></li>
+          <li><button class="nav__cta" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="book">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></li>
         </ul>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
@@ -646,76 +646,46 @@
     })();
   </script>
 
-  <dialog class="intake" id="intake" aria-labelledby="intake-title">
-    <div class="intake__inner">
-      <button class="intake__close" type="button" aria-label="Close">×</button>
-      <div class="intake__form-wrap">
-        <p class="intake__eyebrow">Let’s chat</p>
-        <h2 class="intake__title" id="intake-title">Tell me about your project</h2>
-        <p class="intake__lede">A few details and I’ll get back to you, usually within a day. Your message opens ready to send in WhatsApp or email.</p>
-
-        <form class="intake__form" novalidate>
-          <div class="intake__row">
-            <label class="field">
-              <span class="field__label">Name</span>
-              <input name="name" type="text" autocomplete="name" required>
-            </label>
-            <label class="field">
-              <span class="field__label">Company <span class="field__opt">(optional)</span></span>
-              <input name="company" type="text" autocomplete="organization">
-            </label>
+  <div class="book-scrim" hidden></div>
+  <div class="book" id="book" role="dialog" aria-modal="false" aria-labelledby="book-title" hidden>
+    <div class="book__inner">
+      <div class="book__intro">
+        <p class="book__eyebrow">Book a meeting</p>
+        <h2 class="book__title" id="book-title">Let’s talk about what you’re building</h2>
+        <p class="book__lede">A quick, 15 minute chat. Pick a time that suits you and I’ll confirm by email.</p>
+        <p class="book__tz">Times shown in Melbourne (Australia/Melbourne)</p>
+      </div>
+      <div class="book__card">
+        <div class="book__step book__step--pick">
+          <div class="book__cal">
+            <div class="book__month"><p><b data-month>November</b> <span data-year>2026</span></p><span><button type="button" data-prev aria-label="Previous month">‹</button><button type="button" data-next aria-label="Next month">›</button></span></div>
+            <div class="book__dow" aria-hidden="true"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
+            <div class="book__days" data-days></div>
           </div>
-          <label class="field">
-            <span class="field__label">Email <span class="field__opt">(optional)</span></span>
-            <input name="email" type="email" autocomplete="email">
-          </label>
-
-          <fieldset class="field">
-            <legend class="field__label">What can I help with?</legend>
-            <div class="choices">
-              <label class="choice"><input type="checkbox" name="help" value="Product design"><span>Product design</span></label>
-              <label class="choice"><input type="checkbox" name="help" value="UX research"><span>UX research</span></label>
-              <label class="choice"><input type="checkbox" name="help" value="AI workflows"><span>AI workflows</span></label>
-              <label class="choice"><input type="checkbox" name="help" value="Conversion and testing"><span>Conversion and testing</span></label>
-              <label class="choice"><input type="checkbox" name="help" value="Full-time role"><span>Full-time role</span></label>
-              <label class="choice"><input type="checkbox" name="help" value="Something else"><span>Something else</span></label>
-            </div>
-          </fieldset>
-
-          <label class="field">
-            <span class="field__label">Timeline</span>
-            <select name="timeline">
-              <option value="">Choose one</option>
-              <option>As soon as possible</option>
-              <option>In the next month</option>
-              <option>In 1 to 3 months</option>
-              <option>Just exploring</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span class="field__label">About the project</span>
-            <textarea name="details" rows="5" required placeholder="What’s the problem, and what would a great outcome look like?"></textarea>
-          </label>
-
-          <p class="intake__error" role="alert" hidden>Please add your name and a little about the project.</p>
-
-          <div class="intake__actions">
-            <button class="intake__send" type="submit" value="whatsapp">Send on WhatsApp</button>
-            <button class="intake__send intake__send--alt" type="submit" value="email">Send by email</button>
+          <div class="book__times">
+            <div class="book__timehead"><p data-dayLabel>Pick a day</p><span class="book__fmt"><button type="button" data-fmt="12" aria-pressed="true">12h</button><button type="button" data-fmt="24" aria-pressed="false">24h</button></span></div>
+            <ul class="book__slots" data-slots></ul>
           </div>
-          <p class="intake__note">Nothing is stored on this site. Your message goes straight from your WhatsApp or email.</p>
+        </div>
+        <form class="book__step book__step--form" hidden novalidate>
+          <p class="book__chosen" data-chosen></p>
+          <label>Your name *<input name="name" autocomplete="name" required></label>
+          <label>Email address *<input name="email" type="email" autocomplete="email" required></label>
+          <label>What is this meeting about? *<input name="topic" required></label>
+          <label>Additional notes<textarea name="notes" rows="3" placeholder="Please share anything that will help prepare for our meeting."></textarea></label>
+          <p class="book__error" role="alert" hidden>Please add your name, a valid email and what the meeting is about.</p>
+          <p class="book__fine">Nothing is stored on this site. Confirm opens an email to Ro, ready to send from your own email app.</p>
+          <div class="book__actions"><button type="button" class="book__back" data-back>Back</button><button type="submit" class="book__confirm">Confirm</button></div>
         </form>
+        <div class="book__step book__step--done" hidden tabindex="-1">
+          <p class="book__chosen">Your request is ready</p>
+          <p>Press send in your email app and it comes straight to Ro. You’ll get a confirmation for <b data-doneslot></b>.</p>
+          <button type="button" class="book__back" data-restart>Pick another time</button>
+        </div>
       </div>
-
-      <div class="intake__done" hidden tabindex="-1">
-        <p class="intake__eyebrow">Almost there</p>
-        <h2 class="intake__title">Your message is ready</h2>
-        <p class="intake__lede">Press send in <span data-channel>WhatsApp</span> and it comes straight to me. Thanks for reaching out.</p>
-        <button class="intake__send intake__send--alt" type="button" data-intake-reset>Back to the form</button>
-      </div>
+      <button class="book__close" type="button" aria-label="Close">×</button>
     </div>
-  </dialog>
+  </div>
 
 
   <footer class="footer">
@@ -732,7 +702,7 @@
     </div>
     <div class="footer__col--right">
       <section aria-label="Social">
-        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-controls="intake">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
+        <p><button class="nav__cta footer__cta link" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="book">Book a meeting <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></button></p>
         <p><a class="link" href="https://www.linkedin.com/in/rowena-baulch-08396ab8/">LinkedIn <svg class="icon icon--arrow" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg></a></p>
       </section>
     </div>
@@ -819,6 +789,98 @@
       }
       requestAnimationFrame(frame);
     })();
+  </script>
+  <script>
+  (function () {
+    var panel = document.getElementById('book'), scrim = document.querySelector('.book-scrim');
+    if (!panel) return;
+    var openers = document.querySelectorAll('.nav__cta'), EMAIL = 'rowenabaulch@outlook.com';
+    var pick = panel.querySelector('.book__step--pick'), form = panel.querySelector('form'), done = panel.querySelector('.book__step--done');
+    var daysEl = panel.querySelector('[data-days]'), slotsEl = panel.querySelector('[data-slots]'), dayLabel = panel.querySelector('[data-dayLabel]');
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var DAYN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var today = new Date(); today.setHours(0,0,0,0);
+    var first = new Date(today); first.setDate(first.getDate() + 1);          // from tomorrow
+    var last = new Date(today); last.setDate(last.getDate() + 28);            // four weeks ahead
+    var view = new Date(first.getFullYear(), first.getMonth(), 1), selected = null, slot = null, fmt = 12, lastFocus = null;
+    function ok(d) { var w = d.getDay(); return w > 0 && w < 6 && d >= first && d <= last; }  // Mon to Fri
+    function ordinal(n) { var v = n % 100; return n + (['th','st','nd','rd'][(v - 20) % 10] || ['th','st','nd','rd'][v] || 'th'); }
+    function time(h, m) {
+      if (fmt === 24) return (h < 10 ? '0' : '') + h + ':' + (m ? m : '00');
+      var ap = h < 12 ? 'am' : 'pm', hh = h % 12 || 12; return hh + ':' + (m ? m : '00') + ap;
+    }
+    function renderCal() {
+      panel.querySelector('[data-month]').textContent = MONTHS[view.getMonth()];
+      panel.querySelector('[data-year]').textContent = view.getFullYear();
+      panel.querySelector('[data-prev]').disabled = view <= new Date(first.getFullYear(), first.getMonth(), 1);
+      panel.querySelector('[data-next]').disabled = view >= new Date(last.getFullYear(), last.getMonth(), 1);
+      daysEl.textContent = '';
+      var start = new Date(view); start.setDate(1 - view.getDay());
+      for (var i = 0; i < 42; i++) {
+        var d = new Date(start); d.setDate(start.getDate() + i);
+        if (i >= 35 && d.getMonth() !== view.getMonth()) break;
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = d.getDate();
+        if (d.getMonth() !== view.getMonth()) b.className = 'is-out';
+        if (ok(d)) { b.classList.add('is-open'); b.setAttribute('aria-label', DAYN[d.getDay()] + ' ' + ordinal(d.getDate()) + ' ' + MONTHS[d.getMonth()]); }
+        else b.disabled = true;
+        if (selected && d.getTime() === selected.getTime()) { b.classList.add('is-on'); b.setAttribute('aria-pressed', 'true'); }
+        (function (dd) { b.addEventListener('click', function () { selected = dd; slot = null; renderCal(); renderSlots(); }); })(d);
+        daysEl.appendChild(b);
+      }
+    }
+    function renderSlots() {
+      slotsEl.textContent = '';
+      if (!selected) { dayLabel.textContent = 'Pick a day'; return; }
+      dayLabel.innerHTML = DAYN[selected.getDay()] + ' <small>' + ordinal(selected.getDate()) + '</small>';
+      for (let h = 10; h < 16; h++) [0, 30].forEach(function (m) {
+        var li = document.createElement('li'), b = document.createElement('button'); b.type = 'button'; b.textContent = time(h, m);
+        b.addEventListener('click', function () { slot = { h: h, m: m }; showForm(); });
+        li.appendChild(b); slotsEl.appendChild(li);
+      });
+    }
+    function label() { return DAYN[selected.getDay()] + ' ' + ordinal(selected.getDate()) + ' ' + MONTHS[selected.getMonth()] + ', ' + time(slot.h, slot.m).replace(/^0/, '') + ' Melbourne time'; }
+    function showForm() {
+      pick.hidden = true; form.hidden = false; panel.querySelector('[data-chosen]').textContent = label();
+      form.elements.name.focus();
+    }
+    function show(which) { pick.hidden = which !== 'pick'; form.hidden = which !== 'form'; done.hidden = which !== 'done'; }
+    function open() {
+      lastFocus = document.activeElement; show('pick'); renderCal(); renderSlots();
+      panel.hidden = false; scrim.hidden = false;
+      requestAnimationFrame(function () { requestAnimationFrame(function () { panel.classList.add('is-open'); scrim.classList.add('is-open'); }); });
+      openers.forEach(function (o) { o.setAttribute('aria-expanded', 'true'); });
+      document.documentElement.classList.add('has-book');
+    }
+    function close() {
+      panel.classList.remove('is-open'); scrim.classList.remove('is-open');
+      openers.forEach(function (o) { o.setAttribute('aria-expanded', 'false'); });
+      document.documentElement.classList.remove('has-book');
+      setTimeout(function () { panel.hidden = true; scrim.hidden = true; }, 350);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    openers.forEach(function (o) { o.addEventListener('click', function () { panel.hidden ? open() : close(); }); });
+    panel.querySelector('.book__close').addEventListener('click', close);
+    scrim.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) close(); });
+    panel.querySelector('[data-prev]').addEventListener('click', function () { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
+    panel.querySelector('[data-next]').addEventListener('click', function () { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
+    panel.querySelectorAll('[data-fmt]').forEach(function (b) { b.addEventListener('click', function () {
+      fmt = +b.dataset.fmt; panel.querySelectorAll('[data-fmt]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); renderSlots(); }); });
+    panel.querySelector('[data-back]').addEventListener('click', function () { show('pick'); });
+    panel.querySelector('[data-restart]').addEventListener('click', function () { selected = null; slot = null; form.reset(); show('pick'); renderCal(); renderSlots(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = form.elements.name.value.trim(), em = form.elements.email.value.trim(), t = form.elements.topic.value.trim();
+      var err = form.querySelector('.book__error');
+      if (!n || !t || !/^\S+@\S+\.\S+$/.test(em)) { err.hidden = false; return; }
+      err.hidden = true;
+      var body = ['Hi Ro, I’d like to book a 15 minute meeting.', '', 'When: ' + label(), 'Name: ' + n, 'Email: ' + em, 'About: ' + t];
+      if (form.elements.notes.value.trim()) body.push('', form.elements.notes.value.trim());
+      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Meeting request: ' + label()) + '&body=' + encodeURIComponent(body.join('\n'));
+      done.querySelector('[data-doneslot]').textContent = label();
+      show('done'); done.focus();
+    });
+  })();
   </script>
   <script src="assets/site.js?v=4" defer></script>
 </body>

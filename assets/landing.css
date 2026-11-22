@@ -113,7 +113,9 @@
   color: color-mix(in srgb, var(--hero-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
   padding: 0 var(--gutter);
   text-wrap: balance;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
 }
+.rhero__me { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; display: block; }
 
 /* Intro: scrolling flips the highlighted word and the project beside it. */
 .intro-scroll { position: relative; height: 250vh; }

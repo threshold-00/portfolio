@@ -149,14 +149,14 @@
 .intro__word.is-on { color: var(--ink); font-weight: 700; }
 .intro__word:hover { color: var(--ink); }
 .intro__meta { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 53px; max-width: 440px; }
-.intro__sums { display: grid; max-width: 440px; min-height: 66px; }
+.intro__sums { position: relative; max-width: 440px; }   /* only the shown summary takes up room, so its last line always sits on the same baseline at the bottom */
 .intro__sum {
-  grid-area: 1 / 1;
+  position: absolute; left: 0; right: 0; bottom: 0;
   margin: 0;
   font-size: 16px; line-height: 22px; letter-spacing: 0;
-  opacity: 0; transition: opacity .35s ease;
+  opacity: 0; pointer-events: none; transition: opacity .35s ease;
 }
-.intro__sum.is-on { opacity: 1; }
+.intro__sum.is-on { position: relative; opacity: 1; pointer-events: auto; }
 .intro__media { position: relative; overflow: hidden; background: var(--placeholder); }
 .intro__slide {
   position: absolute; inset: 0;

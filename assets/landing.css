@@ -427,3 +427,8 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .nav .nav__cta .icon--close { display: none; width: 18px; height: 18px; margin-left: 4px; flex: none; fill: currentColor; }
 .nav .nav__cta[aria-expanded="true"] .icon--arrow { display: none; }
 .nav .nav__cta[aria-expanded="true"] .icon--close { display: inline-block; }
+
+/* Nav Book a call: an outlined pill, like the Light/Dark toggle beside it. */
+.nav .nav__cta { padding: 0 14px; border: 1px solid var(--nav-ink); border-radius: 999px; background: transparent; color: var(--nav-ink); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.nav .nav__cta:hover { background: var(--nav-ink); border-color: var(--nav-ink); color: var(--nav-bg); }
+.nav .nav__cta:active { transform: scale(.97); }

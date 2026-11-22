@@ -29,7 +29,6 @@
       var t = null;
       try { localStorage.removeItem('theme'); t = sessionStorage.getItem('theme'); } catch (e) {}
       document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
-      if (t) document.documentElement.classList.add('is-themed');   // the hero follows the theme once the visitor has chosen one
     })();
   </script>
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
@@ -934,6 +933,6 @@
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); });
   })();
   </script>
-  <script src="assets/site.js?v=6" defer></script>
+  <script src="assets/site.js?v=7" defer></script>
 </body>
 </html>

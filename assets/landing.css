@@ -24,6 +24,7 @@
   --slack-line: #35383d;
   --star: #f5b400;
   --p: 0;                       /* 0 at the top of the page, 1 once the hero has faded to black */
+  --hero-ink: #000;             /* hero tagline at the top of the page */
   --flip-ink: #fff;             /* text colour once the hero has faded past halfway (pure white, so it clears 4.5:1 on the mid-grey) */
   --ink-step: clamp(0, calc((var(--p) - .535) * 1000), 1);   /* 0 until the fade passes halfway, then 1: text flips once, never sits mid-grey on mid-grey */
 }
@@ -109,7 +110,7 @@
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--red-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
+  color: color-mix(in srgb, var(--hero-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
   padding: 0 var(--gutter);
   text-wrap: balance;
 }
@@ -312,7 +313,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .nav__links { gap: 12px; }
 
 /* Once the visitor picks light or dark, the hero and nav follow it (they open white either way). */
-.is-themed { --hero-bg: var(--paper); --nav-start: var(--paper); --nav-start-ink: var(--ink); }
+.is-themed { --hero-bg: var(--paper); --nav-start: var(--paper); --nav-start-ink: var(--ink); --hero-ink: var(--ink); }
 .is-themed .rhero { color: var(--ink); }
 .is-themed .rhero__letters img { filter: var(--logo-filter); }
 

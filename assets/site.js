@@ -35,6 +35,7 @@
   btn.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     function apply() {
+      root.classList.add('is-themed');   // the hero follows the toggle straight away; a reload opens white again
       root.setAttribute('data-theme', next);
       try { sessionStorage.setItem('theme', next); } catch (e) {}
       label();

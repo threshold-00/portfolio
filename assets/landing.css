@@ -302,9 +302,9 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 /* "Available now" matches "Book a meeting": same size and colour, the green dot carries the status. */
 .nav__status { color: var(--nav-ink); }
 
-/* Nav spacing: one 32px step between status, button and toggle. */
-.nav__end { gap: 32px; }
-.nav__links { gap: 32px; }
+/* Nav spacing: 12px between status, button and toggle. */
+.nav__end { gap: 12px; }
+.nav__links { gap: 12px; }
 
 /* Once the visitor picks light or dark, the hero and nav follow it (they open white either way). */
 .is-themed { --hero-bg: var(--paper); --nav-start: var(--paper); --nav-start-ink: var(--ink); }

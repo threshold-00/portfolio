@@ -376,9 +376,9 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .book, .book-scrim { transition: none; } }
 
 /* FAQ above the footer, with a call-to-action card. */
-.faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 72px; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
-.faq__list { width: 100%; max-width: 640px; margin: 0 auto; }
-.faq__title { margin: 0 0 40px; text-align: center; font-size: 48px; line-height: 1.02; font-weight: 400; }
+.faq { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 64px; align-items: start; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
+.faq__list { width: 100%; max-width: 640px; }
+.faq__title { margin: 0 0 40px; font-size: 48px; line-height: 1.02; font-weight: 400; }
 .faq__item { border-top: var(--hair) solid var(--line); }
 .faq__item:last-child { border-bottom: var(--hair) solid var(--line); }
 .faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 22px; }
@@ -386,7 +386,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .faq__item .icon { flex: none; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
 .faq__item[open] .icon { transform: rotate(180deg); }
 .faq__item p { margin: 0; padding: 0 40px 20px 0; color: var(--muted); font-size: 16px; line-height: 22px; max-width: 34em; }
-.fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 32px; padding: 64px 0 0; border-top: var(--hair) solid var(--line); }
+.fit { position: sticky; top: 77px; display: flex; flex-direction: column; gap: 32px; padding: 0; }
 .fit__title { margin: 0; font-size: 40px; line-height: 40px; font-weight: 400; }
 .fit__act { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .fit .fit__book { display: inline-flex; align-items: center; gap: 10px; padding: 0; border: 0; background: none; color: inherit; font-size: 40px; line-height: 42px; letter-spacing: -.004em; cursor: pointer; text-align: left; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
@@ -396,7 +396,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 @media (max-width: 800px) {
   .faq { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 64px var(--gutter); }
   .faq__title { font-size: 32px; }
-  .fit { grid-template-columns: minmax(0, 1fr); padding: 48px 0 0; }
+  .fit { position: static; padding-top: 8px; }
   .fit__title, .fit .fit__book { font-size: 28px; line-height: 32px; } .fit__book .icon { width: 30px; height: 30px; }
 }
 

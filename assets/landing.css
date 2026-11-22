@@ -65,7 +65,10 @@
   margin-top: -6%;
 }
 .rhero__letters img { display: block; height: auto; }
-.rhero__r { width: 45.9%; position: relative; z-index: 1; }
+.rhero__rw { width: 45.9%; position: relative; }
+.rhero__r { width: 100%; position: relative; z-index: 1; }
+/* The band also passes under the R's stem (its left column). */
+.rhero__r-l { position: absolute; inset: 0; width: 100%; z-index: 3; clip-path: inset(0 67% 0 0); }
 .rhero__o { width: 52.2%; margin-left: 1.9%; position: relative; }
 .rhero__o img { width: 100%; }
 /* The band weaves through the O: it passes under the left half and over the right half. */

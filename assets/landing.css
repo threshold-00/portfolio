@@ -99,10 +99,13 @@
   z-index: 4;
   margin: 0;
   text-align: center;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
   letter-spacing: 0;
   text-transform: uppercase;
+  padding: 0 var(--gutter);
+  text-wrap: balance;
 }
 
 /* Intro: scrolling flips the highlighted word and the project beside it. */

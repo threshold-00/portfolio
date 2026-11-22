@@ -335,7 +335,6 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .book__title { margin: 12px 0 0; max-width: 11em; font-size: 48px; line-height: 1.02; font-weight: 400; }
 .book__lede { margin: 20px 0 0; max-width: 30em; color: var(--muted); font-size: 18px; line-height: 24px; }
 .book__tz { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
-.book__close { position: absolute; top: 12px; right: var(--gutter); width: 32px; height: 32px; border: 0; background: none; color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; }
 .book__card { padding: 20px; border-radius: 20px; background: color-mix(in srgb, var(--ink) 7%, var(--paper)); }
 .book__card [hidden] { display: none; }
 .book__month { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: var(--hair) solid var(--line); font-size: 16px; }
@@ -371,7 +370,6 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 @media (max-width: 800px) {
   .book__inner { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 32px var(--gutter) 40px; }
   .book__title { font-size: 32px; }
-  .book__close { top: 4px; }
 }
 @media (prefers-reduced-motion: reduce) { .book, .book-scrim { transition: none; } }
 

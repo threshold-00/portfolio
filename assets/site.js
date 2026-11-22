@@ -42,9 +42,11 @@
     // One cross-fade of the whole page, so the nav and the page change together.
     // Per-element transitions are switched off meanwhile so nothing runs ahead.
     if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      root.classList.add('theme-snap');
+      var dir = next === 'dark' ? 'to-dark' : 'to-light';   // the icon spins right going dark, left going light
+      root.classList.add('theme-snap', dir);
       var t = document.startViewTransition(apply);
-      t.finished.then(function () { root.classList.remove('theme-snap'); }, function () { root.classList.remove('theme-snap'); });
+      var done = function () { root.classList.remove('theme-snap', dir); };
+      t.finished.then(done, done);
     } else {
       root.classList.add('theme-snap');
       apply();

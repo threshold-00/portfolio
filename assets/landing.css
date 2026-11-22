@@ -24,13 +24,18 @@
   --slack-line: #35383d;
   --star: #f5b400;
   --p: 0;                       /* 0 at the top of the page, 1 once the hero has faded to black */
+  --flip-ink: #fff;             /* text colour once the hero has faded past halfway (pure white, so it clears 4.5:1 on the mid-grey) */
+  --ink-step: clamp(0, calc((var(--p) - .535) * 1000), 1);   /* 0 until the fade passes halfway, then 1: text flips once, never sits mid-grey on mid-grey */
 }
+
+/* Light mode keeps black text all the way. */
+:root[data-theme="light"] { --flip-ink: #000; }
 
 /* Nav: the hero's red with black text, then it follows the page as the hero fades. */
 .nav {
   --mix: calc((1 - var(--p)) * 100%);
   --nav-bg: color-mix(in srgb, var(--nav-start) var(--mix), var(--paper));
-  --nav-ink: color-mix(in srgb, var(--nav-start-ink) var(--mix), var(--ink));
+  --nav-ink: color-mix(in srgb, var(--nav-start-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
   background:
     linear-gradient(var(--line), var(--line)) no-repeat center bottom / calc(100% - var(--gutter) * 2) var(--hair),
     var(--nav-bg);
@@ -104,6 +109,7 @@
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
+  color: color-mix(in srgb, var(--red-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
   padding: 0 var(--gutter);
   text-wrap: balance;
 }
@@ -248,7 +254,7 @@ body, body * { font-family: var(--font); }
 body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 0 kerning */
 /* Nav text is one size. */
 .nav__links, .nav__cta, .nav__status, .nav .theme-toggle { font-size: 16px; }
-:root { --av-1: #7a4fd1; --av-2: #1f8a70; --av-3: #c2561d; --av-4: #2c6db5; --av-5: #b5367a; }
+:root { --av-1: #7a4fd1; --av-2: #187460; --av-3: #c2561d; --av-4: #2c6db5; --av-5: #b5367a; }
 
 /* Proof */
 .proof { padding: 112px var(--gutter) 126px; text-align: center; }

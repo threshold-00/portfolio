@@ -34,8 +34,8 @@
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=91">
-  <link rel="stylesheet" href="assets/landing.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=92">
+  <link rel="stylesheet" href="assets/landing.css?v=31">
 </head>
 <body>
   <header class="nav">
@@ -724,7 +724,7 @@
     <div>
       <section aria-label="Location">
         <p class="footer__coords">37.8136° S, 144.9631° E</p>
-        <p class="footer__note"><span>Remote first.</span> Residing in APAC timezone, but time is just a number.</p>
+        <p class="footer__note"><span>Remote first. But hybrid works too if you’re in Melbourne.</span> Residing in APAC timezone, but time is just a number.</p>
       </section>
       <section aria-label="Contact">
         <p><a href="tel:+61466567953">+61 46 6567 953</a></p>
@@ -766,7 +766,7 @@
         ticking = false;
         var p = clamp(window.scrollY / (hero.offsetHeight * 0.75));
         root.style.setProperty('--p', p.toFixed(3));
-        root.classList.toggle('is-past-hero', p >= 1);
+        root.classList.toggle('is-past-hero', p >= .535);
         var t = clamp(-wrap.getBoundingClientRect().top / range());
         set(Math.min(words.length - 1, Math.floor(t * words.length)));
       }
@@ -933,6 +933,6 @@
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); });
   })();
   </script>
-  <script src="assets/site.js?v=7" defer></script>
+  <script src="assets/site.js?v=8" defer></script>
 </body>
 </html>

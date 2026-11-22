@@ -212,7 +212,6 @@
 .praise__window::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
 .praise__window::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
 .praise-js .praise__track { animation: none; will-change: transform; }
-.praise-js .praise__set[aria-hidden="true"] { display: none; }
 .praise-js .praise { position: sticky; top: 45px; min-height: calc(100svh - 45px); padding-top: 40px; padding-bottom: 40px; background: var(--paper); }
 .praise__track { display: flex; width: max-content; animation: praise-scroll 90s linear infinite; }
 @keyframes praise-scroll { to { transform: translateX(-50%); } }

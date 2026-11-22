@@ -308,7 +308,6 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 .proof__logos li { transition: border-color .2s ease; }
 .proof__logos li:hover { border-color: #5a5a5a; }
 .proof__logos a:hover, .proof__logos a:focus-visible { color: #fff; }
-.proof__arrow { position: absolute; top: 10px; right: 10px; width: 18px; height: 18px; fill: currentColor; }
 
 @media (prefers-reduced-motion: reduce) {
   .praise__track { animation: none; }

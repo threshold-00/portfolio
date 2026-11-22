@@ -106,9 +106,7 @@
   color: color-mix(in srgb, var(--hero-ink) calc((1 - var(--ink-step)) * 100%), var(--flip-ink));
   padding: 0 var(--gutter);
   text-wrap: balance;
-  display: flex; align-items: center; justify-content: center; gap: 14px;
 }
-.rhero__me { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; display: block; }
 
 /* Intro: scrolling flips the highlighted word and the project beside it. */
 .intro-scroll { position: relative; height: 250vh; }
@@ -250,6 +248,27 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 /* Nav text is one size. */
 .nav__links, .nav__cta, .nav__status, .nav .theme-toggle { font-size: 16px; }
 :root { --av-1: #7a4fd1; --av-2: #187460; --av-3: #c2561d; --av-4: #2c6db5; --av-5: #b5367a; }
+
+/* Who is Ro: heading on the left, photo, intro and points on the footer's column tracks. */
+.who { container-type: inline-size; display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 112px var(--gutter) 0; }
+.who__title { margin: 0; font-size: 48px; line-height: 1.02; font-weight: 400; }
+.who__body { grid-column: 2 / -1; max-width: 640px; }
+.who__me { display: block; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+.who__lede { margin: 32px 0 0; font-size: 24px; line-height: 30px; text-wrap: pretty; }
+.who__list { margin: 40px 0 0; padding: 0; list-style: none; }
+.who__list li { padding: 16px 0; border-top: var(--hair) solid var(--line); color: var(--muted); font-size: 16px; line-height: 22px; }
+.who__list li:last-child { border-bottom: var(--hair) solid var(--line); }
+@media (max-width: 1199px) {
+  .who { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 0 48px; }
+  .who__body { grid-column: 2; }
+}
+@media (max-width: 800px) {
+  .who { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 64px; }
+  .who__title { font-size: 32px; }
+  .who__body { grid-column: 1; }
+  .who__me { width: 96px; height: 96px; }
+  .who__lede { margin-top: 24px; font-size: 20px; line-height: 26px; }
+}
 
 /* Proof */
 .proof { padding: 112px var(--gutter) 126px; text-align: center; }

@@ -35,7 +35,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=92">
-  <link rel="stylesheet" href="assets/landing.css?v=51">
+  <link rel="stylesheet" href="assets/landing.css?v=52">
 </head>
 <body>
   <header class="nav">
@@ -64,7 +64,7 @@
           <img class="rhero__o-l" src="assets/img/new/ro-o.svg" alt="">
         </div>
       </div>
-      <div class="rhero__ticker"><div class="rhero__track"><span>Strategic design</span><span aria-hidden="true">👩🏻‍💻</span><span>AI engine setup</span><span aria-hidden="true">🤖</span><span>Product and web optimisation</span><span aria-hidden="true">📈</span><span>Startup consulting</span><span aria-hidden="true">🚀</span><span aria-hidden="true">Strategic design</span><span aria-hidden="true">👩🏻‍💻</span><span aria-hidden="true">AI engine setup</span><span aria-hidden="true">🤖</span><span aria-hidden="true">Product and web optimisation</span><span aria-hidden="true">📈</span><span aria-hidden="true">Startup consulting</span><span aria-hidden="true">🚀</span></div></div>
+      <div class="rhero__ticker" role="img" aria-label="Strategic design, AI engine setup, product and web optimisation, startup consulting"><svg viewBox="0 0 1600 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><path id="ribbon" d="M -200 130 C 100 30 300 30 500 130 S 900 230 1100 130 S 1500 30 1800 130"/></defs><use href="#ribbon" class="rhero__ribbon-shadow" transform="translate(0 13)"/><use href="#ribbon" class="rhero__ribbon"/><text class="rhero__ribbon-text" dy="9" xml:space="preserve"><textPath href="#ribbon" startOffset="0">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   <animate attributeName="startOffset" from="0" to="-900" dur="16s" repeatCount="indefinite"/></textPath></text><text class="rhero__ribbon-text" id="ribbon-measure" visibility="hidden" xml:space="preserve">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   </text></svg></div>
       <p class="rhero__tag" aria-hidden="true"><span>[Ro makes things suck less]</span><img class="rhero__me" src="assets/img/home/ro-plain.webp" alt="" width="40" height="40"></p>
     </section>
 
@@ -911,26 +911,23 @@
   })();
   </script>
   <script>
-  // Keeps the ticker band full on any screen width: repeats the text until it is wider than the screen, then loops by exactly one set.
+  // Ribbon ticker: text runs along a wavy band. Measures one set of words, repeats it to cover the whole curve, and loops by exactly one set.
   (function () {
-    var tr = document.querySelector('.rhero__track');
-    if (!tr) return;
-    var base = [].slice.call(tr.children), half = base.length / 2, set = base.slice(half);
+    var svg = document.querySelector('.rhero__ticker svg');
+    if (!svg) return;
+    var tp = svg.querySelector('textPath'), anim = tp.querySelector('animate'), meas = svg.querySelector('#ribbon-measure'), path = svg.querySelector('#ribbon');
+    var one = meas.textContent;
     function build() {
-      [].slice.call(tr.querySelectorAll('[data-clone]')).forEach(function (n) { n.remove(); });
-      var gap = parseFloat(getComputedStyle(tr).columnGap) || 0;
-      var setW = (tr.offsetWidth + gap) / 2;
-      var want = Math.max(window.innerWidth, window.screen.width) + setW + gap;
-      var n = 2;
-      while (n * setW - gap < want && n < 12) {
-        set.forEach(function (el) { var c = el.cloneNode(true); c.setAttribute('data-clone', ''); tr.appendChild(c); });
-        n++;
-      }
-      tr.style.setProperty('--shift', setW + 'px');
+      var setW = meas.getComputedTextLength();
+      if (!setW) return;
+      var n = Math.ceil((path.getTotalLength() + setW) / setW) + 1;
+      tp.firstChild.nodeValue = new Array(n + 1).join(one);
+      anim.setAttribute('to', String(-setW));
+      anim.setAttribute('dur', (setW / 55).toFixed(2) + 's');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) anim.remove();
     }
     build();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); });
   })();
   </script>
   <script src="assets/site.js?v=9" defer></script>

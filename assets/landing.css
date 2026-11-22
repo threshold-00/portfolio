@@ -75,28 +75,17 @@
 .rhero__ticker {
   position: absolute;
   left: 0; right: 0;
-  top: 44%;
+  top: calc(44% + 19px);
+  height: 240px;
+  transform: translateY(-50%);
   z-index: 2;
-  overflow: hidden;
-  padding: 6px 0;
-  background: var(--ticker-paper);
+  pointer-events: none;
   color: var(--ticker-ink);
-  box-shadow: 0 14px 0 var(--ticker-shadow);
 }
-.rhero__track {
-  display: flex;
-  width: max-content;
-  gap: 19px;
-  align-items: center;
-  font-size: 25px;
-  line-height: 27px;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  white-space: nowrap;
-  animation: rhero-scroll 40s linear infinite;
-}
-.rhero__track span { flex: none; }
-@keyframes rhero-scroll { to { transform: translateX(calc(-1 * var(--shift, 50%))); } }
+.rhero__ticker svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.rhero__ribbon { fill: none; stroke: var(--ticker-paper); stroke-width: 44; }
+.rhero__ribbon-shadow { fill: none; stroke: var(--ticker-shadow); stroke-width: 44; }
+.rhero__ribbon-text { fill: currentColor; font-family: var(--font); font-size: 25px; text-transform: uppercase; }
 
 .rhero__tag {
   position: absolute;
@@ -276,7 +265,7 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 .proof__logos img { display: block; width: auto; max-width: 140px; height: var(--lh, 28px); filter: brightness(0) invert(1); }
 
 @media (prefers-reduced-motion: reduce) {
-  .rhero__track, .praise__track { animation: none; }
+  .praise__track { animation: none; }
   .praise__window { overflow-x: auto; }
   .praise__set[aria-hidden="true"] { display: none; }
 }
@@ -291,8 +280,6 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
   .praise__window::before, .praise__window::after { width: 48px; }
   .slack { width: 300px; }
   .rhero__letters { width: 84vw; }
-  .rhero__track { font-size: 18px; line-height: 20px; }
-  .rhero__ticker { padding: 5px 0; }
   .proof__logos li { width: calc(50% - 6px); }
 }
 

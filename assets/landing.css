@@ -387,7 +387,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .faq__title { margin: 0 0 40px; font-size: 48px; line-height: 1.02; font-weight: 400; }
 .faq__item { border-top: var(--hair) solid var(--line); }
 .faq__item:last-child { border-bottom: var(--hair) solid var(--line); }
-.faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 22px; }
+.faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 28px 16px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 22px; }
 .faq__item summary::-webkit-details-marker { display: none; }
 .faq__item .icon { flex: none; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
 .faq__item[open] .icon { transform: rotate(180deg); }

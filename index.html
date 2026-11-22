@@ -92,7 +92,12 @@
     <div class="intro-scroll" id="intro-scroll">
       <section class="intro" aria-label="Featured work">
         <div class="intro__text">
-          <p class="intro__lede">Ro brings <button class="intro__word is-on" type="button" data-word="0">research</button>, <button class="intro__word" type="button" data-word="1">design</button> and <button class="intro__word" type="button" data-word="2">testing</button> to <button class="intro__word" type="button" data-word="3">complex</button> industries, ensuring products work for the people who rely on them.</p>
+          <ul class="intro__lede intro__list">
+            <li><button class="intro__word is-on" type="button" data-word="0">Research</button></li>
+            <li><button class="intro__word" type="button" data-word="1">Design <span class="intro__sub">(UX/UI/Brand Identity)</span></button></li>
+            <li><button class="intro__word" type="button" data-word="2">Product growth</button></li>
+            <li><button class="intro__word" type="button" data-word="3">Complex systems</button></li>
+          </ul>
           <div class="intro__meta">
             <p class="intro__count" aria-hidden="true"><span data-count>1</span>/4</p>
             <div class="intro__sums" aria-live="polite"><p class="intro__sum is-on" data-sum="0">Working with the Department of Transport and Planning to ensure new myki system meets the needs of Victoria’s general public.<span class="intro__impact"><b>Impact:</b> Customers rated tapping 20% easier with the new readers. Our recommendations shaped the final specification before statewide rollout.</span></p><p class="intro__sum" data-sum="1">Designing Afterpay’s new B2B website for every international market, with AI workflows that go from strategy to wireframes to UI.<span class="intro__impact"><b>Impact:</b> One skeleton and one design system across every page, from the ANZ, US and UK homepages to product, industry, partner and support pages.</span></p><p class="intro__sum" data-sum="2">Setting up Afterpay’s Global CRO (Conversion Rate Optimisation) program, with a UX lens.<span class="intro__impact"><b>Impact:</b> Phase 1 launched with over 10 tests, combining new designs with multivariate tests.</span></p><p class="intro__sum" data-sum="3">Defined the design and research direction for SAF3, an institutional crypto custody solution from NAB and Zodia Custody’s partnership to bridge traditional finance and crypto.<span class="intro__impact"><b>Impact:</b> Delivered an MVP built around custody plus risk management, which fund managers responded to.</span></p></div>
@@ -755,7 +760,7 @@
   </footer>
   <script>
     // Scroll drives the page: the hero fades from red to black, and the intro flips through
-    // research, design, testing and complex, each with its project.
+    // Research, Design, Product growth and Complex systems, each with its project.
     (function () {
       var root = document.documentElement;
       var hero = document.querySelector('.rhero');

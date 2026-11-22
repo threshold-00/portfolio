@@ -141,6 +141,9 @@
   transition: color .35s ease;
 }
 .intro__word.is-on { color: var(--ink); font-weight: 700; }
+.intro__list { padding: 0; list-style: none; }
+.intro__list .intro__word { display: block; text-align: left; }
+.intro__sub { font-weight: 400; }
 .intro__word:hover { color: var(--ink); }
 .intro__meta { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 53px; max-width: 440px; }
 .intro__sums { position: relative; max-width: 440px; }   /* only the shown summary takes up room, so its last line always sits on the same baseline at the bottom */

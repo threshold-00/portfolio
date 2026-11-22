@@ -435,3 +435,9 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .nav .nav__cta { padding: 0 14px; border: 1px solid var(--nav-ink); border-radius: 999px; background: transparent; color: var(--nav-ink); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
 .nav .nav__cta:hover { background: var(--nav-ink); border-color: var(--nav-ink); color: var(--nav-bg); }
 .nav .nav__cta:active { transform: scale(.97); }
+
+/* Theme toggle: just the contrast icon, no label and no pill outline. */
+.nav .theme-toggle { padding: 0; width: 32px; justify-content: center; border: 0; background: transparent; }
+.nav .theme-toggle .theme-toggle__label { display: none; }
+.nav .theme-toggle:hover { background: transparent; border-color: transparent; color: var(--nav-ink); opacity: .6; }
+.nav .theme-toggle svg { width: 22px; height: 22px; }

@@ -67,29 +67,26 @@
 .rhero__letters img { display: block; height: auto; }
 .rhero__rw { width: 45.9%; position: relative; }
 .rhero__r { width: 100%; position: relative; z-index: 1; }
-/* The band also passes under the R: under the stem and the bowl down to the top of the gap
-   above the leg (y 294.5 of 452, stem 132 of 403 wide), then over the leg. */
-.rhero__r-l { position: absolute; inset: 0; width: 100%; z-index: 3; clip-path: polygon(0 0, 100% 0, 100% 65.15%, 32.75% 65.15%, 32.75% 100%, 0 100%); }
+/* The band threads through the hole of the R: under the stem (132 of 403 wide), visible in the hole, over the bowl. */
+.rhero__r-l { position: absolute; inset: 0; width: 100%; z-index: 3; clip-path: inset(0 67.25% 0 0); }
 .rhero__o { width: 52.2%; margin-left: 1.9%; position: relative; }
 .rhero__o img { width: 100%; }
 /* The band weaves through the O: it passes under the left half and over the right half. */
 .rhero__o-l { position: absolute; inset: 0; z-index: 3; clip-path: inset(0 50% 0 0); }
-.rhero__o-r { position: relative; z-index: 1; clip-path: inset(0 0 0 50%); }
+.rhero__o-r { position: relative; z-index: 1; }
 
 .rhero__ticker {
   position: absolute;
-  left: 0; right: 0;
-  top: calc(44% + 19px);
-  height: 240px;
-  transform: translateY(-50%);
+  inset: 0;
   z-index: 2;
   pointer-events: none;
   color: var(--ticker-ink);
 }
-.rhero__ticker svg { display: block; width: 100%; height: 100%; overflow: visible; }
+/* The curve is drawn in CSS pixels by the ribbon script, from where the letters actually sit. */
+.rhero__ticker svg { display: block; width: 100%; height: 100%; overflow: visible; font-size: 25px; }
 .rhero__ribbon { fill: none; stroke: var(--ticker-paper); stroke-width: 44; }
 .rhero__ribbon-shadow { fill: none; stroke: var(--ticker-shadow); stroke-width: 44; }
-.rhero__ribbon-text { fill: currentColor; font-family: var(--font); font-size: 25px; text-transform: uppercase; }
+.rhero__ribbon-text { fill: currentColor; font-family: var(--font); font-size: 1em; text-transform: uppercase; }
 
 .rhero__tag {
   position: absolute;

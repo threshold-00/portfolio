@@ -261,6 +261,7 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 .who__list { margin: 40px 0 0; padding: 0; list-style: none; }
 .who__list li { padding: 16px 0; border-top: var(--hair) solid var(--line); color: var(--muted); font-size: 16px; line-height: 22px; }
 .who__list li:last-child { border-bottom: var(--hair) solid var(--line); }
+.who__key { color: var(--ink); }
 .who .who__book { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; margin-top: 40px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 16px; cursor: pointer; transition: opacity .2s ease; }
 .who .who__book:hover { opacity: .85; color: var(--paper); }
 .who__book .icon { flex: none; width: 20px; height: 20px; fill: currentColor; }

@@ -67,8 +67,9 @@
 .rhero__letters img { display: block; height: auto; }
 .rhero__rw { width: 45.9%; position: relative; }
 .rhero__r { width: 100%; position: relative; z-index: 1; }
-/* The band also passes under the R's stem (its left column). */
-.rhero__r-l { position: absolute; inset: 0; width: 100%; z-index: 3; clip-path: inset(0 67% 0 0); }
+/* The band also passes under the R: under the stem and the bowl down to the top of the gap
+   above the leg (y 294.5 of 452, stem 132 of 403 wide), then over the leg. */
+.rhero__r-l { position: absolute; inset: 0; width: 100%; z-index: 3; clip-path: polygon(0 0, 100% 0, 100% 65.15%, 32.75% 65.15%, 32.75% 100%, 0 100%); }
 .rhero__o { width: 52.2%; margin-left: 1.9%; position: relative; }
 .rhero__o img { width: 100%; }
 /* The band weaves through the O: it passes under the left half and over the right half. */

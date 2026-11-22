@@ -253,7 +253,7 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 :root { --av-1: #7a4fd1; --av-2: #187460; --av-3: #c2561d; --av-4: #2c6db5; --av-5: #b5367a; }
 
 /* Who is Ro: heading on the left, photo, intro and points on the footer's column tracks. */
-.who { container-type: inline-size; display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 112px var(--gutter) 0; }
+.who { container-type: inline-size; display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 112px var(--gutter) 144px; border-bottom: var(--hair) solid var(--line); }
 .who__title { margin: 0; font-size: 48px; line-height: 1.02; font-weight: 400; }
 .who__body { grid-column: 2 / -1; max-width: 640px; }
 .who__me { display: block; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
@@ -269,7 +269,8 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
   .who__body { grid-column: 2; }
 }
 @media (max-width: 800px) {
-  .who { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 64px; }
+  .who { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 64px var(--gutter) 80px; }
+  .proof { padding: 80px var(--gutter); }
   .who__title { font-size: 32px; }
   .who__body { grid-column: 1; }
   .who__me { width: 96px; height: 96px; }
@@ -277,7 +278,7 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 }
 
 /* Proof */
-.proof { padding: 112px var(--gutter) 126px; text-align: center; }
+.proof { padding: 144px var(--gutter) 144px; text-align: center; }
 .proof h2 { margin: 0 auto; max-width: 900px; font-size: 24px; line-height: 30px; font-weight: 400; letter-spacing: 0; text-wrap: balance; }
 .proof__logos {
   display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center;

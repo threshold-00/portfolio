@@ -262,11 +262,11 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
 .proof__logos {
   display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center;
   gap: 12px;
-  margin: 56px auto 0; padding: 0; list-style: none; max-width: 1100px;
+  margin: 56px auto 0; padding: 0; list-style: none; max-width: 1200px;
 }
 .proof__logos li {
   display: grid; place-items: center;
-  width: 200px; height: 96px;
+  width: 180px; height: 96px;
   border: 1px solid var(--tile-stroke); border-radius: 16px;
   background: var(--tile-bg);
 }

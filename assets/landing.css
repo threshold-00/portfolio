@@ -382,8 +382,8 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .book, .book-scrim { transition: none; } }
 
 /* FAQ above the footer, with a call-to-action card. */
-.faq { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 64px; align-items: start; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
-.faq__list { width: 100%; max-width: 640px; }
+.faq { display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
+.faq__list { width: 100%; }   /* column 1 and column 2 match the footer's tracks, so the Book card lines up with the footer's contact column */
 .faq__title { margin: 0 0 40px; font-size: 48px; line-height: 1.02; font-weight: 400; }
 .faq__item { border-top: var(--hair) solid var(--line); }
 .faq__item:last-child { border-bottom: var(--hair) solid var(--line); }
@@ -392,7 +392,7 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .faq__item .icon { flex: none; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
 .faq__item[open] .icon { transform: rotate(180deg); }
 .faq__item p { margin: 0; padding: 0 40px 20px 0; color: var(--muted); font-size: 16px; line-height: 22px; max-width: 34em; }
-.fit { position: sticky; top: 77px; display: flex; flex-direction: column; gap: 28px; padding: 28px; border: var(--hair) solid var(--line); border-radius: 32px; }
+.fit { grid-column: 2; position: sticky; top: 77px; display: flex; flex-direction: column; gap: 28px; padding: 28px; border: var(--hair) solid var(--line); border-radius: 32px; }
 .fit__title { margin: 0; font-size: 36px; line-height: 40px; font-weight: 400; }
 .fit__act { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
 .fit .fit__book { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 22px 16px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 28px; line-height: 32px; letter-spacing: -.004em; cursor: pointer; text-decoration: none; }
@@ -400,6 +400,10 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .fit__book .icon { flex: none; width: 28px; height: 28px; fill: currentColor; }
 .fit__mail { color: inherit; font-size: 14px; line-height: 18px; text-decoration: none; }
 .fit__mail b { font-weight: 500; }
+@media (max-width: 1024px) {
+  .faq { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 0 48px; }
+  .fit { grid-column: auto; }
+}
 @media (max-width: 800px) {
   .faq { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 64px var(--gutter); }
   .faq__title { font-size: 32px; }

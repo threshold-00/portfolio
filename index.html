@@ -923,7 +923,6 @@
     var rImg = document.querySelector('.rhero__r'), oImg = document.querySelector('.rhero__o-r');
     var one = meas.textContent;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) anim.remove();
-    function seg(a, b) { var m = (b[0] - a[0]) / 2; return ' C ' + (a[0] + m) + ' ' + a[1] + ' ' + (b[0] - m) + ' ' + b[1] + ' ' + b[0] + ' ' + b[1]; }
     function build() {
       var h = box.getBoundingClientRect(), r = rImg.getBoundingClientRect(), o = oImg.getBoundingClientRect();
       if (!r.height || !o.height) return;
@@ -933,9 +932,19 @@
       var holeH = rh * (96.7 / 452);
       var t = Math.max(26, Math.min(44, holeH * 0.55)), k = t / 44, drop = 13 * k;
       var cy = ry + rh * (152 / 452) - drop / 2;
-      var A = [-200, cy + rh * 0.3], B1 = [rx + rw * 0.18, cy], B2 = [rx + rw * 0.68, cy];
-      var C = [ox + ow * 0.5, oy + oh * 0.66], D = [h.width + 200, cy - rh * 0.02];
-      path.setAttribute('d', 'M ' + A.join(' ') + seg(A, B1) + ' L ' + B2.join(' ') + seg(B2, C) + seg(C, D));
+      // One smooth wave: its crest runs through the hole of the R, its trough through the O.
+      var xc = rx + rw * (197 / 403), xt = ox + ow * 0.5, L = xt - xc;
+      var yt = oy + oh * 0.64, mid = (cy + yt) / 2, amp = (yt - cy) / 2;
+      function y(x) { return mid - amp * Math.cos(Math.PI * (x - xc) / L); }
+      var step = 24, x0 = -200, x1 = h.width + 200, pts = [];
+      for (var x = x0; x < x1 + step; x += step) pts.push([x, y(x)]);
+      // Catmull-Rom through the samples, written as cubic Beziers.
+      var d = 'M ' + pts[0][0] + ' ' + pts[0][1].toFixed(1);
+      for (var i = 0; i < pts.length - 1; i++) {
+        var p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+        d += ' C ' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0] + ' ' + p2[1].toFixed(1);
+      }
+      path.setAttribute('d', d);
       band.style.strokeWidth = shade.style.strokeWidth = t;
       shade.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ')');
       svg.style.fontSize = (25 * k).toFixed(1) + 'px';

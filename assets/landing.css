@@ -424,3 +424,8 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 
 /* Footer Book a call reads exactly like the LinkedIn link beside it. */
 .footer .nav__cta { font: inherit; letter-spacing: inherit; line-height: inherit; }
+
+/* While the Book a call menu is open, the nav arrow becomes a close cross. */
+.nav .nav__cta .icon--close { display: none; width: 18px; height: 18px; margin-left: 4px; flex: none; fill: currentColor; }
+.nav .nav__cta[aria-expanded="true"] .icon--arrow { display: none; }
+.nav .nav__cta[aria-expanded="true"] .icon--close { display: inline-block; }

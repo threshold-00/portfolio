@@ -293,6 +293,12 @@ body, button { word-spacing: .08em; }   /* Display Pro's word space is tight at 
   background: var(--tile-bg);
 }
 .proof__logos img { display: block; width: auto; max-width: 140px; height: var(--lh, 28px); filter: brightness(0) invert(1); }
+.proof__logos { max-width: 756px; }   /* four tiles a row, two rows */
+.proof__logos a { position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: inherit; color: #8a8a8a; transition: color .2s ease, border-color .2s ease; }   /* fixed greys: the tiles keep their own colours (light mode overrides below) */
+.proof__logos li { transition: border-color .2s ease; }
+.proof__logos li:hover { border-color: #5a5a5a; }
+.proof__logos a:hover, .proof__logos a:focus-visible { color: #fff; }
+.proof__arrow { position: absolute; top: 10px; right: 10px; width: 18px; height: 18px; fill: currentColor; }
 
 @media (prefers-reduced-motion: reduce) {
   .praise__track { animation: none; }
@@ -441,6 +447,9 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 /* Client logos: dark tiles with white logos in dark mode, inverted (light tiles, black logos) in light mode. */
 :root[data-theme="light"] .proof__logos li { background: #f2f2f2; border-color: #e0e0e0; }
 :root[data-theme="light"] .proof__logos img { filter: brightness(0); }
+:root[data-theme="light"] .proof__logos a { color: #767676; }
+:root[data-theme="light"] .proof__logos li:hover { border-color: #a8a8a8; }
+:root[data-theme="light"] .proof__logos a:hover, :root[data-theme="light"] .proof__logos a:focus-visible { color: #000; }
 
 /* Hairline between the client logos and the testimonials. */
 .proof { border-bottom: var(--hair) solid var(--line); }

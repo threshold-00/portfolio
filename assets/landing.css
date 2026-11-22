@@ -184,15 +184,17 @@
 /* Praise: Slack-style messages drift past, with a fade at each end. */
 .praise {
   display: grid;
-  grid-template-columns: minmax(180px, 300px) 1fr;
-  align-items: center;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  justify-items: stretch;
+  gap: 40px;
   padding: 126px 0 126px var(--gutter);
   border-bottom: var(--hair) solid var(--line);
   overflow: hidden;
 }
-.praise h2 { margin: 0 0 10px; font-size: 18px; font-weight: 400; letter-spacing: 0; }
-.praise__stars { display: flex; gap: 2px; margin: 0; padding: 0; list-style: none; color: var(--star); }
+.praise > div:first-child { padding-right: var(--gutter); text-align: center; }
+.praise h2 { margin: 0 0 14px; font-size: 24px; line-height: 30px; font-weight: 400; letter-spacing: 0; }
+.praise__stars { display: flex; justify-content: center; gap: 2px; margin: 0; padding: 0; list-style: none; color: var(--star); }
 .praise__stars svg { width: 24px; height: 24px; fill: currentColor; }
 .praise__window { position: relative; overflow: hidden; }
 .praise__window::before, .praise__window::after {

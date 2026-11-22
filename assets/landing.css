@@ -385,16 +385,16 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .book, .book-scrim { transition: none; } }
 
 /* FAQ above the footer, with a call-to-action card. */
-.faq { display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
-.faq__list { width: 100%; }   /* column 1 and column 2 match the footer's tracks, so the Book card lines up with the footer's contact column */
-.faq__title { margin: 0 0 40px; font-size: 48px; line-height: 1.02; font-weight: 400; }
+.faq { container-type: inline-size; display: grid; grid-template-columns: 1fr minmax(0, 527px) 220px; gap: 0 var(--gap); align-items: start; padding: 96px var(--gutter); border-top: var(--hair) solid var(--line); }
+.faq__list { width: max-content; max-width: 100%; }   /* as wide as the heading, so the row lines and arrows end at the last s of "questions" */   /* column 1 and column 2 match the footer's tracks, so the Book card lines up with the footer's contact column */
+.faq__title { margin: 0 0 40px; font-size: clamp(28px, calc((100cqw - 787px) / 11.52), 48px); line-height: 1.02; font-weight: 400; white-space: nowrap; }   /* shrinks with its column so it stays on one line */
 .faq__item { border-top: var(--hair) solid var(--line); }
 .faq__item:last-child { border-bottom: var(--hair) solid var(--line); }
-.faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 12px 16px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 22px; }
+.faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 22px; }
 .faq__item summary::-webkit-details-marker { display: none; }
-.faq__item .icon { flex: none; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
+.faq__item .icon { flex: none; margin-right: -6px; width: 24px; height: 24px; fill: currentColor; transition: transform .25s ease; }
 .faq__item[open] .icon { transform: rotate(180deg); }
-.faq__item p { margin: 0; padding: 0 40px 20px 0; color: var(--muted); font-size: 16px; line-height: 22px; max-width: 34em; }
+.faq__item p { margin: 0; padding: 0 40px 20px 0; color: var(--muted); font-size: 16px; line-height: 22px; max-width: 34em; width: 0; min-width: 100%; }   /* answers never widen the list */
 .fit { grid-column: 2; position: sticky; top: 77px; display: flex; flex-direction: column; gap: 28px; padding: 28px; border: var(--hair) solid var(--line); border-radius: 32px; }
 .fit__title { margin: 0; font-size: 36px; line-height: 40px; font-weight: 400; }
 .fit__act { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
@@ -405,11 +405,13 @@ body *, body *::before, body *::after { letter-spacing: 0 !important; }
 .fit__mail b { font-weight: 500; }
 @media (max-width: 1024px) {
   .faq { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 0 48px; }
+  .faq__title { font-size: clamp(28px, calc((100cqw - 468px) / 11.52), 48px); }
   .fit { grid-column: auto; }
 }
 @media (max-width: 800px) {
   .faq { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 64px var(--gutter); }
-  .faq__title { font-size: 32px; }
+  .faq__list { width: 100%; }
+  .faq__title { font-size: 32px; white-space: normal; }
   .fit { position: static; padding: 20px; border-radius: 24px; }
   .fit__title { font-size: 28px; line-height: 32px; }
   .fit .fit__book { font-size: 22px; padding: 18px 12px; } .fit__book .icon { width: 24px; height: 24px; }

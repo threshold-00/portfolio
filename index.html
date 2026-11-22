@@ -35,7 +35,7 @@
   <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css?v=92">
-  <link rel="stylesheet" href="assets/landing.css?v=57">
+  <link rel="stylesheet" href="assets/landing.css?v=58">
 </head>
 <body>
   <header class="nav">
@@ -64,7 +64,7 @@
           <img class="rhero__o-l" src="assets/img/new/ro-o.svg" alt="">
         </div>
       </div>
-      <div class="rhero__ticker" role="img" aria-label="Strategic design, AI engine setup, product and web optimisation, startup consulting"><svg aria-hidden="true" focusable="false"><defs><path id="ribbon" d="M -200 300 L 1800 300"/></defs><use href="#ribbon" class="rhero__ribbon-shadow" transform="translate(0 13)"/><use href="#ribbon" class="rhero__ribbon"/><text class="rhero__ribbon-text" dy="9" xml:space="preserve"><textPath href="#ribbon" startOffset="0">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   <animate attributeName="startOffset" from="0" to="-900" dur="16s" repeatCount="indefinite"/></textPath></text><text class="rhero__ribbon-text" id="ribbon-measure" visibility="hidden" xml:space="preserve">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   </text></svg></div>
+      <div class="rhero__ticker" role="img" aria-label="Strategic design, AI engine setup, product and web optimisation, startup consulting"><svg aria-hidden="true" focusable="false"><defs><path id="ribbon" d="M -200 300 L 1800 300"/></defs><use href="#ribbon" class="rhero__ribbon-shadow" transform="translate(0 13)"/><use href="#ribbon" class="rhero__ribbon-edge"/><use href="#ribbon" class="rhero__ribbon"/><text class="rhero__ribbon-text" dy="9" xml:space="preserve"><textPath href="#ribbon" startOffset="0">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   <animate attributeName="startOffset" from="0" to="-900" dur="16s" repeatCount="indefinite"/></textPath></text><text class="rhero__ribbon-text" id="ribbon-measure" visibility="hidden" xml:space="preserve">Strategic design   👩🏻‍💻   AI engine setup   🤖   Product and web optimisation   📈   Startup consulting   🚀   </text></svg></div>
       <p class="rhero__tag" aria-hidden="true"><span>[Ro makes things suck less]</span><img class="rhero__me" src="assets/img/home/ro-plain.webp" alt="" width="40" height="40"></p>
     </section>
 
@@ -919,7 +919,7 @@
     var svg = box && box.querySelector('svg');
     if (!svg) return;
     var tp = svg.querySelector('textPath'), anim = tp.querySelector('animate'), meas = svg.querySelector('#ribbon-measure'), path = svg.querySelector('#ribbon');
-    var band = svg.querySelector('.rhero__ribbon'), shade = svg.querySelector('.rhero__ribbon-shadow'), text = tp.parentNode;
+    var band = svg.querySelector('.rhero__ribbon'), edge = svg.querySelector('.rhero__ribbon-edge'), shade = svg.querySelector('.rhero__ribbon-shadow'), text = tp.parentNode;
     var rImg = document.querySelector('.rhero__r'), oImg = document.querySelector('.rhero__o-r');
     var one = meas.textContent;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) anim.remove();
@@ -945,7 +945,7 @@
         d += ' C ' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0] + ' ' + p2[1].toFixed(1);
       }
       path.setAttribute('d', d);
-      band.style.strokeWidth = shade.style.strokeWidth = t;
+      band.style.strokeWidth = shade.style.strokeWidth = t; edge.style.strokeWidth = t + 2;
       shade.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ')');
       svg.style.fontSize = (25 * k).toFixed(1) + 'px';
       text.setAttribute('dy', (9 * k).toFixed(1));

@@ -9,7 +9,8 @@
   --hero-bg: #fff;
   --nav-start: #fff;            /* nav before the hero fades */
   --nav-start-ink: #000;
-  --ticker-paper: var(--red);
+  --ticker-paper: #f3f0e8;
+  --ticker-edge: rgba(0, 0, 0, .16);
   --ticker-ink: #000;
   --ticker-shadow: rgba(0, 0, 0, .25);
   --intro-fade: rgba(0, 0, 0, .78);
@@ -86,6 +87,8 @@
 .rhero__ticker svg { display: block; width: 100%; height: 100%; overflow: visible; font-size: 25px; }
 .rhero__ribbon { fill: none; stroke: var(--ticker-paper); stroke-width: 44; }
 .rhero__ribbon-shadow { fill: none; stroke: var(--ticker-shadow); stroke-width: 44; }
+/* Off-white band: a hairline edge keeps it defined on the white hero. */
+.rhero__ribbon-edge { fill: none; stroke: var(--ticker-edge); stroke-width: 46; }
 .rhero__ribbon-text { fill: currentColor; font-family: var(--font); font-size: 1em; text-transform: uppercase; }
 
 .rhero__tag {

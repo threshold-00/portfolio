@@ -54,7 +54,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: max(560px, min(755px, 100svh - 45px));
+  min-height: max(560px, 100svh - 45px);   /* fills the whole first screen under the nav */
   overflow: hidden;
   background: color-mix(in srgb, var(--hero-bg) calc((1 - var(--p)) * 100%), var(--paper));
   color: var(--red-ink);
